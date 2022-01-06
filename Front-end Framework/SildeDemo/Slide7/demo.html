@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        input.ng-invalid {
+            background-color: red;
+        }
+
+        form.ng-pristine {
+            background-color: yellow;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body ng-app="myapp">
+
+    <div ng-controller="myctrl">
+        <ul>
+            <li>Tự nhiên: {{now}}</li>
+            <li>Định dạng mặc đinh: {{now | date}}</li>
+            <li>Định dạng short: {{now | date: 'short'}}</li>
+            <li>Định dangk dd-MM-yyyy: {{now| date: 'dd-MM-yyyy'}}</li>
+            <li>Định dạng HH:mm:ss a: {{now|date :'HH:mm:ss a'}}</li>
+        </ul>
+        <table border="1">
+            <tr ng-repeat ="item in nhanVien | between: 1000 : 5000">
+                <td>{{item.name | uppercase}}</td>
+                <td>{{item.dob | date: 'dd/MM/yyyy'}}</td>
+                <td>{{item.salary | currency: 'VND': 3}}</td>
+            </tr>
+        </table>
+        <!-- <input type="text" ng-model="query"> -->
+
+        <!-- <table border="1">
+            <tr ng-repeat='item in nhanVien | filter: {name: query}: false'>
+                <td>{{item.name | uppercase}}</td>
+                <td>{{item.dob | date: 'dd/MM/yyyy'}}</td>
+                <td>{{item.salary | currency: 'VND' : 3}}</td>
+            </tr>
+        </table> -->
+
+        <!-- <ul ng-repeat="x in cars | filter :'a'">
+            <li>{{x}}</li>
+        </ul>
+        <ul>
+            <li>Joson {{user | json}}</li>
+        </ul>
+        <ul>
+            <li ng-repeat='item in mang | limitTo: 3 : -4'>{{item}}</li>
+        </ul>
+        <ul>
+            <li ng-repeat='item in mang | orderBy'>{{item}}</li>
+        </ul>
+        <ul>
+            <li ng-repeat='item in mang | orderBy: "-" '>{{item}}</li>
+        </ul> -->
+        <!-- <ul ng-repeat='item in nhanVien | orderBy: "-salary"'>
+            <li>{{item.name | uppercase}}</li>
+            <li>{{item.dob | date: 'dd/MM/yyyy'}}</li>
+            <li>{{item.salary | currency: 'VND': 3}}</li>
+        </ul> -->
+        <!-- <table border="1">
+            <tr ng-repeat='item in nhanVien | orderBy: "-salary"'>
+                <td>{{item.name | uppercase}}</td>
+                <td>{{item.dob | date: 'dd/MM/yyyy'}}</td>
+                <td>{{item.salary | currency: 'VND': 3}}</td>
+            </tr>
+        </table> -->
+
+    </div>
+    <script>
+        var app = angular.module('myapp', [])
+        app.controller('myctrl', function ($scope) {
+            $scope.now = new Date();
+            $scope.user = {
+                id: 'TeoVN',
+                name: 'Nguyen Van Duc'
+            }
+            $scope.mang = ['B', 'A', 'C', 'D', 'E', 'F']
+            $scope.nv = [{ "salary": 1000 },
+            { "salary": 100 },
+            { "salary": 2000 },
+            { "salary": 3000 },
+            { "salary": 10 },
+            { "salary": 5000 },
+            { "salary": 10 }];
+            $scope.cars = ["Adm", "localAhost", "Big", "nguyen", 'Moa'];
+            $scope.nhanVien = [
+
+                {
+                    name: 'Van1',
+                    dob: new Date(),
+                    salary: 1000
+                },
+                {
+                    name: 'Hằng',
+                    dob: new Date(),
+                    salary: 121000
+                },
+                {
+                    name: 'Hằng VIP',
+                    dob: new Date(),
+                    salary: 100
+                },
+                {
+                    name: 'Van4',
+                    dob: new Date(),
+                    salary: 1000
+                },
+                {
+                    name: 'Van5',
+                    dob: new Date(),
+                    salary: 100120
+                },
+                {
+                    name: 'Van6',
+                    dob: new Date(),
+                    salary: 1000
+                },
+                {
+                    name: 'Van7',
+                    dob: new Date(),
+                    salary: 91000
+                },
+                {
+                    name: 'Hằng Mõm',
+                    dob: new Date(),
+                    salary: 700
+                },
+                {
+                    name: 'Van9',
+                    dob: new Date(),
+                    salary: 2000
+                },
+                {
+                    name: 'Van10',
+                    dob: new Date(),
+                    salary: 5000
+                },
+            ]
+
+            app.filter("between", function () {
+                return function (input, min, max) {
+                    var output = [];
+                    input.forEach(element => {
+                        if (element.salary >= min && element.salary <= max) {
+                            output.push(element);
+                        }
+                    })
+                    return output;
+                }
+            })
+        })
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

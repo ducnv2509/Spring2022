@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">Cập nhập</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">Danh sách</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-edit"></i>
+                    Bang luong
+                </div>
+                <div class="card-body">
+                    <form action="">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="">Manv</label>
+                                <input type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label for="">Hoten</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="">Cau lac bo</label>
+                                <select class="form-select form-control">
+                                    <option selected>Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Luong</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="">Thuong</label>
+                                <input type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label for="">Phu Cap</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="">ghi chu</label>
+                                <textarea name="" id="" cols="" rows="3" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Luu</button>
+                                <button class="btn btn-danger">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Huy</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-list-alt"></i>
+                    Bang luong thang 12
+                </div>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-warning">
+                        <tr class="text-center">
+                            <th rowspan="2" class="align-middle">Manv</th>
+                            <th rowspan="2" class="align-middle">Ho va ten</th>
+                            <th colspan="3" class="align-middle">Thu nhap</th>
+                        </tr>
+                        <tr class="text-center">
+                            <th class="align-middle">Luong</th>
+                            <th class="align-middle">Thuong</th>
+                            <th class="align-middle">phu cap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NV100</td>
+                            <td>Nguyen Cong Phuong</td>
+                            <td>60000</td>
+                            <td>101231</td>
+                            <td>12312</td>
+                        </tr>
+                        <tr>
+                            <td>NV100</td>
+                            <td>Nguyen Cong Phuong</td>
+                            <td>60000</td>
+                            <td>101231</td>
+                            <td>12312</td>
+                        </tr>
+                        <tr>
+                            <td>NV100</td>
+                            <td>Nguyen Cong Phuong</td>
+                            <td>60000</td>
+                            <td>101231</td>
+                            <td>12312</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="panel-footer">
+                    Luong cua cau thu va HLV chuyen nghiep
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

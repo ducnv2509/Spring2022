@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body ng-app="myapp">
+
+    <div ng-controller="myctrl">
+        <form action="">
+            Username: <input type="text" ng-model='username' ng-model-options="{updateOn: 'blur'}"> <br> <br>
+            Pasword: <input type="password" ng-model='password' ng-model-options="{updateOn: 'blur'}"> <br> <br>
+            <input type="checkbox" ng-model="rem"> Remember me <br> <br>
+            Login with role:
+            <input type="radio" name="role" value="admin" ng-model='role'> admin
+            <input type="radio" name="role" value="user" ng-model='role'> username
+            <br>
+            country:
+            <select ng-model='country'>
+                <option ng-repeat="x in countrys" value="{{x}}">
+                    {{x}}
+                </option>
+            </select>
+            <br>
+            country 2:
+            <select ng-model='country' ng-options="x for x in countrys">
+            </select>
+            <br>
+            country 3:
+            <select ng-model='country' ng-options="y.name for (x,y) in country2s">
+            </select>
+            <br>
+            hobbies:
+            <input type="checkbox" ng-model="all"> Tat ca
+            <input type="checkbox" name="" id="" ng-model='red' ng-checked='all'> Doc Sach
+            <input type="checkbox" name="" id="" ng-model='tral' ng-checked='all'> Du lich
+            <input type="checkbox" name="" id="" ng-model='music' ng-checked='all'> AM nhac
+            <br>
+            <input type="button" value="Login">
+        </form>
+        <h1>Hello: {{username}}</h1>
+        <h1>Duc: {{password}}</h1>
+        <h3 ng-if="rem"> rememberme is check</h3>
+        <h3>Your role: {{role}}</h3>
+    </div>
+    <script>
+        angular.module('myapp', []).controller('myctrl', function ($scope) {
+            $scope.username = 'ducnv';
+            $scope.password = '123';
+            $scope.countrys = ["Viet Nam", "Han QUoc", "USA", "Nhat"];
+            $scope.country2s = {
+                VN: {
+                    id: '1',
+                    name: 'VietNam',
+                    tien: 'dong'
+                },
+                TQ: {
+                    id: '2',
+                    name: 'Han quOC',
+                    tien: 'sEL'
+                }
+            };
+        })
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

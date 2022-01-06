@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Register New Student</h1>
+<hr />
+<form action="RegisterServlet" method="post" enctype="multipart/form-data">
+Name: <input type="text"  name = "name" placeholder="Name ?"/> <br />
+Images: <input type="file" name = "imageName" placeholder="Images ?" /><br />
+
+Gender: <input type="radio" name = "gender" value = "true"/> Male
+<input type="radio" name = "gender" value = "false"/> FeMale
+<br /><br />
+
+Bob: <input type="date" name = "dob"/>
+<br /><br />
+
+Country: 
+<select name="country" id="">
+<option value="vn">Viet Nam</option>
+<option value="us">USA</option>
+<option value="jp">JaPan</option>
+<option value="lao">Kao</option>
+</select>
+<input type="submit" value="register">
+<input type="reset" value="reset">
+</form>
+</body>
+</html>

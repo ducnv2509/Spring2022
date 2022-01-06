@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <style>
+        input.ng-invalid {
+            background-image: url('fire.png');
+            background-position: center right;
+            background-repeat: no-repeat;
+            border: 1px solid red;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl">
+        <div class="row">
+            <div class="col">
+                <form name="frmUser">
+                    <div class="card">
+                        <div class="card-header">
+                            Thông tin Sinh viên
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="">Họ và tên</label>
+                                <input type="text" class="form-control" name="txtName" ng-model='fullname' id=""
+                                    aria-describedby="helpId" maxlength="25" placeholder="" required>
+                                <small id="helpId" class="form-text text-muted" ng-show="frmUser.txtName.$invalid">Vui
+                                    lòng nhập
+                                    họ tên</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Điểm</label>
+                                <input type="number" class="form-control" name="txtDiem" ng-model='diem' id=""
+                                    aria-describedby="helpId" min="0" max="10" placeholder="">
+                                <small id="helpId" class="form-text text-muted" ng-show="frmUser.txtDiem.$invalid">Điểm
+                                    từ 0 -
+                                    10</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="email" class="form-control" name="txtEmail" ng-model='email' id=""
+                                    aria-describedby="helpId" placeholder="" required>
+                                <small id="helpId" class="form-text text-muted"
+                                    ng-show="frmUser.txtEmail.$invalid">Không đúng
+                                    dạng email</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Số Xe</label>
+                                <input type="text" class="form-control" pattern="5\d-[A-Z]\d-((\d{4})|(\d{3}\.\d{2}))"
+                                    name="txtSo" ng-model='soXe' id="" aria-describedby="helpId" placeholder="">
+                                <small id="helpId" class="form-text text-muted" ng-show="frmUser.txtSo.$invalid">Không
+                                    đúng số
+                                    xe sài gòn</small>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <input type="button" class="btn btn-danger" value="Lưu">
+                            <i ng-show="frmUser.$valid">Chúc mừng bạn</i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        angular.module('myapp', []).controller('myctrl', function ($scope) {
+
+        });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

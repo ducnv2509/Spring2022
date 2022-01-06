@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-8 offset-2 border">
+
+            <div class="row">
+                {{customerHero | json}}
+                <div class="col-6 offset-3">
+                    <div class="form-group">
+                        <label for="">Ten Hero</label>
+                        <input type="text" 
+                        (keyup)="customerHero.name = $event.target.value"
+                        class="form-control" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Anh Hero</label>
+                        <input type="text" class="form-control" >
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Gioi tinh Hero</label>
+                        <select name="" id="">
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-sm btn-success">Lưu</button>
+                    </div>
+                </div>
+            </div>
+            <h2>{{title}}</h2>
+            <ol>
+                <li *ngFor="let hero of heroList">
+                    <img [src]="hero.img" width="80"> &nbsp;
+                    {{hero.name}} - <span *ngIf="hero.gender == 1">Nam</span>
+                    <span *ngIf="hero.gender != 1">Nữ</span> &nbsp;
+                    <button (click) = "removeHerro(hero)" class="btn btn-sm btn-danger">Xoá
+                    </button>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
