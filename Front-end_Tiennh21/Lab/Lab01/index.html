@@ -22,6 +22,17 @@
             bottom: 20px;
             font-variant: small-caps;
         }
+
+        .shopping-mall>h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 50px;
+            color: white;
+            letter-spacing: 0.3px;
+            text-shadow: 0 0 2px black;
+            padding-bottom: 0px;
+            border-bottom: 1px dotted gray;
+            margin: 0px;
+        }
     </style>
 </head>
 
@@ -35,8 +46,8 @@
             <img class="ml-auto" src="images/header-object.png" alt="" />
         </header>
 
-        <nav class="row navbar navbar-expand-sm navbar-light bg-light">
-            <a class="navbar-brand" href="#">
+        <nav class="row navbar navbar-expand-sm navbar-light bg-dark ">
+            <a class="navbar-brand text-light" href="#">
                 <i class="fa fa-home" aria-hidden="true"></i>
                 Trang chủ</a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
@@ -46,30 +57,30 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
+                    <li class="nav-item ">
+                        <a class="nav-link text-light" href="#">
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
                             Giởi thiệu <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link text-light" href="#">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             Liên hệ</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link text-light" href="#">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             Góp ý</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link text-light" href="#">
                             <i class="fa fa-question-circle" aria-hidden="true"></i>
                             Hỏi - đáp</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="dropdownId" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Tài khoản</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownId">
                             <a class="dropdown-item" href="#">
@@ -86,8 +97,8 @@
                         </div>
                     </li>
                 </ul>
-                <a class="nav-link active" href="#">Tiếng anh </a>
-                <a class="nav-link" href="#">Tiếng việt</a>
+                <a class="nav-link active text-light" href="#">Tiếng anh </a>
+                <a class="nav-link text-light" href="#">Tiếng việt</a>
             </div>
         </nav>
 
@@ -133,7 +144,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
 
 
@@ -176,7 +187,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -210,7 +221,8 @@
 
                     <div class="card mt-2">
                         <div class="card-header">
-                            Chủng loại
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <strong>Chủng loại</strong>
                         </div>
                         <ul class="list-group">
                             <li class="list-group-item">Phone</li>
@@ -228,7 +240,7 @@
 
         <footer class="row">
             <div class="card col">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <p>FPT Polytechnic @copy; 2021, All right revered</p>
                 </div>
             </div>
