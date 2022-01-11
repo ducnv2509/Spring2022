@@ -22,7 +22,7 @@
                 <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
                     type="button" role="tab" aria-controls="nav-home" aria-selected="true">
 
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                    <i class="fa fa-cloud" aria-hidden="true"></i>
 
                     Cập nhập</button>
                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
@@ -38,84 +38,90 @@
                     <div class="card-header">
                         <i class="fa fa-address-book" aria-hidden="true"></i> Nhập lương tháng 12
                     </div>
-                    <form action="">
-                        <div class="row mt-2">
-                            <div class="form-group col-6">
-                                <label for=""><strong>Mã Nhân Viên</strong></label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label for=""><strong>Họ và Tên</strong></label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="row mt-2">
-                            <div class="form-group col-6">
-                                <label for=""><strong>Câu lạc bộ</strong></label>
-                                <div class="mb-3">
-                                    <select class="form-select" name="" id="">
-                                        <option>Đà nẵng</option>
-                                        <option>Hà Nội</option>
-                                        <option>Hải Phòng</option>
-                                    </select>
+                    <div class="container">
+                        <form action="">
+                            <div class="row mt-2">
+                                <div class="form-group col-6">
+                                    <label for=""><strong>Mã Nhân Viên</strong></label>
+                                    <input type="text" class="form-control">
                                 </div>
-                            </div>
-                            <div class="form-group col-6">
-                                <label for=""><strong>Lương</strong></label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">$</span>
-                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    <span class="input-group-text">.00</span>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row mt-2">
-                            <div class="form-group col-6">
-                                <label for=""><strong>Thưởng</strong></label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">$</span>
-                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    <span class="input-group-text">.00</span>
+                                <div class="form-group col-6">
+                                    <label for=""><strong>Họ và Tên</strong></label>
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
 
-                            <div class="form-group col-6">
-                                <label for=""><strong>Phụ cấp</strong></label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">$</span>
-                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    <span class="input-group-text">.00</span>
+                            <div class="row mt-2">
+                                <div class="form-group col-6">
+                                    <label for=""><strong>Câu lạc bộ</strong></label>
+                                    <div class="mb-3">
+                                        <select class="form-select" name="" id="">
+                                            <option>Đà nẵng</option>
+                                            <option>Hà Nội</option>
+                                            <option>Hải Phòng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for=""><strong>Lương</strong></label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">$</span>
+                                        <input type="text" class="form-control"
+                                            aria-label="Amount (to the nearest dollar)">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row mt-2">
-                            <div class="form-group col-12">
-                                <label for=""><strong>Ghi Chú</strong></label>
-                                <textarea class="form-control" name="" id="" rows="3"></textarea>
+                            <div class="row mt-2">
+                                <div class="form-group col-6">
+                                    <label for=""><strong>Thưởng</strong></label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">$</span>
+                                        <input type="text" class="form-control"
+                                            aria-label="Amount (to the nearest dollar)">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label for=""><strong>Phụ cấp</strong></label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">$</span>
+                                        <input type="text" class="form-control"
+                                            aria-label="Amount (to the nearest dollar)">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mt-2 mb-3">
-                            <div class="form-group col-12">
-                                <button class="btn btn-success">
-                                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                                    Lưu
-                                </button>
-
-                                <button class="btn btn-danger">
-                                    <i class="fa fa-ban" aria-hidden="true"></i>
-                                    Huỷ
-                                </button>
+                            <div class="row mt-2">
+                                <div class="form-group col-12">
+                                    <label for=""><strong>Ghi Chú</strong></label>
+                                    <textarea class="form-control" name="" id="" rows="3"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            Vui lòng nhập thông tin cầu thủ
-                        </div>
-                    </form>
+
+                            <div class="row mt-2 mb-3">
+                                <div class="form-group col-12">
+                                    <button class="btn btn-success">
+                                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                                        Lưu
+                                    </button>
+
+                                    <button class="btn btn-danger">
+                                        <i class="fa fa-ban" aria-hidden="true"></i>
+                                        Huỷ
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                Vui lòng nhập thông tin cầu thủ
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
 
 
