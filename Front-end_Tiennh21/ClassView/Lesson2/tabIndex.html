@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Lab01_ducnv</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <style>
+        header {
+            position: relative;
+        }
+
+        .shopping-mall {
+            position: absolute;
+            bottom: 20px;
+            font-variant: small-caps;
+        }
+
+        .shopping-mall>h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 50px;
+            color: white;
+            letter-spacing: 0.3px;
+            text-shadow: 0 0 2px black;
+            padding-bottom: 0px;
+            border-bottom: 1px dotted gray;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container p-0">
+        <header class="row " style="height: 200px">
+            <div class="shopping-mall mt-5">
+                <h1>Onlien shopping mall</h1>
+                <h5>The center point of the professional programing</h5>
+            </div>
+            <!-- <img class="ml-auto" src="images/header-object.png" alt="" /> -->
+        </header>
+
+        <nav class="row navbar navbar-expand-sm navbar-light bg-dark ">
+            <a class="navbar-brand text-light" href="#">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Trang chủ</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item ">
+                        <a class="nav-link text-light" href="#">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            Giởi thiệu <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            Liên hệ</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            Góp ý</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            Hỏi - đáp</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="dropdownId" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Tài khoản</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                Đăng nhập</a>
+                            <a class="dropdown-item" href="#">Đăng ký</a>
+                            <a class="dropdown-item" href="#">Quên mật khẩu</a>
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" href="#">Hồ sơ cá nhân</a>
+                            <a class="dropdown-item" href="#">Đổi mật khẩu</a>
+                            <a class="dropdown-item" href="#">Đăng xuất</a>
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" href="#">Đơn đặt hàng</a>
+                        </div>
+                    </li>
+                </ul>
+                <a class="nav-link active text-light" href="#">Tiếng anh </a>
+                <a class="nav-link text-light" href="#">Tiếng việt</a>
+            </div>
+        </nav>
+
+        <div class="row" style="height: 800px">
+            <aside class="col-9 p-0 pt-3">
+                <div class="container">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true">Cập nhập</button>
+                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                aria-selected="false">Danh sách</button>
+                            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                aria-selected="false">Contact</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                            aria-labelledby="nav-home-tab">
+                            <form action="">
+                                <div class="mt-2 row">
+                                    <label class="col-2" for="">Ho Ten
+                                        <span class="text-danger">*</span>
+        
+                                    </label>
+                                    <div class="col-10">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+        
+                                <div class="mt-2 row">
+                                    <label class="col-2" for="">Email
+                                        <span class="text-danger">*</span>
+        
+        
+                                    </label>
+                                    <div class="col-10">
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+        
+                                <div class="mt-2 row">
+                                    <label class="col-2" for="">Mật khẩu
+                                        <span class="text-danger">*</span>
+        
+        
+                                    </label>
+                                    <div class="col-10">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+        
+                                <div class="mt-2 row">
+                                    <label class="col-2">Ảnh đại diện</label>
+                                    <div class="col-10">
+                                        <input
+                                            class="form-control"
+                                            type="file"
+                                            name="avatar"
+                                            />
+                                    </div>
+                                </div>
+                                <!-- <div class="mt-2 row">
+                                    <label class="col-2 form-label" for="formFile">Ảnh đại diện</label>
+                                    <div class="col-10">
+                                        <div class="custom-file">
+                                            <input id="my-input" class="custom-file-input" type="file" name="">
+                                            <label for="my-input" class="custom-file-label">Text</label>
+        
+                                        </div>
+                                    </div>
+        
+                                </div> -->
+        
+                                <div class="mt-2 row">
+                                    <label class="col-2">Chuyên ngành
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-10">
+                                        <div class="form-group">
+                                            <select id="my-select" class="form-control" name="">
+                                                <option disabled>Mời chọn chuyên ngành</option>
+                                                <option value="tkdh">TKDH</option>
+                                                <option value="cntt">CNTT</option>
+                                                <option value="kt">KT</option>
+                                                <option value="mobile">Mobile</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="mt-2 row">
+                                    <label class="col-2">Giới tính</label>
+                                    <div class="col-10 row">
+                                        <div class="col-2">
+                                            <input type="radio" name="gioi_tinh" value="nam" id="gioi_tinh_nam"
+                                                class="form-check-input" checked>
+                                            <label for="gioi_tinh_nam">Nam</label>
+                                        </div>
+                                        <div class="col-2">
+                                            <input type="radio" name="gioi_tinh" value="nu" id="gioi_tinh_nu"
+                                                class="form-check-input">
+                                            <label for="gioi_tinh_nu">Nữ</label>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </form>
+                        
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        
+                            <div class="card">
+                                <div class="card-header">
+            
+                                    <button class="btn btn-sm btn-success">
+                                        Thêm mới
+                                    </button>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover text-nowrap">
+                                        <thead class="text-center table-danger">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>SĐT</th>
+                                                <th>Email</th>
+                                                <th>HT</th>
+                                                <th>Địa chỉ</th>
+                                                <th colspan="2">Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Nguyễn Văn Đức</td>
+                                                <td>0332429178</td>
+                                                <td>ducnvph14435@fpt.edu.vn</td>
+                                                <td>Hà Nội</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-success">
+                                                        Sửa
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-danger">
+                                                        Xoá
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Nguyễn Văn Đức</td>
+                                                <td>0332429178</td>
+                                                <td>ducnvph14435@fpt.edu.vn</td>
+                                                <td>Hà Nội</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-success">
+                                                        Sửa
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-danger">
+                                                        Xoá
+                                                    </button>
+                                                </td>
+                                            </tr>
+            
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-footer">
+                                    Tong so khach 2
+                                </div>
+                            </div>
+                        
+                        
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            ...</div>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="col-3 p-3">
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="images/shoppingcart.gif" style="width: 80px" alt="" class="img-fluid">
+                                </div>
+                                <ul class="col-8" style="list-style-type: none;">
+                                    <li>100item</li>
+                                    <li>$ 56.8</li>
+                                    <li><a href="">view cart</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <form action="">
+                                <input type="text" class="form-control" placeholder="key ban">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mt-2">
+                        <div class="card-header">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <strong>Chủng loại</strong>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">Phone</li>
+                            <li class="list-group-item">Laptop</li>
+                            <li class="list-group-item">Nokia</li>
+                            <li class="list-group-item">Apple</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </article>
+        </div>
+
+        <footer class="row">
+            <div class="card col">
+                <div class="card-body text-center">
+                    <p>FPT Polytechnic @copy; 2021, All right revered</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
