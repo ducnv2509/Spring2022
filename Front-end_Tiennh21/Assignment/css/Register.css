@@ -1,0 +1,20 @@
+.wrap-form-head-register {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 20px black;
+}
+
+.img-header {
+    animation: MoveUpDown 2s linear infinite;
+    position: relative;
+    left: 0;
+    bottom: 0;
+}
+@keyframes MoveUpDown {
+    0%, 100% {
+      bottom: 20px;
+    }
+    50% {
+      bottom: 50px;
+    }
+  }
