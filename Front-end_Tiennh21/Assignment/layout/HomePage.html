@@ -1,18 +1,31 @@
+<style>
+    @media only screen and (min-width: 1400px) {
+        .img-header>img{float: left}
+    }
+    @media only screen and (max-width: 330px) {
+        img{display: none}
+        .img-header{
+            display: none
+        }
+
+    }
+</style>
+
+
 <div class="container" ng-controller="myCtrl">
     <div class="row mt-5">
-        <div class="col-xs-12 col-lg-8 mt-5 img-header">
-            <img width="65%" class="image-responsive img-fluid" src="images/imagePic/coder_HomePage.png" alt="">
+        <div class="col-xs-12 col-lg-8 mt-5 img-header ">
+            <img width="65%" class="image-responsive img-fluid mx-auto d-block" src="images/imagePic/coder_HomePage.png"
+                alt="">
         </div>
-        <div class="col-xs-12 col-lg-4 wrap-form-head-register mt-5" id = "register">
+        <div class="col-xs-12 col-lg-4 wrap-form-head-register mt-5" id="register">
             <div class="container">
                 <h4 class="mt-3 mb-4">Start now</h4>
                 <div class="mt-3 ">
-                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Username">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
                 </div>
                 <div class="mt-3 ">
-                    <input type="password" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Password">
+                    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
                 </div>
 
                 <div class="mt-3 ">
@@ -20,29 +33,26 @@
                         placeholder="Confirm Password">
                 </div>
                 <div class="mt-3 ">
-                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Fullname">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Fullname">
                 </div>
                 <div class="mt-3 ">
                     <input type="email" class="form-control" id="exampleFormControlInput1"
                         placeholder="email@example.com">
                 </div>
                 <div class="mt-3 ">
-                    <input type="date" class="form-control" id="exampleFormControlInput1"
-                        placeholder="dd/MM/yyyy">
+                    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="dd/MM/yyyy">
                 </div>
                 <div class="mt-3 ">
                     <label for="exampleFormControlInput1" class="form-label">Gender</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                            id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">
                             Male
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                            id="flexRadioDefault2" checked>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                            checked>
                         <label class="form-check-label" for="flexRadioDefault2">
                             Felmale
                         </label>

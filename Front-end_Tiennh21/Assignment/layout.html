@@ -15,6 +15,8 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/Register.css">
     <link rel="stylesheet" href="css/About.css">
+    <!-- <link rel="stylesheet" href="css/mdb.css">
+    <link rel="stylesheet" href="css/mdb.min.css"> -->
     <script src="app/Controller.js"></script>
     <script src="db/Subjects.js"></script>
     <script src="app/indexCtrl.js"></script>
@@ -23,46 +25,17 @@
 <body ng-app="myApp">
     <div class="container-fluid">
         <div ng-include="'layout/Navbar.html'"></div>
-        <!-- <div ng-include = "'layout/HomePage.html'"></div>
-        <div ng-include = "'layout/About.html'"></div>
-        <div ng-include = "'layout/Contact.html'"></div> -->
+        <div ng-view class = "my-slide-animation"></div>
+        <!-- <div ng-include = "'layout/HomePage.html'"></div> -->
+        <!-- <div ng-include = "'layout/About.html'"></div> -->
+        <!-- <div ng-include = "'layout/Contact.html'"></div> -->
         <!-- <div ng-include="'layout/Feedback_Home.html'"></div> -->
         <!-- <div ng-include="'layout/FAQ.html'"></div> -->
-
-        <div class="container text-lg-left bg-white rounded shadow mt-5 container-about p-4" ng-controller="myCtrl">
-            <h3 class="fw-bold mb-4 text-center pb-2">
-                List of Exams
-            </h3>
-
-            <div class="row">
-                <div ng-repeat="sub in subjects| limitTo:4:cout" class="col-md-6 mb-4" style="min-height: 500px;">
-                    <div class="view overlay rounded z-depth-1 d-flex justify-content-center white">
-                        <img src="images/logos/{{sub.Logo}}" class="img-fluid w-50" alt="Sample project image">
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-
-                    <div class="px-3 pt-3 mx-1 mt-1 pb-0 text-center">
-                        <a class="{{($index%2==0)?'orange-text':'deep-purple-text'}}" style="text-decoration: none;">
-                            <h6 class="font-weight-bold mt-2 mb-3"><i class="fa fa-book" aria-hidden="true"></i>Bài thi
-                            </h6>
-                        </a>
-                        <h4 class="font-weight-bold mb-3">{{sub.Name}}</h4>
-                        <p class="text-muted">Bài thi gồm kiến thức đã học trong môn {{sub.Name}}</p>
-                        <a href="#" class="btn btn-success btn-rounded btn-md"> Chi tiết</a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <button ng-click="prev()" class="btn btn-primary"><i class="fas fa-chevron-circle-left"></i></button>
-                <button ng-click="next()" class="btn btn-primary"><i class="fas fa-chevron-circle-right"></i></button>
-            </div>
-
-
-        </div>
+        <!-- <div ng-include="'layout/ListTest.html'"></div> -->
+        <!-- <div ng-include="'layout/Profile.html'"></div> -->
+        <!-- <div ng-include="'layout/ChangePassword.html'"></div> -->
+        <!-- <div ng-include="'layout/ForgotPassword.html'"></div> -->
     </div>
-
     <script src="js/angular-route.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
