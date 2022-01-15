@@ -33,52 +33,54 @@
         </div>
         <div class="col-xxl-6 col-6 col-lg-6 ">
             <nav class="navbar navbar-expand-lg navbar-dark ">
-                <div class="container-fluid">
-                    <div class="mx-auto d-block">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                    <div class="mx-auto d-block">
-                        <div class="collapse navbar-collapse " id="navbarNavDropdown">
-                            <ul class="navbar-nav text-center">
-                                <li class="nav-item ">
-                                    <a class="nav-link text-white" aria-current="page" href="#">Learning</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="#!about">About Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="#!Contact">Contact Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="#!Feedback_Home">Feedback Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="#!FAQ">FAQ Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="#!ListTest">Exam Page</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        List Exam
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li ng-repeat="sub in subjects">
-                                            <a class="dropdown-item" href="#">
-                                                <img src="{{'images/logos/'+sub.Logo}}"
-                                                    class="img-fluid rounded-circle hoverable" style="height: 20px;"
-                                                    alt="">
-                                                {{sub.Name}}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                <div class="mx-auto d-block">
+                    <div class="container-fluid">
+                        <div class="mx-auto d-block">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                        <div class="mx-auto d-block">
+                            <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                                <ul class="navbar-nav text-center">
+                                    <li class="nav-item ">
+                                        <a class="nav-link text-white" aria-current="page" href="#">Learning</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#!about">About Page</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#!Contact">Contact Page</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#!Feedback_Home">Feedback Page</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#!FAQ">FAQ Page</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#!ListTest">Exam Page</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            List Exam
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <li ng-repeat="sub in subjects">
+                                                <a class="dropdown-item" href="#">
+                                                    <img src="{{'images/logos/'+sub.Logo}}"
+                                                        class="img-fluid rounded-circle hoverable" style="height: 20px;"
+                                                        alt="">
+                                                    {{sub.Name}}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
