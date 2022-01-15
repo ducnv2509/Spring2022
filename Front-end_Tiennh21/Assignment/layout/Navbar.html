@@ -19,6 +19,13 @@
     html {
         scroll-behavior: smooth;
     }
+
+    @media only screen and (min-width: 992px) {
+        .btn-header{
+            display: none;
+        }
+
+    }
 </style>
 
 
@@ -35,16 +42,18 @@
             <nav class="navbar navbar-expand-lg navbar-dark ">
                 <div class="mx-auto d-block">
                     <div class="container-fluid">
-                        <div class="mx-auto d-block">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                        <div class="mx-auto d-block ">
+                            <div class="btn-header">
+                                <button class="navbar-toggler mx-auto d-block" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon btn-header"></span>
+                                </button>
+                            </div>
                         </div>
                         <div class="mx-auto d-block">
                             <div class="collapse navbar-collapse " id="navbarNavDropdown">
-                                <ul class="navbar-nav text-center">
+                                <ul class="navbar-nav text-center fw-bold">
                                     <li class="nav-item ">
                                         <a class="nav-link text-white" aria-current="page" href="#">Learning</a>
                                     </li>
@@ -64,8 +73,9 @@
                                         <a class="nav-link text-white" href="#!ListTest">Exam Page</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a class="nav-link text-white dropdown-toggle" href="#"
+                                            id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
                                             List Exam
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
