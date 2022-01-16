@@ -21,7 +21,7 @@
     }
 
     @media only screen and (min-width: 992px) {
-        .btn-header{
+        .btn-header {
             display: none;
         }
 
@@ -34,7 +34,7 @@
 <header ng-controller="myCtrl">
     <div class="row mt-2 align-items-center">
         <div class="col-xxl-3 col-3">
-            <a href="#!index">
+            <a href="#!ListTest">
                 <img class="img-responsive img-fluid ms-4 img-Icon" width="200" src="images/logos/LogoNew.png" alt="">
             </a>
         </div>
@@ -80,7 +80,7 @@
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             <li ng-repeat="sub in subjects">
-                                                <a class="dropdown-item" href="#">
+                                                <a class="dropdown-item" href="#!ListTest">
                                                     <img src="{{'images/logos/'+sub.Logo}}"
                                                         class="img-fluid rounded-circle hoverable" style="height: 20px;"
                                                         alt="">
@@ -255,8 +255,7 @@
                         </div>
                     </div>
                 </div>
-                <button href="#register"
-                    class="col-xxl-5 btn btn-sm btn-danger btn-Register mx-auto d-block">Register</button>
+                <a href="#!index" class="col-xxl-5 btn btn-sm btn-danger btn-Register mx-auto d-block">Register</a>
             </div>
         </div>
     </div>

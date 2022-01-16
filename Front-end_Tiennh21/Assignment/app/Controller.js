@@ -23,7 +23,7 @@ app.config(function($routeProvider, $locationProvider) {
         .when("/ChangePassword", { templateUrl: "layout/ChangePassword.html"})
         .when("/listQuestion", { templateUrl: "layout/ListQuestion.html"})
         .when("/informationExam", { templateUrl: "layout/informationExam.html"})
-        .otherwise({ redirectTo: "/index" });
+        .otherwise({ redirectTo: "/ListTest" });
 
 
 
