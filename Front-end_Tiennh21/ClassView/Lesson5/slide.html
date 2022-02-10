@@ -14,41 +14,44 @@
 
 </head>
 
-<body ng-app="demo_scope_2">
-    <div ng-controller="parentCtrl">
-        {{msParent}}
-        <div ng-controller="my_controller1">
-            <p>{{ms1}}</p>
-            <p>{{$parent.msParent}}</p>
-        </div>
-        <div ng-controller="my_controller2">
-            <p>{{ms2}}</p>
-            <p>{{root_msg}}</p>
-            <p>{{$parent.$parent.root_msg}}</p>
-        </div>
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl">
+        <table class="table tabel-border">
+            <tr ng-repeat="s in sv">
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.email}}</td>
+            </tr>
+        </table>
     </div>
 
 
     <script>
-        const app = angular.module('demo_scope_2', []);
+        const app = angular.module("myapp", []);
+        function myCtrl($scope) {
+            $scope.sv = [{
+                id: 1,
+                name: "Duc",
+                email: "ducnvph14435@fpt.edu.vn",
+            },
 
-        function parentCtrl($scope) {
-            $scope.msParent = "this is parten Ctrol";
+            {
+                id: 2,
+                name: "Minh",
+                email: "ducnvph14435@fpt.edu.vn",
+            },
 
+            {
+                id: 3,
+                name: "Vu",
+                email: "ducnvph14435@fpt.edu.vn",
+            }
+            ]
         }
-        function myCtr1($scope) {
-            $scope.ms1 = "this is mes 1";
-        }
 
-        function myCtr2($scope, $rootScope) {
-            $scope.ms2 = "this is mes 2";
-            $rootScope.root_msg = "This is message root"
-
-        }
-        app.controller('my_controller1', myCtr1);
-        app.controller('my_controller2', myCtr2);
-        app.controller('parentCtrl', parentCtrl);
+        app.controller('myctrl', myCtrl);
     </script>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

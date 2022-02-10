@@ -115,83 +115,88 @@
                     </ul>
                 </div>
 
-                <butLton class="btn text-light fw-bold ms-0" type="button" data-bs-target="#myModal"
-                    data-bs-toggle="modal">
-                    Login
-                </butLton>
+                <div class="text-center" ng-controller="loginCtrl">
 
-                <div class="modal " id="myModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header alert alert-info">
-                                <h3 class="modal-title text-center">Login now</h3>
-                                <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <button class="btn btn-info col-3">
-                                            <img src="https://img.icons8.com/color/48/000000/facebook-new.png" />
-                                            facebook</button>
-                                        <button class="btn btn-primary col-3 ms-2 me-2">
-                                            <img src="https://img.icons8.com/color/48/000000/microsoft.png" />
-                                            microsoft</button>
-                                        <button class="btn btn-danger col-3">
-                                            <img src="https://img.icons8.com/color/48/000000/google-logo.png" />
-                                            google</button>
-                                    </div>
-                                    <h6 class="text-center mt-3 fw-normal">OR</h6>
-                                    <div class="mt-3 ">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fa fa-user" aria-hidden="true"></i>
-                                            </span>
-                                            <input type="text" class="form-control" placeholder="Username"
-                                                aria-label="Username" aria-describedby="basic-addon1">
+                    <butLton class="btn text-light fw-bold ms-0" type="button" data-bs-target="#myModal"
+                        data-bs-toggle="modal">
+                        Login
+                    </butLton>
+
+                    <div class="modal " id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header alert alert-info">
+                                    <h3 class="modal-title text-center">Login now</h3>
+                                    <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row justify-content-center">
+                                            <button class="btn btn-info col-3">
+                                                <img src="https://img.icons8.com/color/48/000000/facebook-new.png" />
+                                                facebook</button>
+                                            <button class="btn btn-primary col-3 ms-2 me-2">
+                                                <img src="https://img.icons8.com/color/48/000000/microsoft.png" />
+                                                microsoft</button>
+                                            <button class="btn btn-danger col-3">
+                                                <img src="https://img.icons8.com/color/48/000000/google-logo.png" />
+                                                google</button>
                                         </div>
-                                    </div>
-                                    <div class="mt-3 ">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fa fa-key" aria-hidden="true"></i>
-                                            </span>
-                                            <input type="password" class="form-control" placeholder="Password"
-                                                aria-label="Username" aria-describedby="basic-addon1">
+                                        <h6 class="text-center mt-3 fw-normal">OR</h6>
+                                        <div class="mt-3 ">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                </span>
+                                                <input ng-model="username" type="text" class="form-control" placeholder="Username"
+                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row mt-4 mb-4">
-                                        <div class="col-lg-12 d-flex justify-content-center">
-                                            <button class="btn btn-primary justify-content-center col-12">
-                                                Login
-                                            </button>
-
-
-                                        </div>
-                                        <div class="col-md-12 registered-forgot" role="tablist">
-                                            <div class="row mt-3">
-                                                <div class="col-md-5 text-left">
-                                                </div>
-                                                <div class="col-md-7 text-right">
-                                                    <a href="#" style="text-decoration: none" data-bs-dismiss="modal"
-                                                        data-bs-target="#myModal_2" data-bs-toggle="modal">I
-                                                        can't rememeber my password</a>
-                                                    <!-- <a type="button" class="btn" data-bs-toggle="modal"
-                                                        data-bs-target="#myForgotPassword">
-                                                        Launch demo modal
-                                                    </a> -->
-
-                                                </div>
+                                        <div class="mt-3 ">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fa fa-key" aria-hidden="true"></i>
+                                                </span>
+                                                <input ng-model="password" type="password" class="form-control" placeholder="Password"
+                                                    aria-label="Username" aria-describedby="basic-addon1">
                                             </div>
                                         </div>
 
+                                        <div class="row mt-4 mb-4">
+                                            <div class="col-lg-12 d-flex justify-content-center">
+                                                <button ng-click='login()' class="btn btn-primary justify-content-center col-12">
+                                                    Login
+                                                </button>
+
+
+                                            </div>
+                                            <div class="col-md-12 registered-forgot" role="tablist">
+                                                <div class="row mt-3">
+                                                    <div class="col-md-5 text-left">
+                                                    </div>
+                                                    <div class="col-md-7 text-right">
+                                                        <a href="#" style="text-decoration: none"
+                                                            data-bs-dismiss="modal" data-bs-target="#myModal_2"
+                                                            data-bs-toggle="modal">I
+                                                            can't rememeber my password</a>
+                                                        <!-- <a type="button" class="btn" data-bs-toggle="modal"
+                                                            data-bs-target="#myForgotPassword">
+                                                            Launch demo modal
+                                                        </a> -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer text-center">
-                                <div class="col-md-12 terms-of-use">
-                                    This site is protected by reCAPTCHA and <a href="/terms" target="_blank">Terms of
-                                        Use</a> apply.
+                                <div class="modal-footer text-center">
+                                    <div class="col-md-12 terms-of-use">
+                                        This site is protected by reCAPTCHA and <a href="/terms" target="_blank">Terms
+                                            of
+                                            Use</a> apply.
+                                    </div>
                                 </div>
                             </div>
                         </div>

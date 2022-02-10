@@ -1,28 +1,7 @@
 var myApp = angular.module('myapp', []);
 
 myApp.controller('crudCtrl', function ($scope) {
-    $scope.students = [
-        {
-            fullname: 'Nguyễn Văn Đức',
-            birthday: '25-09-2002',
-            mark: 10
-        },
-        {
-            fullname: 'Nguyễn Văn Minh',
-            birthday: '21-09-2001',
-            mark: 8
-        },
-        {
-            fullname: 'Nguyễn Văn Dung',
-            birthday: '21-09-2001',
-            mark: 5
-        },
-        {
-            fullname: 'Nguyễn Văn Ha',
-            birthday: '21-09-2001',
-            mark: 1
-        }
-    ]
+    $scope.students = []
     $scope.student = {};
     $scope.index = -1;
     $scope.insert = function () {
