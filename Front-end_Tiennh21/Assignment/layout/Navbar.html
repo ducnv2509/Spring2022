@@ -103,22 +103,36 @@
                 <div class="btn-group">
                     <button type="button" class="btn text-white dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <i class="fa fa-user" aria-hidden="true">
+                            <span>{{(student == null) ? '' : student.fullname}}</span>
+                        </i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#!Profile">Profile</a></li>
-                        <li><a class="dropdown-item" href="#!ChangePassword">Change Password</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                        <div ng-hide="student == null">
+                            <li><a class="dropdown-item" href="#!Profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="#!ChangePassword">Change Password</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="" ng-click="logoff()">Log out</a></li>
+                        </div>
+
+                        <div ng-show="student == null">
+                            <li><a class="dropdown-item" data-bs-target="#myModal" data-bs-toggle="modal">Login</a></li>
+                            <li><a class="dropdown-item" href="#!index">Register</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" data-bs-target="#myModal_2" data-bs-toggle="modal"
+                                    href="">Forgot Password</a></li>
+                        </div>
                     </ul>
                 </div>
 
                 <div class="text-center" ng-controller="loginCtrl">
 
                     <butLton class="btn text-light fw-bold ms-0" type="button" data-bs-target="#myModal"
-                        data-bs-toggle="modal">
+                        data-bs-toggle="modal" ng-show="student == null">
                         Login
                     </butLton>
 
@@ -143,52 +157,75 @@
                                                 google</button>
                                         </div>
                                         <h6 class="text-center mt-3 fw-normal">OR</h6>
-                                        <div class="mt-3 ">
-                                            <div class="input-group">
-                                                <span class="input-group-text" id="basic-addon1">
-                                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                                </span>
-                                                <input ng-model="username" type="text" class="form-control" placeholder="Username"
-                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                        <form name="formLogin">
+                                            <div class="mt-3 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-text" id="basic-addon1">
+                                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input ng-model="username"
+                                                        ng-model-options="{updateOn: 'default', debounce: 500}"
+                                                        type="text" class="form-control" placeholder="Username"
+                                                        name="username" aria-describedby="basic-addon1" required>
+                                                </div>
+                                                <small
+                                                    ng-show="formSv.username.$untouched || formLogin.username.$invalid"
+                                                    class="text-danger fst-italic">
+                                                    Không bỏ trống username
+                                                </small>
                                             </div>
-                                        </div>
-                                        <div class="mt-3 ">
-                                            <div class="input-group">
-                                                <span class="input-group-text" id="basic-addon1">
-                                                    <i class="fa fa-key" aria-hidden="true"></i>
-                                                </span>
-                                                <input ng-model="password" type="password" class="form-control" placeholder="Password"
-                                                    aria-label="Username" aria-describedby="basic-addon1">
-                                            </div>
-                                        </div>
+                                            <div class="mt-3 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-text" id="basic-addon1">
+                                                        <i class="fa fa-key" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input ng-model="password" type="password" class="form-control"
+                                                        placeholder="Password" aria-label="password" name="password"
+                                                        aria-describedby="basic-addon1" minlength="3" required>
+                                                </div>
+                                                <div
+                                                    ng-show="formSv.password.$untouched || formLogin.password.$invalid">
 
-                                        <div class="row mt-4 mb-4">
-                                            <div class="col-lg-12 d-flex justify-content-center">
-                                                <button ng-click='login()' class="btn btn-primary justify-content-center col-12">
-                                                    Login
-                                                </button>
+                                                    <small ng-show="formLogin.password.$error.required"
+                                                        class="text-danger fst-italic">
+                                                        Không bỏ trống password
+                                                    </small>
 
-
-                                            </div>
-                                            <div class="col-md-12 registered-forgot" role="tablist">
-                                                <div class="row mt-3">
-                                                    <div class="col-md-5 text-left">
-                                                    </div>
-                                                    <div class="col-md-7 text-right">
-                                                        <a href="#" style="text-decoration: none"
-                                                            data-bs-dismiss="modal" data-bs-target="#myModal_2"
-                                                            data-bs-toggle="modal">I
-                                                            can't rememeber my password</a>
-                                                        <!-- <a type="button" class="btn" data-bs-toggle="modal"
-                                                            data-bs-target="#myForgotPassword">
-                                                            Launch demo modal
-                                                        </a> -->
-
-                                                    </div>
+                                                    <small ng-show="formLogin.password.$error.minlength"
+                                                        class="text-danger fst-italic">
+                                                        Mật khẩu trên 8 ký tự
+                                                    </small>
                                                 </div>
                                             </div>
 
-                                        </div>
+                                            <div class="row mt-4 mb-4">
+                                                <div class="col-lg-12 d-flex justify-content-center">
+                                                    <button ng-click='login()'
+                                                        class="btn btn-primary justify-content-center col-12"
+                                                        data-bs-dismiss="modal" ng-disabled="formLogin.$invalid">
+                                                        Login
+                                                    </button>
+                                                </div>
+                                                <div class="col-md-12 registered-forgot" role="tablist">
+                                                    <div class="row mt-3">
+                                                        <div class="col-md-5 text-left">
+                                                        </div>
+                                                        <div class="col-md-7 text-right">
+                                                            <a href="#" style="text-decoration: none"
+                                                                data-bs-dismiss="modal" data-bs-target="#myModal_2"
+                                                                data-bs-toggle="modal">I
+                                                                can't rememeber my password</a>
+                                                            <!-- <a type="button" class="btn" data-bs-toggle="modal"
+                                                                data-bs-target="#myForgotPassword">
+                                                                Launch demo modal
+                                                            </a> -->
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="modal-footer text-center">
@@ -203,7 +240,7 @@
                     </div>
                 </div>
 
-                <div class="modal" id="myModal_2">
+                <div class="modal" id="myModal_2" ng-controller="myCtrlForgotPassword">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header alert alert-warning">
@@ -219,14 +256,24 @@
                                     <!-- <p class="text-center">Tài khoản: {{student.fullname}}</p> -->
                                     <div class="ps-5 pe-5 pb-5 ">
                                         <div class="row">
-                                            <form name="">
+                                            <form name="formForgot">
                                                 <div class="mt-3 ">
                                                     <div class="input-group">
                                                         <span class="input-group-text" id="basic-addon1">
                                                             <i class="fa fa-user" aria-hidden="true"></i>
                                                         </span>
-                                                        <input type="text" class="form-control" placeholder="Username"
-                                                            aria-label="Username" aria-describedby="basic-addon1">
+                                                        <input name="username" ng-model="username" type="text"
+                                                            class="form-control" placeholder="Username"
+                                                            aria-label="Username" aria-describedby="basic-addon1"
+                                                            required>
+                                                    </div>
+                                                    <div
+                                                        ng-hide="formForgot.username.$untouched ||formForgot.username.$valid">
+                                                        <small ng-show="formForgot.username.$error.required"
+                                                            class="text-danger fst-italic">
+                                                            Username không để trống
+                                                        </small>
+
                                                     </div>
                                                 </div>
                                                 <div class="mt-3 ">
@@ -234,13 +281,27 @@
                                                         <span class="input-group-text" id="basic-addon1">
                                                             <i class="fa fa-envelope" aria-hidden="true"></i>
                                                         </span>
-                                                        <input type="email" class="form-control" placeholder="Email"
-                                                            aria-label="Username" aria-describedby="basic-addon1">
+                                                        <input name="email" ng-model="email" type="email"
+                                                            class="form-control" placeholder="Email"
+                                                            aria-label="Username" aria-describedby="basic-addon1"
+                                                            required>
+                                                    </div>
+                                                    <div
+                                                        ng-hide="formForgot.email.$untouched || formForgot.email.$valid">
+                                                        <small class="text-danger fst-italic"
+                                                            ng-show="formForgot.email.$error.required">Email
+                                                            Không được để
+                                                            trống</small>
+                                                        <small class="text-danger fst-italic"
+                                                            ng-show="formForgot.email.$error.email">Email không
+                                                            đúng định dạng</small>
                                                     </div>
                                                 </div>
 
                                                 <div class="text-center mt-4">
-                                                    <button class="btn btn-primary shadow-lg col-12 mb-2">Send</button>
+                                                    <button class="btn btn-primary shadow-lg col-12 mb-2"
+                                                    ng-click="getPassword()"
+                                                    >Send</button>
                                                     <button class="btn btn-danger shadow-lg col-12"
                                                         data-bs-dismiss="modal" data-bs-target="#myModal"
                                                         data-bs-toggle="modal">Back</button>
@@ -259,7 +320,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="#!index" class="col-xxl-5 btn btn-sm btn-danger btn-Register mx-auto d-block">Register</a>
+                <a href="#!index" ng-show="student == null"
+                    class="col-xxl-5 btn btn-sm btn-danger btn-Register mx-auto d-block">Register</a>
             </div>
         </div>
     </div>

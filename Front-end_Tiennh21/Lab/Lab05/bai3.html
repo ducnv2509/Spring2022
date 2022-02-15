@@ -18,25 +18,52 @@
     <div class="container" ng-app="myapp">
         <div class="row" ng-controller="myctrl">
             <div class="col">
-                <form>
+                <form name="myForm">
                     <div class="form-group">
                         <label for="">Ho Ten</label>
-                        <input ng-model="student.fullname" type="" class="form-control">
+                        <input ng-model="student.fullname" name="fullname" type="" class="form-control" minlength="5" required>
+                        <div ng-hide="myForm.fullname.$untouched ||myForm.fullname.$valid">
+                            <small ng-show="myForm.fullname.$error.required" class="text-danger fst-italic">
+                                Fullname không để trống
+                            </small>
+                            <small ng-show="myForm.fullname.$error.minlength" class="text-danger fst-italic">
+                                Fullname không dưới 5 ký tự
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Ngay Sinh</label>
-                        <input ng-model="student.birthday" type="" class="form-control">
+                        <input ng-model="student.birthday" name="birthday" type="text" class="form-control"
+                            id="exampleFormControlInput1" placeholder="Ngày sinh (yyyy-mm-dd)"
+                            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+
+                        <div ng-hide="myForm.birthday.$untouched || myForm.birthday.$valid">
+                            <small ng-show="myForm.birthday.$error.required" class="fst-italic text-danger">Vui
+                                lòng
+                                nhập ngày sinh</small>
+                            <small ng-show="myForm.birthday.$error.pattern" class="fst-italic text-danger">Không
+                                đúng
+                                định dạng ngày sinh</small>
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="">Điểm</label>
                         <input ng-model="student.mark" type="" class="form-control">
+
+                        <div ng-hide="myForm.mark.$untouched ||myForm.mark.$valid">
+                            <small ng-show="myForm.mark.$error.required" class="text-danger fst-italic">
+                                mark không để trống
+                            </small>
+ 
+                        </div>
                     </div>
                     <div class="form-group mt-4">
                         <button type="button" class="btn btn-primary" ng-click="insert()">
                             Thêm</button>
                         <button type="button" class="btn btn-success" ng-click="update()">
                             Sửa</button>
-                        <button type="button" class="btn btn-info"  ng-click="delete()">
+                        <button type="button" class="btn btn-info" ng-click="delete()">
                             Xoá</button>
                         <button type="button" class="btn btn-danger" ng-click="cancel()">
                             Huy</button>

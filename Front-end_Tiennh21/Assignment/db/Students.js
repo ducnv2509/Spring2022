@@ -28,5 +28,15 @@
         "birthday": "1993-05-15",
         "schoolfee": "2000000",
         "marks": "0"
+    },
+    {
+        "username": "ducnv",
+        "password": "123",
+        "fullname": "Nguyễn Văn Đức",
+        "email": "ducnvph14435@fpt.edu.vn",
+        "gender": "true",
+        "birthday": "2002-09-25",
+        "schoolfee": "2000000",
+        "marks": "10"
     }
 ]

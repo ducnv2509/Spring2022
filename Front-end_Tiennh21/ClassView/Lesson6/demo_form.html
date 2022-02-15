@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+</head>
+
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl">
+        <header class="row bg-danger" style="height: 100px;"></header>
+        <nav class="row navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">IT16305</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#my-navbar"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="my-navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Giới thiệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Liên hệ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Góp ý</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Hỏi đáp</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Tài khoản
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
+                                <li><a class="dropdown-item" href="#">Đăng ký</a></li>
+                                <li><a class="dropdown-item" href="#">Quên mật khẩu</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-2 text-white">
+                    <span class="p-2">Tiếng Việt</span>
+                    <span class="p-2">English</span>
+                </div>
+            </div>
+        </nav>
+        <div class="row mt-4">
+            <aside class="col-12 col-md-3 p-3">
+                <div class="card">
+                    <div class="card-header">Hãng điện thoại nổi bật</div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="https://uqoojcos5nobj.vcdn.cloud/uploads/2021/11/nokia-black-300x300.jpg">
+                                Nokia
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://uqoojcos5nobj.vcdn.cloud/uploads/2021/11/nokia-black-300x300.jpg">
+                                Samsung
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://uqoojcos5nobj.vcdn.cloud/uploads/2021/11/nokia-black-300x300.jpg">
+                                Apple
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <article class="col-12 col-md-9 p-0 pt-3">
+                <div class="container p-0">
+                    <form name="formSv" class="needs-validation" novalidate>
+                        <div class="mt-2 row">
+                            <label class="col-2">
+                                Họ tên <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-10">
+                                <input name="fullname" ng-model="sv.fullname"
+                                    ng-model-options="{updateOn: 'default', debounce: 500}" class="form-control"
+                                    type="text" autocomplete="off" aria-describedby="inputGroupPrepend" required />
+                                <!-- <label for="">{{sv.fullname}}</label> -->
+                                <!-- <label for="">{{formSv.fullname.$valid}}</label> -->
+                                <small class="text-danger"
+                                    ng-hide="formSv.fullname.$untouched || formSv.fullname.$valid">Không được để
+                                    trống</small>
+                                <div class="invalid-feedback">
+                                    Please choose a username.
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="mt-2 row">
+                            <label class="col-2">Email<span class="text-danger">*</span></label>
+                            <div class="col-10">
+                                <input ng-model="sv.email" ng-model-options="{updateOn: 'default', debounce: 500}"
+                                    class="form-control" type="email" name="email" required />
+                                <div ng-hide="formSv.email.$untouched || formSv.email.$valid">
+                                    <small class="text-danger" ng-show="formSv.email.$error.required">Không được để
+                                        trống</small>
+                                    <small class="text-danger" ng-show="formSv.email.$error.email">Email failed</small>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row">
+                            <label class="col-2">Mật khẩu<span class="text-danger">*</span></label>
+                            <div class="col-10">
+                                <input ng-model="sv.password" ng-model-options="{updateOn: 'default', debounce: 500}"
+                                    class="form-control" type="password" name="password" minlength="8" validate-password
+                                    required />
+                                <div ng-hide="formSv.password.$untouched ||formSv.password.$valid">
+                                    <small class="text-danger" ng-show="formSv.password.$error.required">Không được để
+                                        trống</small>
+                                    <small class="text-danger" ng-show="formSv.password.$error.minlength">ky thu
+                                        ngan</small>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row">
+                            <label class="col-2">Ảnh đại diện</label>
+                            <div class="col-10">
+                                <input class="form-control" type="file" name="avatar" />
+                            </div>
+                        </div>
+
+                        <div class="mt-2 row">
+                            <label class="col-2">Chuyên ngành<span class="text-danger">*</span></label>
+                            <div class="col-10">
+                                <select ng-model="sv.major" name="chuyen_nganh" class="form-select" check-Major
+                                    required>
+                                    <option selected disabled>Mời chọn chuyên ngành</option>
+                                    <!-- <option value="udpm">UDPM</option>
+                                    <option value="tktw">TKTW</option>
+                                    <option value="ltmt">LTMT</option> -->
+                                    <option ng-repeat="mj in listMajor" value="{{mj.code}}">
+                                        {{mj.name}}
+                                    </option>
+                                </select>
+                                <div ng-hide="formSv.chuyen_nganh.$untouched ||formSv.chuyen_nganh.$valid">
+                                    <small class="text-danger" ng-show="formSv.chuyen_nganh.$error.required">Không được
+                                        để
+                                        trống</small>
+
+                                    <small class="text-danger"
+                                        ng-show="formSv.chuyen_nganh.$error.check_chuyen_nganh">Failed</small>
+
+                                </div>
+
+                                <!-- <select name="major" ng-model="sv.major"
+                                    ng-options="mj.name for mj in listMajor track by mj.code"
+                                    class="form-select"></select> -->
+                            </div>
+
+                        </div>
+
+                        <div class="mt-2 row">
+                            <label class="col-2">Giới tính<span class="text-danger">*</span></label>
+                            <div class="col-10 row">
+                                <div class="col-2">
+                                    <input ng-model="sv.gender" ng-checked="sv.gender == 1" type="radio"
+                                        name="gioi_tinh" value="1" id="gioi_tinh_nam" class="form-check-input" checked>
+                                    <label for="gioi_tinh_nam">Nam</label>
+                                </div>
+                                <div class="col-2">
+                                    <input ng-model="sv.gender" ng-checked="sv.gender == 0" type="radio"
+                                        name="gioi_tinh" value="0" id="gioi_tinh_nu" class="form-check-input">
+                                    <label for="gioi_tinh_nu">Nữ</label>
+                                </div>
+                            </div>
+                            <!-- <label for="">{{sv.gender}}</label> -->
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">OK</button>
+                    </form>
+
+                </div>
+
+                <div class="mt-5" ng-controller="myTable">
+                    <div class="table-responsive" id="tbl_sv">
+                        <table class="table table-striped table-dark text-nowrap">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Họ tên</td>
+                                    <td>Mã SV</td>
+                                    <td>Chuyên ngành</td>
+                                    <td>Giới tính</td>
+                                    <td colspan="2">Thao tác</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="i in dssv">
+                                    <td>{{i.id}}</td>
+                                    <td>{{i.ho_ten}}</td>
+                                    <td>{{i.ma_sv}}</td>
+                                    <td>{{i.chuyen_nganh}}</td>
+                                    <td>{{i.gioi_tinh == 1 ? 'Nam' : "Nữ"}}</td>
+                                    <td>
+                                        <button class="btn btn-primary">Sửa</button>
+                                        <button class="btn btn-danger">Xóa</button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <footer class="row bg-secondary text-center p-2 mt-4">
+            <span class="text-white">TienNH21</span>
+        </footer>
+    </div>
+
+    <script>
+        const app = angular.module('myapp', []);
+        function formController($scope) {
+            $scope.sv = {
+                fullname: "",
+                email: "",
+                password: "",
+                avatar: null,
+                gender: 1,
+                major: ""
+            }
+            $scope.listMajor = [{ code: "udpm", name: 'Ung dung pham mem' }, { code: "tktw", name: 'Thiet ke web' }, { code: "ltmt", name: "Lap trinh may tinh" }]
+        }
+
+        app.controller('myctrl', formController);
+
+        app.directive("validatePassword", function () {
+            return {
+                require: 'ngModel',
+                link: function (scope, element, attr, mCtrl) {
+                    const fnValidate = function (value) {
+                        if (value.length < 6) {
+                            mCtrl.$setValidity('charE', false);
+                        } else {
+                            mCtrl.$setValidity('charE', true);
+                        }
+                        return value
+                    }
+
+                    mCtrl.$parsers.push(fnValidate)
+                }
+            }
+        })
+
+        function tableController($scope, $http) {
+            const url = "https://ea6831087d0664.lhrtunnel.link/data";
+            $http.get(url).then(response => {
+                console.log(response);
+                $scope.dssv = response.data;
+            })
+        }
+
+        app.directive('checkMajor', function () {
+            return {
+                require: 'ngModel',
+                link: function (scope, element, attr, mCtrl) {
+                    const fnCheckMajor = function (value) {
+                        let checkValid = false;
+                        for (let index = 0; index < scope.listMajor.length; index++) {
+                            if (scope.listMajor[index].code == value) {
+                                checkValid = true;
+                            }
+                            mCtrl.$setValidity("check_chuyen_nganh", checkValid);
+                        }
+                        console.log('ok', value);
+                        return value;
+                    }
+
+                    mCtrl.$parsers.push(fnCheckMajor)
+                }
+            }
+        })
+        app.controller('myTable', tableController)
+    </script>
+
+    <!-- <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script> -->
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

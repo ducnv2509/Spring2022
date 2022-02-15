@@ -14,7 +14,7 @@ app.controller('loginCtrl', function ($scope, $rootScope) {
                         timer: 1600
                     });
                     $rootScope.indexStudent = st.index;
-                    $rootScope.student = st.student;
+                    $rootScope.student = st;
                     window.location.href = '#!ListTest'
 
                     index = false;
@@ -30,4 +30,5 @@ app.controller('loginCtrl', function ($scope, $rootScope) {
             })
         }
     }
+    
 })

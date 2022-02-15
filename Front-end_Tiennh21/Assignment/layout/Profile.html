@@ -2,50 +2,56 @@
     <div class="col-lg-8 m-auto mt-5 wrap-form-head-register">
         <div class="container">
             <h2 class="text-center pt-4">Cập nhật tài khoản</h2>
+            <p class="text-center">{{(student == null) ? '' : 'Tài Khoản: ' + student.fullname}}</p>
             <div class="text-center">
                 <img src="images/imagePic/update.gif" width="64px" class="img-circle img-responsive img-fluid " alt="">
             </div>
             <!-- <p class="text-center">Tài khoản: {{student.fullname}}</p> -->
             <div class="ps-5 pe-5 pb-5">
-                <form name="">
+                <form name="formUpdate">
                     <div class="mt-3">
                         <span class="form-text light-blue-text"><i class="fas fa-signature"></i> Họ tên</span>
-                        <input placeholder=" " name="fullname" type="text" id="fullname"
+                        <input ng-model="student.fullname" name="fullname" type="text" id="fullname"
                             class="form-control border-primary" required maxlength="25" autofocus>
                     </div>
 
                     <div class="mt-3">
                         <span class="form-text light-blue-text"><i class="far fa-envelope"></i> Email</span>
-                        <input placeholder=" " name="email" type="email" id="email" class="form-control border-primary"
-                            required>
+                        <input ng-model="student.email" name="email" type="email" id="email"
+                            class="form-control border-primary" required>
                     </div>
 
                     <label class="bg-white light-blue-text rounded mt-3" for=""> <i class="fas fa-transgender"></i>Giới
                         tính:</label>
 
                     <div class="form-check form-check-inline">
-                        <input type="radio" class="form-check-input" id="gender" name="gender" value="true">
+                        <input ng-model="student.gender" type="radio" class="form-check-input" id="gender" name="gender"
+                            value="true">
                         <label class="form-check-label light-blue-text" for="gender">Nam</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input type="radio" class="form-check-input" id="gender2" name="gender" value="false">
+                        <input ng-model="student.gender" type="radio" class="form-check-input" id="gender2"
+                            name="gender" value="false">
                         <label class="form-check-label light-blue-text" for="gender2">Nữ</label>
                     </div>
 
                     <div class="mt-3 mt-0">
                         <span class="form-text light-blue-text"><i class="fas fa-birthday-cake"></i> Ngày
                             sinh</span>
-                        <input placeholder="yyyy-mm-dd" name="birthday" type="date" id="birthday"
-                            class="form-control border-primary" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                        <input placeholder="yyyy-mm-dd" name="birthday" ng-model="student.birthday" type="text"
+                            id="birthday" class="form-control border-primary" required
+                            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+
                     </div>
                     <div class="mt-3">
                         <span class="form-text light-blue-text"><i class="fas fa-money-bill"></i> Học phí</span>
-                        <input placeholder=" " name="schoolfee" type="text" id="schoolfee"
+                        <input ng-model="student.schoolfee" placeholder=" " name="schoolfee" type="text" id="schoolfee"
                             class="form-control border-primary" required fee>
                     </div>
                     <div class="mt-3">
                         <span class="form-text light-blue-text"><i class="fas fa-money-bill"></i> Điểm</span>
-                        <input placeholder=" " name="mark" type="text" class="form-control border-primary" readonly>
+                        <input ng-model="student.marks" name="mark" type="text" class="form-control border-primary"
+                            readonly> </input>
                     </div>
                     <div class="text-center mt-4">
                         <button class="btn btn-primary shadow-lg">Thay đổi</button>

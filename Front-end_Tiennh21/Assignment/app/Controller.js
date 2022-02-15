@@ -18,6 +18,20 @@ app.run(function ($rootScope, $http, $timeout) {
 
     
     $rootScope.student = null;
+    $rootScope.logoff = function() {
+        $rootScope.student = null;
+        $rootScope.indexStudent = -1;
+        Swal.fire({
+            icon: 'warning',
+            title: 'Đã đăng xuất !',
+            text: 'Quay lại trang chủ ',
+            showConfirmButton: false,
+            closeOnClickOutside: false,
+            allowOutsideClick: false,
+            timer: 1600
+        })
+        window.location.href = "#!ListTest"
+    }
 });
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider

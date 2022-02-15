@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+</head>
+
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl">
+        <p>{{my_number}}</p>
+        <p>{{my_number | number : 2}}</p>
+        <p>{{my_number | currency : 'VND' : 2}}</p>
+        <p>{{now | date: 'dd/MM/yyyy HH:mm:ss ': '+07' }}</p>
+        <p>{{name | uppercase}}</p>
+        <p>{{name | lowercase}}</p>
+        <p>{{sv | json}}</p>
+        <ul>
+            <li ng-repeat="sv in ds_mon_hoc | limitTo: 3: 1">{{sv.ma}} - {{sv.ten}}</li>
+        </ul>
+
+        <ul>
+            <li ng-repeat="sv in ds_mon_hoc | orderBy: 'so'">{{sv.ma}} - {{sv.ten}} - {{sv.so}}</li>
+        </ul>
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>Id</td>
+                <td>ho_ten</td>
+                <td>masv</td>
+                <td>chuyen nganh</td>
+                <td>gioi tinh</td>
+            </tr>
+
+            <tr ng-repeat="i in dssv">
+                <td>{{i.id}}</td>
+                <td>{{i.ho_ten}}</td>
+                <td>{{i.ma_sv}}</td>
+                <td>{{i.chuyen_nganh}}</td>
+                <td>{{i.gioi_tinh}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const app = angular.module("myapp", []);
+        function myCtrl($scope, $http) {
+            $scope.my_number = 12345678.123125;
+            $scope.now = new Date();
+            $scope.name = "Nguyen Van Duc";
+            $scope.sv = {
+                ten: "nguyen Van D",
+                ma: "Ph14435",
+                gioi_tinh: 1
+            };
+            $scope.ds_mon_hoc = [
+                { ma: "WEB207", ten: "Frontend Framework", so: '1' },
+                { ma: "SOF2041", ten: "Du an mau", so: '2' },
+                { ma: "COM108", ten: "Nhap mon lap trinh", so: '3' },
+                { ma: "MOB1014", ten: "Lap trinh Java 1", so: '4' },
+                { ma: "SOF203", ten: "Lap trinh Java 3", so: '5' },
+                { ma: "MOB1023", ten: "Lap trinh Java 2", so: '6' },
+            ]
+
+            const url = "https://ea6831087d0664.lhrtunnel.link/data";
+            $http.get(url).then(response => {
+                console.log(response);
+                $scope.dssv = response.data;
+            })
+        }
+
+        app.controller("myctrl", myCtrl);
+    </script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
