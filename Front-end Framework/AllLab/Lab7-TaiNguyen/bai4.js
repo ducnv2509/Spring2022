@@ -26,7 +26,7 @@ app.controller('myctrl', function ($scope, $http) {
         }
     }
     $scope.next = function () {
-        if ($scope.begin < ($scope.pageCount - 1) * scope.pageSize) {
+        if ($scope.begin < ($scope.pageCount - 1) * $scope.pageSize) {
             $scope.begin += $scope.pageSize;
         }
     }

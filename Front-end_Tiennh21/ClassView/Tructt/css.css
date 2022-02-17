@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+footer{
+    height: 50px;
+    background: orangered;
+    font-size: 12px;
+    color: white;
+    text-align: center ;
+    line-height: 50px;
+}
+.wapprer{
+    width: 980px;
+    margin: auto;
+}
+.logo{
+    width: 980px;
+    margin-top:  5px;
+    background-color: orangered;
+}
+.logo>img{
+    float: left;
+}
+.menu{
+    height: 35px;
+    background: orange;
+    text-align: center;
+}
+.banner{
+    height: 350px;
+    
+}
+.conten{
+    background: white;
+    height: 80px;
+}
+.text{
+    width: 200px;
+    height: 20px;
+    border: none;
+    background: white;
+    padding-left: 5px;
+    /* margin-left: 600px; */
+}
+.timkiem{
+    width: 90px;
+    height: 20px;
+    background: darkblue;
+    color: white;
+    border: 0.5px solid white;
+    
+}
+.menu>ul>li{
+    list-style: none;
+    float: left;
+    line-height: 35px;
+    padding-left: 30px;
+    font-weight: bold;
+}
+.menu>ul>li>a{
+    color: black;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+.menu>ul>li>a:hover{
+    text-decoration: underline; 
+}
+.menu>ul{
+    padding-left: 250px;
+}
+.banner>img{
+    width: 100%;
+    height: 100%;
+
+}
+.td{
+    width: 980px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10PX;
+}
+.td>p{
+    color: darkblue;
+    font-size: 18px;
+    font-weight: bold;
+}
+.sp1{
+    width: 280px;
+    height: 380px;
+    border: 1px solid red;
+    float: left;
+}
+.sp1>img{
+    text-align: center;
+    width: 280px;
+    padding: 30px;
+    
+}
+.sp1>p{
+    font-size: 14px;
+    color: blue;
+    text-align: center;
+    
+}
+.sp1>p>a{
+    font-weight: bold;
+    text-align: left;
+    color: orangered;
+}
+.sp2{
+    width: 600px;
+    height: 180px;
+    border: 1px solid red;
+    float: right;
+    
+}
+.sp2>p{
+    float: right;
+    font-size: 14px;
+    color: blue;
+    text-align: left;
+    margin-left: 10px;
+}
+.sp2>p>img{
+    float: left;
+    width: 240px;
+    padding: 15px;
+}
+.sp3{
+    width: 600px;
+    height: 180px;
+    border: 1px solid red;
+    float: right;
+    margin-top: 15px;
+}
+.sp3>p{
+    float: right;
+    font-size: 14px;
+    color: blue;
+    text-align: left;
+    margin-left: 10px;
+    
+}
+.sp3>p>img{
+    float: left;
+    width: 240px;
+    padding: 15px;
+}
+.sp2>p>a{
+    font-weight: bold;
+    text-align: left;
+    color: orangered;
+}
+.sp3>p>a{
+    font-weight: bold;
+    text-align: left;
+    color: orangered;
+}
+.box{
+    
+    width: 980px;
+    height: 380px;
+}
+
+
+/*---ducnv---*/
+
+.logo{
+    display: flex;
+}
+.header-input{
+    margin-top: 17px;
+    margin-left: 400px;
+}

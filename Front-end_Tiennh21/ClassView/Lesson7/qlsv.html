@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        .loading {
+            background: rgba(0, 0, 0, .5);
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        .spinner-center {
+            top: 50%;
+            left: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body ng-app="qlsv">
+    <div ng-controller="myctrl">
+        <div ng-show="isLoading" class="loading">
+            <div class="spinner-border text-primary spinner-center" role="status">
+            </div>
+        </div>
+        <div class="col-8 offset-2 alert {{ isSuccess == true ? 'alert-success' : 'alert-danger' }}"
+            ng-show="message.length != 0">
+            {{ message }}
+        </div>
+        <form ng-submit="onSubmitForm($event)" action="" class="col-8 offset-2">
+            <div class="form-group mt-3">
+                <label for="">Họ tên:</label>
+                <input class="form-control" type="text" ng-model="student.name">
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Mã SV</label>
+                <input class="form-control" type="text" ng-model="student.code">
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Chuyên ngành</label>
+                <input class="form-control" ng-model="student.chuyen_nganh">
+            </div>
+            <div class="form-group mt-3">
+                <button class="btn btn-primary">Lưu</button>
+                <button type="reset" class="btn btn-default ml-3">Xóa form</button>
+            </div>
+        </form>
+        <div class="col-8 offset-2">
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ tên</th>
+                        <th>Mã SV</th>
+                        <th>Chuyên ngành</th>
+                        <th colspan="2">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="sv in students">
+                        <td>{{ sv.id }}</td>
+                        <td>{{ sv.name }}</td>
+                        <td>{{ sv.code }}</td>
+                        <td>{{ sv.chuyen_nganh }}</td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="edit($index)">Sửa</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#modal_delete_{{ sv.id }}">Xóa</button>
+
+                            <div class="modal fade" id="modal_delete_{{ sv.id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Xác nhận xóa?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Đóng</button>
+                                            <button type="button" ng-click="onDelete($index)" data-bs-dismiss="modal"
+                                                class="btn btn-danger">Xóa</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        var app = angular.module("qlsv", []);
+        app.controller("myctrl", function ($scope, $rootScope, $http) {
+            // Khởi tạo
+            $scope.students = [];
+            $scope.isSuccess = true;
+            $scope.isLoading = false;
+            $scope.index = -1;
+            $scope.message = "";
+            $scope.student = {
+                id: "",
+                name: "",
+                code: "",
+                chuyen_nganh: "",
+            };
+            $scope.isLoading = false;
+            const api = 'https://620cffe3b573632593a1edf4.mockapi.io/api/students';
+            $scope.isLoading = true;
+            if ($scope.index == -1) {
+                $scope.onSubmitForm = function (event) {
+                    event.preventDefault();
+
+                    console.log($scope.student)
+                    $http.post(api, $scope.student).then(response => {
+                        $scope.isLoading = false;
+                        $scope.message = "Add successfully"
+                        $scope.isSuccess = true;
+                        $scope.student.id = response.data.id;
+                        $scope.students.push(response.data);
+
+
+                    }).catch(error => {
+                        console.log(error);
+                        $scope.isLoading = false;
+                        $scope.message = "Add Failed"
+                        $scope.isSuccess = false;
+                    })
+
+
+                }
+            } else {
+                const id = $scope.students[index].id;
+                const deleteApi = api + '/' + id;
+                console.log(id);
+                $http.put(api, $scope.student).then(response => {
+                    $scope.isLoading = false;
+                    $scope.message = "Add successfully"
+                    $scope.isSuccess = true;
+                    $scope.student.id = response.data.id;
+                    $scope.students.push(response.data);
+
+                }).catch(error => {
+                    console.log(error);
+                    $scope.isLoading = false;
+                    $scope.message = "Add Failed"
+                    $scope.isSuccess = false;
+                })
+            }
+            $http.get(api).then(response => {
+                console.log(response)
+                $scope.students = response.data;
+                $scope.isLoading = false;
+
+            }).catch(function (err) {
+                console.log(err);
+                $scope.isLoading = false;
+            })
+
+            $scope.edit = function (index) {
+                $scope.index = index;
+                $scope.student = angular.copy($scope.students[index]);
+            }
+
+
+            $scope.onDelete = function (index) {
+                const id = $scope.students[index].id;
+                const deleteApi = api + '/' + id;
+                $scope.isLoading = true
+
+                $http.delete(deleteApi).then(response => {
+                    $scope.isLoading = false
+                    $scope.message = "Xoá thầnh công";
+                    $scope.isSuccess = true;
+                    $scope.students.splice(index, 1);
+                    // $("#modal_delete_" + id).modal('hide');
+                }).catch(error => {
+                    $scope.isLoading = false
+                    $scope.message = "Xoá Failed";
+                    $scope.isSuccess = false;
+                })
+            }
+        });
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

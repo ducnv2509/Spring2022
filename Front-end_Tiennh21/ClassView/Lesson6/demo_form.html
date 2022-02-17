@@ -86,7 +86,8 @@
             </aside>
             <article class="col-12 col-md-9 p-0 pt-3">
                 <div class="container p-0">
-                    <form name="formSv" class="needs-validation" novalidate>
+                    <form name="formSv" ng-submit="onSubmitForm($event)" class="needs-validation" action="" method=""
+                        novalidate>
                         <div class="mt-2 row">
                             <label class="col-2">
                                 Họ tên <span class="text-danger">*</span>
@@ -210,12 +211,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="i in dssv">
+                                <tr ng-repeat="i in ds_sv">
                                     <td>{{i.id}}</td>
-                                    <td>{{i.ho_ten}}</td>
-                                    <td>{{i.ma_sv}}</td>
+                                    <td>{{i.ten}}</td>
+                                    <td>{{i.Masv}}</td>
                                     <td>{{i.chuyen_nganh}}</td>
-                                    <td>{{i.gioi_tinh == 1 ? 'Nam' : "Nữ"}}</td>
+                                    <td>{{i.gioi_tinh == false ? 'Nam' : "Nữ"}}</td>
                                     <td>
                                         <button class="btn btn-primary">Sửa</button>
                                         <button class="btn btn-danger">Xóa</button>
@@ -235,7 +236,7 @@
 
     <script>
         const app = angular.module('myapp', []);
-        function formController($scope) {
+        function formController($scope, $http) {
             $scope.sv = {
                 fullname: "",
                 email: "",
@@ -245,6 +246,25 @@
                 major: ""
             }
             $scope.listMajor = [{ code: "udpm", name: 'Ung dung pham mem' }, { code: "tktw", name: 'Thiet ke web' }, { code: "ltmt", name: "Lap trinh may tinh" }]
+
+            $scope.onSubmitForm = function ($event) {
+                // const url = "https://b8bd0f0e1ed308.lhrtunnel.link/data";
+
+                const url = "https://620cffe3b573632593a1edf4.mockapi.io/api/student";
+
+
+                $event.preventDefault();
+                const data = {
+                    ho_ten: $scope.sv.fullname,
+                    ma_sv: "Ph12312",
+                    gioi_tinh: $scope.sv.gioi_tinh,
+                    chuyen_nganh: $scope.sv.chuyen_nganh
+                }
+                $http.post(url, data).then(function (response) {
+                    console.log(response);
+                })
+                console.log(event.sv)
+            }
         }
 
         app.controller('myctrl', formController);
@@ -268,12 +288,16 @@
         })
 
         function tableController($scope, $http) {
-            const url = "https://ea6831087d0664.lhrtunnel.link/data";
+            // const url = "https://ea6831087d0664.lhrtunnel.link/data";
+            const url = "https://620cffe3b573632593a1edf4.mockapi.io/api/student";
+
             $http.get(url).then(response => {
                 console.log(response);
-                $scope.dssv = response.data;
+                $scope.ds_sv = response.data;
             })
         }
+
+
 
         app.directive('checkMajor', function () {
             return {

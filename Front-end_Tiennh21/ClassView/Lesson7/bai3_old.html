@@ -21,8 +21,7 @@
                 <form name="myForm">
                     <div class="form-group">
                         <label for="">Ho Ten</label>
-                        <input ng-model="student.fullname" name="fullname" type="" class="form-control" minlength="5"
-                            required>
+                        <input ng-model="student.fullname" name="fullname" type="" class="form-control" minlength="5" required>
                         <div ng-hide="myForm.fullname.$untouched ||myForm.fullname.$valid">
                             <small ng-show="myForm.fullname.$error.required" class="text-danger fst-italic">
                                 Fullname không để trống
@@ -56,7 +55,7 @@
                             <small ng-show="myForm.mark.$error.required" class="text-danger fst-italic">
                                 mark không để trống
                             </small>
-
+ 
                         </div>
                     </div>
                     <div class="form-group mt-4">
@@ -73,32 +72,30 @@
                     </div>
                 </form>
             </div>
-            <table ng-controller="tableCtrl" class="table table-striped table-inverse ">
+            <table class="table table-striped table-inverse ">
                 <thead class="thead-inverse">
                     <tr>
-                        <th>ID</th>
                         <th>Họ và Tên</th>
-                        <th>Msv</th>
-                        <th>Chuyeen nganh</th>
-                        <th>Thao tac</th>
+                        <th>Ngày sinh</th>
+                        <th>Điểm</th>
+                        <th>Học lực</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in dssv">
-                        <td>{{item.id}}</td>
-                        <td>{{item.ten}}</td>
-                        <td>{{item.gioi_tinh}}</td>
-                        <td>{{item.chuyen_nganh}}</td>
-                        <td colspan = "2"></td>
+                    <tr ng-repeat="item in students">
+                        <td>{{item.fullname}}</td>
+                        <td>{{item.birthday}}</td>
+                        <td>{{item.mark}}</td>
                         <td>
                             <span ng-if="item.mark < 5"> yếu</span>
                             <span ng-if="item.mark >= 5 && item.mark < 8"> trung bình</span>
                             <span ng-if="item.mark >= 8"> Giỏi</span>
                         </td>
                         <td>
-                            <button class="btn btn-primary">Sửa</button>
-                            <button class="btn btn-danger">Xóa</button>
+                            <a href="#" ng-click="edit($index)" style="text-decoration: none">
+                                Sửa
+                            </a>
                         </td>
                     </tr>
                 </tbody>
@@ -109,17 +106,6 @@
 
     <script>
         const app = angular.module("myapp", []);
-
-        function tableCtrl($scope, $http) {
-            // const url = "https://620b061fbeee430017f38481.mockapi.io/students";
-            const url = "https://620cffe3b573632593a1edf4.mockapi.io/api/student";
-
-            $http.get(url).then(response => {
-                console.log(response)
-                $scope.dssv = response.data;
-
-            })
-        }
         function myCtrl($scope) {
             $scope.students = [];
             $scope.student = {};
@@ -161,7 +147,6 @@
         }
 
         app.controller("myctrl", myCtrl);
-        app.controller("tableCtrl", tableCtrl);
     </script>
 
     <!-- Bootstrap JavaScript Libraries -->
