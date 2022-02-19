@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="updateForm">
     <div class="col-lg-8 m-auto mt-5 wrap-form-head-register">
         <div class="container">
             <h2 class="text-center pt-4">Cập nhật tài khoản</h2>
@@ -54,7 +54,8 @@
                             readonly> </input>
                     </div>
                     <div class="text-center mt-4">
-                        <button class="btn btn-primary shadow-lg">Thay đổi</button>
+                        <button class="btn btn-primary shadow-lg"
+                        ng-click="update()">Thay đổi</button>
                     </div>
                 </form>
             </div>

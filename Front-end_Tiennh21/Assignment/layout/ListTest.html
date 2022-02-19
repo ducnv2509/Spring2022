@@ -1,4 +1,4 @@
-<div class="container text-lg-left bg-white rounded shadow mt-5 container-about p-4" ng-controller="myCtrl">
+<div class="container text-lg-left bg-white rounded shadow mt-5 container-about p-4" ng-controller="indexCtrl">
     <h3 class="fw-bold mb-4 text-center pb-2">
         List of Exams
     </h3>
@@ -19,7 +19,7 @@
                 </a>
                 <h4 class="font-weight-bold mb-3">{{sub.Name}}</h4>
                 <p class="text-muted">Bài thi gồm kiến thức đã học trong môn {{sub.Name}}</p>
-                <a href="#!informationExam" class="btn btn-success btn-rounded btn-md"> Chi tiết</a>
+                <a href="#!informationExam/{{sub.Id}}" class="btn btn-success btn-rounded btn-md"> Chi tiết</a>
             </div>
         </div>
     </div>

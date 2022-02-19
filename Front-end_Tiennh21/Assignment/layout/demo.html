@@ -15,73 +15,50 @@
 </head>
 
 <body>
-    <div ng-app="myapp">
-        <form name="myForm">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" ng-model="formData.email" required />
-            <span ng-show="myForm.email.$error.required && myForm.email.$dirty">required</span>
-            <span ng-show="!myForm.email.$error.required && myForm.email.$error.email && myForm.email.$dirty">invalid
-                email</span>
-            <br />
-            <label for="email">Name</label>
-            <input type="text" id="name" name="name" ng-model="formData.name" required />
-            <span ng-show="myForm.name.$error.required && myForm.name.$dirty">required</span>
-            <br />
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" ng-model="formData.username" ng-minlength="5"
-                ng-maxlength="20" ng-pattern="/^[A-z][A-z0-9]*$/" required />
-            <span ng-show="myForm.username.$error.required && myForm.username.$dirty">required</span>
-            <span
-                ng-show="!myForm.username.$error.minLength && !myForm.username.$error.maxLength && myForm.username.$error.pattern && myForm.username.$dirty">Must
-                start with a letter, and contain letters &amp; numbers only.</span>
-            <span
-                ng-show="!myForm.username.$error.required && (myForm.username.$error.minlength || myForm.username.$error.maxlength) && myForm.username.$dirty">Username
-                ust be between 5 and 20 characters.</span>
-            <br />
+    <div ng-controller="confirmCtrl">
+        <form name="f1">
+            <div>
+                <label>Password</label>
+                <input type="password" name="EPassword" ng-model="EPassword" required class="form-control" />
+            </div>
 
+            <div>
+                <label>Confirm Password</label>
+                <input type="password" name="ECPassword" ng-model="ECPassword" required compare-to="EPassword"
+                    class="form-control" />
+                <span class="error" ng-show="f1.ECPassword.$error.compareTo">
+                    Passwords don't match.
+                </span>
+            </div>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" ng-model="formData.password" ng-minlength="8"
-                ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required />
-            <span ng-show="myForm.password.$error.required && myForm.password.$dirty">required</span>
-            <span
-                ng-show="!myForm.password.$error.required && (myForm.password.$error.minlength || myForm.password.$error.maxlength) && myForm.password.$dirty">Passwords
-                must be between 8 and 20 characters.</span>
-            <span
-                ng-show="!myForm.password.$error.required && !myForm.password.$error.minlength && !myForm.password.$error.maxlength && myForm.password.$error.pattern && myForm.password.$dirty">Must
-                contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
-            <br />
-
-
-            <label for="password_c">Confirm Password</label>
-            <input type="password" id="password_c" name="password_c" ng-model="formData.password_c" valid-password-c
-                required />
-            <span ng-show="myForm.password_c.$error.required && myForm.password_c.$dirty">Please confirm your
-                password.</span>
-            <span
-                ng-show="!myForm.password_c.$error.required && myForm.password_c.$error.noMatch && myForm.password.$dirty">Passwords
-                do not match.</span>
-            <br />
-
-            <button type="submit" class="btn" ng-disabled="!myForm.$valid">Submit</button>
         </form>
     </div>
 
-
     <script>
-        var app = angular.module('myapp', ['UserValidation']);
-
-        angular.module('UserValidation', []).directive('validPasswordC', function () {
+        var app = angular.module("app", []);
+        app.controller("confirmCtrl", function ($scope) {
+            $scope.user = {
+                password: "",
+                confirmPassword: ""
+            };
+        });
+        app.directive("compareTo", function () {
             return {
-                require: 'ngModel',
-                link: function (scope, elm, attrs, ctrl) {
-                    ctrl.$parsers.unshift(function (viewValue, $scope) {
-                        var noMatch = viewValue != scope.myForm.password.$viewValue
-                        ctrl.$setValidity('noMatch', !noMatch)
-                    })
+                require: "ngModel",
+                scope:
+                {
+                    confirmPassword: "=compareTo"
+                },
+                link: function (scope, element, attributes, modelVal) {
+                    modelVal.$validators.compareTo = function (val) {
+                        return val == scope.confirmPassword;
+                    };
+                    scope.$watch("confirmPassword", function () {
+                        modelVal.$validate();
+                    });
                 }
-            }
-        })
+            };
+        });  
     </script>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

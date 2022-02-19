@@ -1,14 +1,14 @@
-<div class="row">
+<div class="row" ng-controller = "informationExam">
     <div class="col-2"></div>
     <section class="px-5 py-4 wrap-form-head-register container-about mt-3 col-8">
-        <h2 class="h1-responsive fw-blod text-center">Trang thi trắc nghiệm</h2>
+        <h2 class="h1-responsive fw-blod text-center">{{subject.Name}}</h2>
         <p class="fw-normal text-center w-responsive mx-auto mb-5"></p>
 
         <div class="row">
 
             <div class="col-lg-5 mb-lg-0 mb-5">
                 <div class="text-center">
-                    <img src="images/logos/ADAV.jpg" alt="Sample project image" class="img-fluid" style="width: 300px;">
+                    <img src="images/logos/{{subject.Logo}}" alt="Sample project image" class="img-fluid" style="width: 300px;">
                 </div>
             </div>
 
@@ -90,7 +90,7 @@
             </div>
 
             <div class="col-lg-5 view overlay">
-                <a href="#!listQuestion">
+                <a href ng-click="test()">
                     <img src="images/imagePic/Start.gif" alt="Sample project image" class="img-fluid"
                         style="width: 300px;">
                 </a>
