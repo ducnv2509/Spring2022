@@ -1,5 +1,10 @@
-app.controller('myRegisterCtrl', function ($scope, $rootScope) {
+app.controller('myRegisterCtrl', function ($scope, $rootScope, $http) {
+  const api = "https://620cffe3b573632593a1edf4.mockapi.io/Accounts";
   $scope.register = function () {
+    $http.post(api, $scope.studentRegister).then(function (response) {
+      $scope.students.push(response.data)
+      console.log(response)
+    })
     $rootScope.students.push(angular.copy($scope.studentRegister));
     $scope.studentRegister = {};
     $scope.repassword = '';

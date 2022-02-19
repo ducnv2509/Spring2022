@@ -6,19 +6,19 @@ app.controller('myCtrl', function ($scope) {
 
 })
 app.run(function ($rootScope, $http, $timeout) {
-
-    $http.get("db/Students.js").then(function(response) {
+    const api = "https://620cffe3b573632593a1edf4.mockapi.io/Accounts";
+    $http.get(api).then(function (response) {
         $rootScope.students = response.data;
     });
 
-    
+
     $http.get("db/Subjects.js").then(function (response) {
         $rootScope.subjects = response.data;
     });
 
-    
+
     $rootScope.student = null;
-    $rootScope.logoff = function() {
+    $rootScope.logoff = function () {
         $rootScope.student = null;
         $rootScope.indexStudent = -1;
         Swal.fire({
@@ -33,18 +33,18 @@ app.run(function ($rootScope, $http, $timeout) {
         window.location.href = "#!ListTest"
     }
 });
-app.config(function($routeProvider, $locationProvider) {
+app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
-        .when("/index", { templateUrl: "layout/HomePage.html"})
+        .when("/index", { templateUrl: "layout/HomePage.html" })
         .when("/about", { templateUrl: "layout/About.html" })
         .when("/Contact", { templateUrl: "layout/Contact.html" })
         .when("/Feedback_Home", { templateUrl: "layout/Feedback_Home.html" })
         .when("/FAQ", { templateUrl: "layout/FAQ.html" })
-        .when("/ListTest", { templateUrl: "layout/ListTest.html"})
-        .when("/Profile", { templateUrl: "layout/Profile.html"})
-        .when("/ChangePassword", { templateUrl: "layout/ChangePassword.html"})
-        .when("/listQuestion/:id", { templateUrl: "layout/ListQuestion.html"})
-        .when("/informationExam/:id", { templateUrl: "layout/informationExam.html"})
+        .when("/ListTest", { templateUrl: "layout/ListTest.html" })
+        .when("/Profile", { templateUrl: "layout/Profile.html" })
+        .when("/ChangePassword", { templateUrl: "layout/ChangePassword.html" })
+        .when("/listQuestion/:id", { templateUrl: "layout/ListQuestion.html" })
+        .when("/informationExam/:id", { templateUrl: "layout/informationExam.html" })
         .otherwise({ redirectTo: "/ListTest" });
 
 
