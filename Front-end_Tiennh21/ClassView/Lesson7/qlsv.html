@@ -116,7 +116,7 @@
             $scope.students = [];
             $scope.isSuccess = true;
             $scope.isLoading = false;
-            $scope.index = -1;
+            // $scope.index = -1;
             $scope.message = "";
             $scope.student = {
                 id: "",
@@ -125,40 +125,19 @@
                 chuyen_nganh: "",
             };
             $scope.isLoading = false;
-            const api = 'https://620cffe3b573632593a1edf4.mockapi.io/api/students';
+            const api = 'https://620cffe3b573632593a1edf4.mockapi.io/demoAPI';
             $scope.isLoading = true;
-            if ($scope.index == -1) {
-                $scope.onSubmitForm = function (event) {
-                    event.preventDefault();
+            $scope.onSubmitForm = function (event) {
+                event.preventDefault();
 
-                    console.log($scope.student)
-                    $http.post(api, $scope.student).then(response => {
-                        $scope.isLoading = false;
-                        $scope.message = "Add successfully"
-                        $scope.isSuccess = true;
-                        $scope.student.id = response.data.id;
-                        $scope.students.push(response.data);
-
-
-                    }).catch(error => {
-                        console.log(error);
-                        $scope.isLoading = false;
-                        $scope.message = "Add Failed"
-                        $scope.isSuccess = false;
-                    })
-
-
-                }
-            } else {
-                const id = $scope.students[index].id;
-                const deleteApi = api + '/' + id;
-                console.log(id);
-                $http.put(api, $scope.student).then(response => {
+                console.log($scope.student)
+                $http.post(api, $scope.student).then(response => {
                     $scope.isLoading = false;
                     $scope.message = "Add successfully"
                     $scope.isSuccess = true;
                     $scope.student.id = response.data.id;
                     $scope.students.push(response.data);
+
 
                 }).catch(error => {
                     console.log(error);
@@ -166,7 +145,25 @@
                     $scope.message = "Add Failed"
                     $scope.isSuccess = false;
                 })
+
+
             }
+            // const id = $scope.students[index].id;
+            // const deleteApi = api + '/' + id;
+            // console.log(id);
+            $http.put(api, $scope.student).then(response => {
+                $scope.isLoading = false;
+                $scope.message = "Add successfully"
+                $scope.isSuccess = true;
+                $scope.student.id = response.data.id;
+                $scope.students.push(response.data);
+
+            }).catch(error => {
+                console.log(error);
+                $scope.isLoading = false;
+                $scope.message = "Add Failed"
+                $scope.isSuccess = false;
+            })
             $http.get(api).then(response => {
                 console.log(response)
                 $scope.students = response.data;

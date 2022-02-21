@@ -3,11 +3,13 @@ app.controller('myRegisterCtrl', function ($scope, $rootScope, $http) {
   $scope.register = function () {
     $http.post(api, $scope.studentRegister).then(function (response) {
       $scope.students.push(response.data)
+      $scope.student.id = response.data.id;
       console.log(response)
     })
     $rootScope.students.push(angular.copy($scope.studentRegister));
     $scope.studentRegister = {};
     $scope.repassword = '';
+    
     Swal.fire({
       icon: 'success',
       title: 'Đăng ký thành công !',
