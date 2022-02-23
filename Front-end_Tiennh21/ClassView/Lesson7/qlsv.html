@@ -41,7 +41,7 @@
             ng-show="message.length != 0">
             {{ message }}
         </div>
-        <form ng-submit="onSubmitForm($event)" action="" class="col-8 offset-2">
+        <form class="col-8 offset-2">
             <div class="form-group mt-3">
                 <label for="">Họ tên:</label>
                 <input class="form-control" type="text" ng-model="student.name">
@@ -55,7 +55,8 @@
                 <input class="form-control" ng-model="student.chuyen_nganh">
             </div>
             <div class="form-group mt-3">
-                <button class="btn btn-primary">Lưu</button>
+                <button class="btn btn-primary" ng-show="index != -1" ng-click="onUpdate()">Sửa</button>
+                <button class="btn btn-primary" ng-show="index == -1" ng-click="add()">Lưu</button>
                 <button type="reset" class="btn btn-default ml-3">Xóa form</button>
             </div>
         </form>
@@ -116,7 +117,7 @@
             $scope.students = [];
             $scope.isSuccess = true;
             $scope.isLoading = false;
-            // $scope.index = -1;
+            $scope.index = -1;
             $scope.message = "";
             $scope.student = {
                 id: "",
@@ -127,9 +128,7 @@
             $scope.isLoading = false;
             const api = 'https://620cffe3b573632593a1edf4.mockapi.io/demoAPI';
             $scope.isLoading = true;
-            $scope.onSubmitForm = function (event) {
-                event.preventDefault();
-
+            $scope.add = function () {
                 console.log($scope.student)
                 $http.post(api, $scope.student).then(response => {
                     $scope.isLoading = false;
@@ -138,16 +137,14 @@
                     $scope.student.id = response.data.id;
                     $scope.students.push(response.data);
 
-
                 }).catch(error => {
                     console.log(error);
                     $scope.isLoading = false;
                     $scope.message = "Add Failed"
                     $scope.isSuccess = false;
                 })
-
-
             }
+
             // const id = $scope.students[index].id;
             // const deleteApi = api + '/' + id;
             // console.log(id);
@@ -190,6 +187,27 @@
                     $scope.message = "Xoá thầnh công";
                     $scope.isSuccess = true;
                     $scope.students.splice(index, 1);
+                    // $("#modal_delete_" + id).modal('hide');
+                }).catch(error => {
+                    $scope.isLoading = false
+                    $scope.message = "Xoá Failed";
+                    $scope.isSuccess = false;
+                })
+            }
+
+
+            $scope.onUpdate = function () {
+                const id2 = $scope.student.id;
+                console.log(id2)
+                const updateApi = api + '/' + id2;
+                $scope.isLoading = true
+
+                $http.put(updateApi, $scope.student).then(response => {
+                    $scope.isLoading = false
+                    $scope.message = "update thầnh công";
+                    $scope.isSuccess = true;
+                    $scope.students.push(response.data);
+                    // $scope.students.splice(index, 1);
                     // $("#modal_delete_" + id).modal('hide');
                 }).catch(error => {
                     $scope.isLoading = false

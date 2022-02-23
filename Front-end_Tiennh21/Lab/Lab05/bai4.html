@@ -107,7 +107,14 @@
     <script>
         const app = angular.module("myapp", []);
         function myCtrl($scope) {
-            $scope.students = [];
+            $scope.students = [{
+
+                fullname: 'Đức',
+                birthday: '2002-09-09',
+                mark: 6
+            }
+            
+            ];
             $scope.student = {};
             $scope.index = -1;
 

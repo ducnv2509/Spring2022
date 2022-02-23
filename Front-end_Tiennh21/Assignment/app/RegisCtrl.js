@@ -6,7 +6,7 @@ app.controller('myRegisterCtrl', function ($scope, $rootScope, $http) {
       $scope.student.id = response.data.id;
       console.log(response)
     })
-    $rootScope.students.push(angular.copy($scope.studentRegister));
+    // $rootScope.students.push(angular.copy($scope.studentRegister));
     $scope.studentRegister = {};
     $scope.repassword = '';
     

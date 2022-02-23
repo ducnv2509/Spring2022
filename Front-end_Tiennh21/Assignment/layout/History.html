@@ -1,0 +1,28 @@
+<div class="container" ng-controller = "myHistory">
+    <div class="row">
+        <h2 class = "text-center mt-5 text-white">Lịch sử làm bài</h2>
+        <table class="table table-responsive table-bordered">
+            <thead>
+                <tr class="text-white">
+                    <th>
+                        Mã môn học
+                    </th>
+                    <th>
+                        Tên môn học
+                    </th>
+                    <th>
+                        Điểm
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="st in historys">
+                    <td>{{st.Id}}</td>
+                    <td>{{st.Name}}</td>
+                    <td>{{st.mark}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

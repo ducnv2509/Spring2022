@@ -71,6 +71,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-white" href="#!ListTest">Exam Page</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#!ManagerAccounts" ng-show="student.role == 1"> Manager Accounts</a>
+                                    </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link text-white dropdown-toggle" href="#"
                                             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
@@ -110,6 +113,7 @@
                     <ul class="dropdown-menu">
                         <div ng-hide="student == null">
                             <li><a class="dropdown-item" href="#!Profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="#!History">History</a></li>
                             <li><a class="dropdown-item" href="#!ChangePassword">Change Password</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -300,8 +304,7 @@
 
                                                 <div class="text-center mt-4">
                                                     <button class="btn btn-primary shadow-lg col-12 mb-2"
-                                                    ng-click="getPassword()"
-                                                    >Send</button>
+                                                        ng-click="getPassword()">Send</button>
                                                     <button class="btn btn-danger shadow-lg col-12"
                                                         data-bs-dismiss="modal" data-bs-target="#myModal"
                                                         data-bs-toggle="modal">Back</button>

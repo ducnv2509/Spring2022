@@ -25,7 +25,8 @@
                 alt="">
         </div>
         <div class="col-xs-12 col-lg-4 wrap-form-head-register mt-5" id="register">
-            <div class="container" ng-init="studentRegister.gender = 'true'; studentRegister.marks = '0'">
+            <div class="container"
+                ng-init="studentRegister.gender = 'true'; studentRegister.marks = '0'; studentRegister.role = '0'">
                 <form name="formRegister" novalidate>
                     <h4 class="mt-3 mb-4">Start now</h4>
                     <div class="mt-3 ">
@@ -153,15 +154,15 @@
                     <div class="mt-3 ">
                         <label for="exampleFormControlInput1" class="form-label">Gender</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                                value="true">
+                            <input ng-model="studentRegister.gender" class="form-check-input" type="radio"
+                                name="flexRadioDefault" id="flexRadioDefault1" value="1">
                             <label class="form-check-label" for="flexRadioDefault1">
                                 Male
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                                checked value="false">
+                            <input ng-model="studentRegister.gender" class="form-check-input" type="radio"
+                                name="flexRadioDefault" id="flexRadioDefault2" checked value="0">
                             <label class="form-check-label" for="flexRadioDefault2">
                                 Felmale
                             </label>

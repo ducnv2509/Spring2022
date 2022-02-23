@@ -7,7 +7,8 @@
         "gender": "true",
         "birthday": "1995-12-21",
         "schoolfee": "1500000",
-        "marks": "0"
+        "marks": "0",
+        "role": "true"
     },
     {
         "username": "pheonv",
@@ -17,7 +18,9 @@
         "gender": "true",
         "birthday": "1985-10-11",
         "schoolfee": "2500000",
-        "marks": "0"
+        "marks": "0",
+        "role": "false"
+
     },
     {
         "username": "nopt",
@@ -27,7 +30,9 @@
         "gender": "false",
         "birthday": "1993-05-15",
         "schoolfee": "2000000",
-        "marks": "0"
+        "marks": "0",
+        "role": "false"
+
     },
     {
         "username": "ducnv",
@@ -37,6 +42,8 @@
         "gender": "true",
         "birthday": "2002-09-25",
         "schoolfee": "2000000",
-        "marks": "10"
+        "marks": "10",
+        "role": "true"
+
     }
 ]

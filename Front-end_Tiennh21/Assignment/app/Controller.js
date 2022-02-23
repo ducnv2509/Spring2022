@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'ngCookies']);
 // .controller('myCtrl', function ($scope) {
 
 // })
@@ -11,13 +11,18 @@ app.run(function ($rootScope, $http, $timeout) {
         $rootScope.students = response.data;
     });
 
+    const apiHistory = "https://620cffe3b573632593a1edf4.mockapi.io/Exam";
 
     $http.get("db/Subjects.js").then(function (response) {
         $rootScope.subjects = response.data;
     });
 
+    $http.get(apiHistory).then(function (response) {
+        $rootScope.historys = response.data;
 
-    $rootScope.student = null;
+    })
+
+    $rootScope.student = JSON.parse(localStorage.getItem('users'));
     $rootScope.logoff = function () {
         $rootScope.student = null;
         $rootScope.indexStudent = -1;
@@ -31,6 +36,7 @@ app.run(function ($rootScope, $http, $timeout) {
             timer: 1600
         })
         window.location.href = "#!ListTest"
+        localStorage.removeItem('users');
     }
 });
 app.config(function ($routeProvider, $locationProvider) {
@@ -42,9 +48,11 @@ app.config(function ($routeProvider, $locationProvider) {
         .when("/FAQ", { templateUrl: "layout/FAQ.html" })
         .when("/ListTest", { templateUrl: "layout/ListTest.html" })
         .when("/Profile", { templateUrl: "layout/Profile.html" })
+        .when("/History", { templateUrl: "layout/History.html" })
         .when("/ChangePassword", { templateUrl: "layout/ChangePassword.html" })
         .when("/listQuestion/:id", { templateUrl: "layout/ListQuestion.html" })
         .when("/informationExam/:id", { templateUrl: "layout/informationExam.html" })
+        .when("/ManagerAccounts", { templateUrl: "layout/ManagerAccounts.html" })
         .otherwise({ redirectTo: "/ListTest" });
 
 

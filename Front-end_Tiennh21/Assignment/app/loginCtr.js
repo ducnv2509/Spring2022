@@ -1,10 +1,11 @@
-app.controller('loginCtrl', function ($scope, $rootScope) {
+app.controller('loginCtrl', function ($scope, $rootScope, $cookies) {
     $scope.login = function () {
-        var index =  true;
+        var index = true;
         $rootScope.students.forEach(st => {
-            if(st.username == $scope.username){
-                if(st.password == $scope.password){
-                    Swal.fire({ 
+            if (st.username == $scope.username) {
+                if (st.password == $scope.password) {
+                    localStorage.setItem("users", JSON.stringify(st));
+                    Swal.fire({
                         icon: 'success',
                         title: 'Đăng nhập thành công!',
                         text: 'Quay lại trang chủ!',
@@ -16,19 +17,19 @@ app.controller('loginCtrl', function ($scope, $rootScope) {
                     $rootScope.indexStudent = st.index;
                     $rootScope.student = st;
                     window.location.href = '#!ListTest'
-
                     index = false;
                     return;
                 }
             }
         })
-        if(index == true) {
-            Swal.fire({ 
+        if (index == true) {
+            Swal.fire({
                 icon: 'error',
                 title: 'Đăng nhập thất bại',
                 text: 'Nhập lại'
             })
         }
     }
-    
+
+
 })
