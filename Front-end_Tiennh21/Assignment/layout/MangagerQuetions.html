@@ -1,4 +1,216 @@
-<div class="container", ng-controller="myManagerQ">
+<div class="container " , ng-controller="myManagerQ">
+    <div class="row ">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Create Quizz
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tạo Quizz nè</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form name="creQuizz">
+                            <div class="mt-3 ">
+                                <input ng-model="createQ.Id" name="Id" type="text" class="form-control"
+                                    id="exampleFormControlInput1" placeholder="Id Quizz" maxlength="5" required>
+                                <div ng-hide="creQuizz.Id.$untouched ||creQuizz.Id.$valid">
+                                    <small ng-show="creQuizz.Id.$error.required" class="text-danger fst-italic">
+                                        ID quizz không để trống
+                                    </small>
+                                    <small ng-show="creQuizz.Id.$error.maxlength" class="text-danger fst-italic">
+                                        ID quizz dưới 5 ký tự
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 ">
+                                <input ng-model="createQ.Name" name="name" type="text" class="form-control"
+                                    id="exampleFormControlInput1" placeholder="Name Quizz" minlength="5" required>
+                                <div ng-hide="creQuizz.name.$untouched ||creQuizz.name.$valid">
+                                    <small ng-show="creQuizz.name.$error.required" class="text-danger fst-italic">
+                                        Tên Quizz không được để trống
+                                    </small>
+                                    <small ng-show="creQuizz.name.$error.maxlength" class="text-danger fst-italic">
+                                        Quizz trên 5 ký tự
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 ">
+
+                                <select ng-model="createQ.Logo" name="Logo" class="form-select">
+                                    <option ng-repeat="mj in quizzs" value="{{mj.Logo}}">
+                                        {{mj.Logo}}
+                                    </option>
+                                </select>
+                                <!-- <input ng-model="createQ.linkImage" name="linkImage" type="text" class="form-control"
+                                    id="exampleFormControlInput1" placeholder="Link Quizz" minlength="5" required>
+                                <div ng-hide="creQuizz.linkImage.$untouched ||creQuizz.linkImage.$valid">
+                                    <small ng-show="creQuizz.linkImage.$error.required" class="text-danger fst-italic">
+                                        Link Ảnh không để trống
+                                    </small>
+                                
+                                </div> -->
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="create()"
+                            data-bs-dismiss="modal">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
+
+        <!--update-->
+
+        <div class="modal fade" id="exampleModal_update" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Thông tin Quizz</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form name="creQuizz">
+                            <div class="mt-3 ">
+                                <input ng-model="createQ.Id" name="Id" type="text" class="form-control"
+                                    id="exampleFormControlInput1" placeholder="Id Quizz" maxlength="5" required>
+                                <div ng-hide="creQuizz.Id.$untouched ||creQuizz.Id.$valid">
+                                    <small ng-show="creQuizz.Id.$error.required" class="text-danger fst-italic">
+                                        ID quizz không để trống
+                                    </small>
+                                    <small ng-show="creQuizz.Id.$error.maxlength" class="text-danger fst-italic">
+                                        ID quizz dưới 5 ký tự
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 ">
+                                <input ng-model="createQ.Name" name="name" type="text" class="form-control"
+                                    id="exampleFormControlInput1" placeholder="Name Quizz" minlength="5" required>
+                                <div ng-hide="creQuizz.name.$untouched ||creQuizz.name.$valid">
+                                    <small ng-show="creQuizz.name.$error.required" class="text-danger fst-italic">
+                                        Tên Quizz không được để trống
+                                    </small>
+                                    <small ng-show="creQuizz.name.$error.maxlength" class="text-danger fst-italic">
+                                        Quizz trên 5 ký tự
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 ">
+
+                                <select ng-model="createQ.Logo" name="Logo" class="form-select">
+                                    <option ng-repeat="mj in quizzs" value="{{mj.Logo}}">
+                                        {{mj.Logo}}
+                                    </option>
+                                </select>
+                                <!-- <input ng-model="createQ.linkImage" name="linkImage" type="text" class="form-control"
+                                    id="exampleFormControlInput1" placeholder="Link Quizz" minlength="5" required>
+                                <div ng-hide="creQuizz.linkImage.$untouched ||creQuizz.linkImage.$valid">
+                                    <small ng-show="creQuizz.linkImage.$error.required" class="text-danger fst-italic">
+                                        Link Ảnh không để trống
+                                    </small>
+                                
+                                </div> -->
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="update()"
+                            data-bs-dismiss="modal">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Xoá-->
+
+
+
+        <h2 class="text-center mt-5 text-dark">Mangager Quetions</h2>
+        <table class="table table-responsive table-bordered bg-white rounded shadow">
+            <thead>
+                <tr class="bold text">
+                    <th>
+                        Mã môn học
+                    </th>
+                    <th>
+                        Tên môn học
+                    </th>
+                    <th>
+                        Hành Động
+                    </th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="st in quizzs">
+                    <td>{{st.Id}}</td>
+                    <td>
+                        <img src="images/logos/{{st.Logo}}" style="width: 25px; height: 25px" alt="Lỗi">
+                        {{st.Name}}
+                    </td>
+                    <td>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal_update"
+                            ng-click="edit($index)">
+                            <!-- <img src="https://img.icons8.com/color/32/000000/plus--v3.png" /> -->
+                            Sửa
+                        </button>
+             
+                        <button class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal_delete{{st.id}}"
+                            >
+                            <!-- <img src="https://img.icons8.com/external-microdots-premium-microdot-graphic/32/000000/external-delete-communication-multimedia-vol1-microdots-premium-microdot-graphic.png" /> -->
+                            Xoá
+                        </button>
+                        <button class="btn btn-primary">
+                            <a href="#!createQuetions/{{st.Id}}" style ="text-decoration: none; color: white">
+                                Edit
+                            </a>
+                            
+                        </button>
+
+                        <div class="modal fade" id="exampleModal_delete{{st.id}}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Xác nhận xóa?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                    ng-click="delete($index)"
+                                       >Xoá</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

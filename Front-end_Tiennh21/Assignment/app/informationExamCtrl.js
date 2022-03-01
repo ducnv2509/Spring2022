@@ -1,5 +1,5 @@
 app.controller('informationExam', function ($scope, $rootScope, $routeParams) {
-    $rootScope.subjects.forEach(array => {
+    $rootScope.quizzs.forEach(array => {
         if (array.Id == $routeParams.id) {
             $scope.subject = angular.copy(array);
             return;

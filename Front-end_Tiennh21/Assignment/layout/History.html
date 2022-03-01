@@ -1,6 +1,6 @@
-<div class="container" ng-controller = "myHistory">
+<div class="container" ng-controller="myHistory">
     <div class="row">
-        <h2 class = "text-center mt-5 text-white">Lịch sử làm bài</h2>
+        <h2 class="text-center mt-5 text-white">Lịch sử làm bài</h2>
         <table class="table table-responsive table-bordered">
             <thead>
                 <tr class="text-white">
@@ -11,15 +11,23 @@
                         Tên môn học
                     </th>
                     <th>
+                        Ngày làm bài
+                    </th>
+                    <th>
+                        Thời gian làm
+                    </th>
+                    <th>
                         Điểm
                     </th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr ng-repeat="st in historys">
-                    <td>{{st.Id}}</td>
-                    <td>{{st.Name}}</td>
+                <tr ng-repeat="st in historyUser" class = "text-white">
+                    <td>{{st.idExam}}</td>
+                    <td>{{st.nameExam}}</td>
+                    <td>{{st.day | date: 'dd/MM/yyyy HH:mm:ss a': '+07' }}</td>
+                    <td>{{st.timer }}</td>
                     <td>{{st.mark}}</td>
                 </tr>
             </tbody>

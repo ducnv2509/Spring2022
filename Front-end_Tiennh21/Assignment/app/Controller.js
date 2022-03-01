@@ -11,15 +11,17 @@ app.run(function ($rootScope, $http, $timeout) {
         $rootScope.students = response.data;
     });
 
-    const apiHistory = "https://620cffe3b573632593a1edf4.mockapi.io/Exam";
-
+    const apiQuizz = "https://620cffe3b573632593a1edf4.mockapi.io/Exam";
+    const apiQuetions = "https://620cffe3b573632593a1edf4.mockapi.io/Quetions";
     $http.get("db/Subjects.js").then(function (response) {
         $rootScope.subjects = response.data;
     });
 
-    $http.get(apiHistory).then(function (response) {
-        $rootScope.historys = response.data;
-
+    $http.get(apiQuizz).then(function (response) {
+        $rootScope.quizzs = response.data;
+    })
+    $http.get(apiQuetions).then(function (response) {
+        $rootScope.quetions = response.data;
     })
 
     $rootScope.student = JSON.parse(localStorage.getItem('users'));
@@ -52,7 +54,9 @@ app.config(function ($routeProvider, $locationProvider) {
         .when("/ChangePassword", { templateUrl: "layout/ChangePassword.html" })
         .when("/listQuestion/:id", { templateUrl: "layout/ListQuestion.html" })
         .when("/informationExam/:id", { templateUrl: "layout/informationExam.html" })
+        .when("/createQuetions/:id", { templateUrl: "layout/CreateQuetions.html" })
         .when("/ManagerAccounts", { templateUrl: "layout/ManagerAccounts.html" })
+        .when("/ManagerQuetions", { templateUrl: "layout/MangagerQuetions.html" })
         .otherwise({ redirectTo: "/ListTest" });
 
 

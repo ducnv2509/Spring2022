@@ -1,4 +1,6 @@
 app.controller('loginCtrl', function ($scope, $rootScope, $cookies) {
+    $rootScope.historys = [];
+    $rootScope.history = {};
     $scope.login = function () {
         var index = true;
         $rootScope.students.forEach(st => {

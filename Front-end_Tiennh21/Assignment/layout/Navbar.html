@@ -56,10 +56,11 @@
                                     <li class="nav-item ">
                                         <a class="nav-link text-white" aria-current="page" href="#">Learning</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" ng-show="student.role != 1">
                                         <a class="nav-link text-white" href="#!about">About Page</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item"
+                                    ng-show="student.role != 1">
                                         <a class="nav-link text-white" href="#!Contact">Contact Page</a>
                                     </li>
                                     <li class="nav-item">
@@ -73,6 +74,8 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-white" href="#!ManagerAccounts" ng-show="student.role == 1"> Manager Accounts</a>
+                                    </li> <li class="nav-item">
+                                        <a class="nav-link text-white" href="#!ManagerQuetions" ng-show="student.role == 1"> Manager Quizzs</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link text-white dropdown-toggle" href="#"
@@ -81,7 +84,7 @@
                                             List Exam
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li ng-repeat="sub in subjects">
+                                            <li ng-repeat="sub in quizzs">
                                                 <a class="dropdown-item" href="#!informationExam/{{sub.Id}}">
                                                     <img src="{{'images/logos/'+sub.Logo}}"
                                                         class="img-fluid rounded-circle hoverable" style="height: 20px;"
