@@ -16,16 +16,18 @@ app.controller('myManagerQ', function ($scope, $rootScope, $http) {
             timer: 1600
         });
     }
-
+    $scope.indexUpdate = '';
     $scope.edit = function (index) {
+        $scope.indexUpdate = index;
         $scope.createQ = angular.copy($scope.quizzs[index]);
     }
+
 
     $scope.update = function () {
         const id = $scope.createQ.id;
         const updateAPI = apiQuizz + '/' + id;
         $http.put(updateAPI, $scope.createQ).then(function (response) {
-            // $rootScope.quizzs[$scope.createQ.id] = angular.copy($scope.createQ);
+            $rootScope.quizzs[$scope.indexUpdate] = angular.copy($scope.createQ);
         })
 
         Swal.fire({

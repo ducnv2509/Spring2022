@@ -42,6 +42,7 @@ app.controller('testQuestion', function ($scope, $interval, $http, $routeParams,
                 timer: 1200
             })
         }
+        console.log('sssss', $scope.timer)
     }
 
     $scope.finish = function () {
@@ -56,27 +57,33 @@ app.controller('testQuestion', function ($scope, $interval, $http, $routeParams,
             cancelButtonText: 'Không'
         }).then(res => {
             if (res.value) {
-                $scope.timer = 3;
+
+                // $scope.timerF = {};
                 Swal.fire({
                     title: 'Kết thúc bài thi',
-                    text: 'Bài thi sẽ kết thúc sau 3 giây hihi !!!',
                     icon: 'success',
                     showCancelButton: false,
                     closeOnClickOutside: false,
                     allowOutsideClick: false,
                     timer: 4000
                 });
-                const gio = ($scope.timer - $scope.timer % 60) / 60;
-                const phut = $scope.timer % 60;
+
+                // {{(timer-timer%60)/60}}:{{timer%60}}
+                // const gio = (($scope.timer - $scope.timer % 60) / 60) / $scope.timer % 60;
+                const phut = (($scope.timer - $scope.timer % 60) / 60);
                 const ngay = new Date();
                 const apiExam = "https://620cffe3b573632593a1edf4.mockapi.io/History";
                 $rootScope.history.idExam = $scope.subject.Id;
                 $rootScope.history.nameExam = $scope.subject.Name;
                 $rootScope.history.mark = $scope.testMark;
                 $rootScope.history.idUser = $rootScope.student.id;
-                $rootScope.history.timer = (15 - gio) + ":" + (59 - phut);
+                $rootScope.history.timer = (14 - phut) + ":" + (59 - $scope.timer % 60);
                 $rootScope.history.day = ngay;
-                console.log('gio nay', gio)
+                $scope.timer = 3;
+
+                // console.log('logggg ne', $scope.timerF)
+
+                // console.log('gio nay', gio)
                 console.log('p nay', phut)
                 console.log('timer nay', $scope.timer);
 
@@ -87,7 +94,7 @@ app.controller('testQuestion', function ($scope, $interval, $http, $routeParams,
                     // }
                 });
                 // window.location.href = "#!information/" + $scope.subject.Id;
-
+                
             }
         })
     }
