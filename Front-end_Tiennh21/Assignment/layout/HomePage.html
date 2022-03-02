@@ -31,7 +31,7 @@
                     <h4 class="mt-3 mb-4">Start now</h4>
                     <div class="mt-3 ">
                         <input ng-model="studentRegister.username" name="username" type="text" class="form-control"
-                            id="exampleFormControlInput1" placeholder="Username" minlength="5" required>
+                            id="exampleFormControlInput1" placeholder="Username" minlength="5" Check-User required>
                         <div ng-hide="formRegister.username.$untouched ||formRegister.username.$valid">
                             <small ng-show="formRegister.username.$error.required" class="text-danger fst-italic">
                                 Username không để trống
@@ -39,6 +39,8 @@
                             <small ng-show="formRegister.username.$error.minlength" class="text-danger fst-italic">
                                 Username trên 5 ký tự
                             </small>
+                            <small class="text-danger fst-italic"
+                                        ng-show="formRegister.username.$error.check_user">Trùng Username</small>
                         </div>
                     </div>
                     <!-- <div class="mt-3 ">
@@ -115,7 +117,7 @@
                     </div>
                     <div class="mt-3 ">
                         <input ng-model="studentRegister.email" name="email" type="email" class="form-control"
-                            id="exampleFormControlInput1" placeholder="email@example.com" required>
+                            id="exampleFormControlInput1" placeholder="email@example.com" Check-Email required>
 
                         <div ng-hide="formRegister.email.$untouched || formRegister.email.$valid">
                             <small class="text-danger fst-italic" ng-show="formRegister.email.$error.required">Email
@@ -123,6 +125,8 @@
                                 trống</small>
                             <small class="text-danger fst-italic" ng-show="formRegister.email.$error.email">Email không
                                 đúng định dạng</small>
+                                <small class="text-danger fst-italic"
+                                ng-show="formRegister.email.$error.check_email">Trùng email</small>
                         </div>
                     </div>
                     <div class="mt-3 ">

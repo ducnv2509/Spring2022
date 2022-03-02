@@ -61,3 +61,23 @@ app.controller('myManagerQ', function ($scope, $rootScope, $http) {
         console.log('OKKOKO', id)
     }
 })
+
+app.directive('checkQuizz', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attr, mCtrl) {
+            const fnCheckQuizz = function (value) {
+                let checkValid = true;
+                for (let index = 0; index < scope.quizzs.length; index++) {
+                    if (scope.quizzs[index].Id == value) {
+                        checkValid = false;
+                    }
+                    mCtrl.$setValidity("check_quizz", checkValid);
+                }
+                // console.log('ok', value);
+                return value;
+            }
+            mCtrl.$parsers.push(fnCheckQuizz)
+        }
+    }
+  })

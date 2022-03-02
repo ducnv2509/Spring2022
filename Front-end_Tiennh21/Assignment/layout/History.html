@@ -1,9 +1,9 @@
-<div class="container" ng-controller="myHistory">
-    <div class="row">
-        <h2 class="text-center mt-5 text-white">Lịch sử làm bài</h2>
+<div class=" container wrap-form-head-register mt-5" ng-controller="myHistory">
+    <div class="row container">
+        <h2 class="text-center mt-5 text-dark mb-3">Lịch sử làm bài</h2>
         <table class="table table-responsive table-bordered">
             <thead>
-                <tr class="text-white">
+                <tr class="text-dark">
                     <th>
                         Mã môn học
                     </th>
@@ -23,11 +23,11 @@
             </thead>
 
             <tbody>
-                <tr ng-repeat="st in historyUser" class = "text-white">
+                <tr ng-repeat="st in historyUser" class = "text-dark">
                     <td>{{st.idExam}}</td>
                     <td>{{st.nameExam}}</td>
                     <td>{{st.day | date: 'dd/MM/yyyy HH:mm:ss a': '+07' }}</td>
-                    <td>{{st.timer }}</td>
+                    <td>{{st.timer}}</td>
                     <td>{{st.mark}}</td>
                 </tr>
             </tbody>

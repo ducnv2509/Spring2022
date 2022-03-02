@@ -60,12 +60,12 @@ app.controller('testQuestion', function ($scope, $interval, $http, $routeParams,
 
                 // $scope.timerF = {};
                 Swal.fire({
-                    title: 'Kết thúc bài thi',
-                    icon: 'success',
+                    title: "Kết thúc bài thi",
+                    icon: "success",
                     showCancelButton: false,
                     closeOnClickOutside: false,
                     allowOutsideClick: false,
-                    timer: 4000
+                    timer: 4000,
                 });
 
                 // {{(timer-timer%60)/60}}:{{timer%60}}
@@ -77,7 +77,7 @@ app.controller('testQuestion', function ($scope, $interval, $http, $routeParams,
                 $rootScope.history.nameExam = $scope.subject.Name;
                 $rootScope.history.mark = $scope.testMark;
                 $rootScope.history.idUser = $rootScope.student.id;
-                $rootScope.history.timer = (14 - phut) + ":" + (59 - $scope.timer % 60);
+                $rootScope.history.timer = (14 - phut) + " phút : " + (59 - $scope.timer % 60) + " giây";
                 $rootScope.history.day = ngay;
                 $scope.timer = 3;
 

@@ -15,7 +15,6 @@ app.controller('myAddAccount', function ($scope, $rootScope, $http) {
       Swal.fire({
         icon: 'success',
         title: 'Đăng ký thành công !',
-        text: 'Quay lại trang chủ',
         showConfirmButton: false,
         closeOnClickOutside: false,
         allowOutsideClick: false,
@@ -32,7 +31,10 @@ app.controller('myAddAccount', function ($scope, $rootScope, $http) {
         $scope.validationmsg = false;
       }
     }
-    
+    $scope.clear = function () {
+      $scope.studentRegister = {};
+      $scope.index = -1;
+  }
 
     $scope.edit = function (index) {
       $scope.index = index;
@@ -45,6 +47,16 @@ app.controller('myAddAccount', function ($scope, $rootScope, $http) {
         $scope.students.splice(index, 1);
     }).catch(error => {
     })
+    
+  Swal.fire({
+    icon: 'success',
+    title: 'Xoá thành công !',
+    showConfirmButton: false,
+    closeOnClickOutside: false,
+    allowOutsideClick: false,
+    timer: 1600
+})
+$scope.clear();
   }
 
   $scope.update = function () {
@@ -60,8 +72,7 @@ app.controller('myAddAccount', function ($scope, $rootScope, $http) {
 
   Swal.fire({
       icon: 'success',
-      title: 'Cập nhập thông tin cá nhân thành công !',
-      text: 'Quay lại trang chủ!',
+      title: 'Cập nhập thông tin thành công !',
       showConfirmButton: false,
       closeOnClickOutside: false,
       allowOutsideClick: false,

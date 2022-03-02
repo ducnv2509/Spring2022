@@ -1,15 +1,23 @@
-<div class="container text-lg-left text-center bg-white rounded shadow mt-5 p-4 " ng-controller="myCtrl">
+<div class="container text-lg-left text-center bg-white rounded shadow mt-5 p-4 " ng-controller="myFeedBack">
     <h3 class="font-weight-bold my-4">Feedback</h3>
     <p class="font-weight-light mx-auto mb-4 pb-2">Please give us feedback about your problem</p>
-    <form class="mb-4 mx-md-5" action="">
+    <form class="mb-4 mx-md-5" name="FB" ng-show="student.role == 0">
         <div class="row">
             <div class="col-md-6 mb-4">
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <input 
+                    ng-model="Feedback.username" name="username"
+                    type="text" class="form-control" placeholder="Username" aria-label="Username"
+                        aria-describedby="basic-addon1" required>
+                </div>
+
+                <div ng-hide="FB.username.$untouched ||FB.username.$valid">
+                    <small ng-show="FB.username.$error.required" class="text-danger fst-italic">
+                        Username không để trống
+                    </small>
                 </div>
             </div>
             <div class="col-md-6 mb-4">
@@ -17,31 +25,89 @@
                     <span class="input-group-text" id="basic-addon1">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                     </span>
-                    <input type="email" class="form-control" placeholder="Username" aria-label="Email"
-                        aria-describedby="basic-addon1">
+                    <input 
+                    ng-model="Feedback.email" name="email"
+                    type="email" class="form-control" placeholder="email" aria-label="Email"
+                        aria-describedby="basic-addon1" required>
+                </div>
+
+                <div ng-hide="FB.email.$untouched || FB.email.$valid">
+                    <small class="text-danger fst-italic" ng-show="FB.email.$error.required">Email
+                        Không được để
+                        trống</small>
+                    <small class="text-danger fst-italic" ng-show="FB.email.$error.email">Email không
+                        đúng định dạng</small>
+                
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12 mb-4">
-                <input type="text" id="subject" class="form-control" placeholder="Subject">
+                <input type="text"
+                ng-model = "Feedback.subject"
+                id="subject" class="form-control" name="subject" placeholder="Subject" required>
+            </div>
+            <div ng-hide="FB.subject.$untouched || FB.subject.$valid">
+                <small class="text-danger fst-italic" ng-show="FB.subject.$error.required">Tiêu đề Không được để
+                    trống</small>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group mb-4">
-                    <textarea class="form-control rounded" id="message" rows="3"
-                        placeholder="How can we help?"></textarea>
+                    <textarea
+                    ng-model = "Feedback.content"
+                    class="form-control rounded" name="content" id="message" rows="3"
+                        placeholder="How can we help?" required></textarea>
+                </div>
+
+                <div ng-hide="FB.content.$untouched || FB.content.$valid">
+                    <small class="text-danger fst-italic" ng-show="FB.content.$error.required">Nội dung 
+                        Không được để
+                        trống</small>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-info btn-md text-white">Feedback</button>
+                    <button
+                    ng-disabled="FB.$invalid"
+                    type="submit" class="btn btn-info btn-md text-white"
+                    ng-click="feedBack()"
+                    >Feedback</button>
                 </div>
 
             </div>
         </div>
 
     </form>
+
+    <table class="table table-responsive table-bordered table-striped" ng-show="student.role == 1">
+        <thead>
+            <tr>
+                <th>
+                    Username
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Subject
+                </th>
+
+                <th>
+                    Content
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat = "st in feedbacks">
+                <td>{{st.username}}</td>
+                <td>{{st.email}}</td>
+                <td>{{st.subject}}</td>
+                <td>{{st.content}}</td>
+            </tr>
+        </tbody>
+    </table>
 
 </div>

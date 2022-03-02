@@ -13,6 +13,7 @@ app.run(function ($rootScope, $http, $timeout) {
 
     const apiQuizz = "https://620cffe3b573632593a1edf4.mockapi.io/Exam";
     const apiQuetions = "https://620cffe3b573632593a1edf4.mockapi.io/Quetions";
+    const apiFeedBack = "https://621b7d1efaa12ee4500effb8.mockapi.io/Feedback";
     $http.get("db/Subjects.js").then(function (response) {
         $rootScope.subjects = response.data;
     });
@@ -23,7 +24,9 @@ app.run(function ($rootScope, $http, $timeout) {
     $http.get(apiQuetions).then(function (response) {
         $rootScope.quetions = response.data;
     })
-
+    $http.get(apiFeedBack).then(function (response) {
+        $rootScope.feedbacks = response.data;
+    })
     $rootScope.student = JSON.parse(localStorage.getItem('users'));
     $rootScope.logoff = function () {
         $rootScope.student = null;

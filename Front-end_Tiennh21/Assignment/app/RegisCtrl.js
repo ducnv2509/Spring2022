@@ -60,3 +60,43 @@ app.directive('validPasswordC', function () {
     }
   }
 });
+
+app.directive('checkUser', function () {
+  return {
+      require: 'ngModel',
+      link: function (scope, element, attr, mCtrl) {
+          const fnCheckUser = function (value) {
+              let checkValid = true;
+              for (let index = 0; index < scope.students.length; index++) {
+                  if (scope.students[index].username == value) {
+                      checkValid = false;
+                  }
+                  mCtrl.$setValidity("check_user", checkValid);
+              }
+              // console.log('ok', value);
+              return value;
+          }
+          mCtrl.$parsers.push(fnCheckUser)
+      }
+  }
+})
+
+app.directive('checkEmail', function () {
+  return {
+      require: 'ngModel',
+      link: function (scope, element, attr, mCtrl) {
+          const fnCheckEmail = function (value) {
+              let checkValid = true;
+              for (let index = 0; index < scope.students.length; index++) {
+                  if (scope.students[index].email == value) {
+                      checkValid = false;
+                  }
+                  mCtrl.$setValidity("check_email", checkValid);
+              }
+              // console.log('ok', value);
+              return value;
+          }
+          mCtrl.$parsers.push(fnCheckEmail)
+      }
+  }
+})
