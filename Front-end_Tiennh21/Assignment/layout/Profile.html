@@ -12,13 +12,32 @@
                     <div class="mt-3">
                         <span class="form-text light-blue-text"><i class="fas fa-signature"></i> Họ tên</span>
                         <input ng-model="student.fullname" name="fullname" type="text" id="fullname"
-                            class="form-control border-primary" required maxlength="25" autofocus>
+                            class="form-control border-primary" required minlength="5" autofocus required>
+
+                        <div ng-hide="formUpdate.fullname.$untouched ||formUpdate.fullname.$valid">
+                            <small ng-show="formUpdate.fullname.$error.required" class="text-danger fst-italic">
+                                Fullname không để trống
+                            </small>
+                            <small ng-show="formUpdate.fullname.$error.minlength" class="text-danger fst-italic">
+                                Fullname không dưới 5 ký tự
+                            </small>
+                        </div>
+
                     </div>
 
                     <div class="mt-3">
                         <span class="form-text light-blue-text"><i class="far fa-envelope"></i> Email</span>
                         <input ng-model="student.email" name="email" type="email" id="email"
                             class="form-control border-primary" required>
+
+                        <div ng-hide="formUpdate.email.$untouched || formUpdate.email.$valid">
+                            <small class="text-danger fst-italic" ng-show="formUpdate.email.$error.required">Email
+                                Không được để
+                                trống</small>
+                            <small class="text-danger fst-italic" ng-show="formUpdate.email.$error.email">Email không
+                                đúng định dạng</small>
+
+                        </div>
                     </div>
 
                     <label class="bg-white light-blue-text rounded mt-3" for=""> <i class="fas fa-transgender"></i>Giới
@@ -41,17 +60,23 @@
                         <input placeholder="yyyy-mm-dd" name="birthday" ng-model="student.birthday" type="text"
                             id="birthday" class="form-control border-primary" required
                             pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-
+                        <div ng-hide="formUpdate.birthday.$untouched || formUpdate.birthday.$valid">
+                            <small ng-show="formUpdate.birthday.$error.required" class="fst-italic text-danger">Vui
+                                lòng
+                                nhập ngày sinh</small>
+                            <small ng-show="formUpdate.birthday.$error.pattern" class="fst-italic text-danger">Không
+                                đúng
+                                định dạng ngày sinh</small>
+                        </div>
                     </div>
                     <div class="mt-3">
                         <span class="form-text light-blue-text"><i class="fas fa-money-bill"></i> Học phí</span>
                         <input ng-model="student.schoolfee" placeholder=" " name="schoolfee" type="text" id="schoolfee"
-                            class="form-control border-primary" required fee>
+                            class="form-control border-primary" disabled required fee>
                     </div>
 
                     <div class="text-center mt-4">
-                        <button class="btn btn-primary shadow-lg"
-                        ng-click="update()">Thay đổi</button>
+                        <button class="btn btn-primary shadow-lg" ng-click="update()">Thay đổi</button>
                     </div>
                 </form>
             </div>

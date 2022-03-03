@@ -28,7 +28,9 @@
                     <h4 class="mt-3 mb-4">Đăng ký thành viên</h4>
                     <div class="mt-3 ">
                         <input ng-model="studentRegister.username" name="username" type="text" class="form-control"
-                            id="exampleFormControlInput1" placeholder="Username" minlength="5" Check-User required>
+                            id="exampleFormControlInput1" placeholder="Username" minlength="5"
+                            ng-disabled="index != -1"
+                            Check-User required>
                         <div ng-hide="formRegister.username.$untouched ||formRegister.username.$valid">
                             <small ng-show="formRegister.username.$error.required" class="text-danger fst-italic">
                                 Username không để trống
@@ -88,7 +90,10 @@
                     </div>
                     <div class="mt-3 ">
                         <input ng-model="studentRegister.email" name="email" type="email" class="form-control"
-                            id="exampleFormControlInput1" placeholder="email@example.com" Check-Email required>
+                            id="exampleFormControlInput1" placeholder="email@example.com"
+                            ng-disabled="index != -1"
+                            
+                            Check-Email required>
 
                         <div ng-hide="formRegister.email.$untouched || formRegister.email.$valid">
                             <small class="text-danger fst-italic" ng-show="formRegister.email.$error.required">Email
@@ -105,7 +110,7 @@
                             id="exampleFormControlInput1" placeholder="Ngày sinh (yyyy-mm-dd)"
                             pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
 
-                        <div ng-hide="formRegister.email.$untouched || formRegister.email.$valid">
+                        <div ng-hide="formRegister.birthday.$untouched || formRegister.birthday.$valid">
                             <small ng-show="formRegister.birthday.$error.required" class="fst-italic text-danger">Vui
                                 lòng
                                 nhập ngày sinh</small>
@@ -194,10 +199,12 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-lg-8 mt-5">
-            <table class="table table-striped table-responsive mt-3">
+        <div class="col-xs-12 col-lg-8 mt-5" 
+        >
+            <table class="table table-striped table-responsive table-info mt-3"
+            >
                 <thead>
-                    <tr class="text-white fst-italic fst-bold">
+                    <tr class="text-dark fst-italic fst-bold">
                         <th>ID</th>
                         <th>Họ tên</th>
                         <th>Username</th>
@@ -211,14 +218,14 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="sv in students">
-                        <td class="fst-bold text-white">{{ sv.id }}</td>
-                        <td class="fst-bold text-white">{{ sv.fullname }}</td>
-                        <td class="fst-bold text-white">{{ sv.username }}</td>
-                        <td class="fst-bold text-white">{{ sv.birthday }}</td>
-                        <td class="fst-bold text-white">{{sv.gender == 1 ? 'Nam' : 'Nữ'}}</td>
-                        <td class="fst-bold text-white">{{ sv.email }}</td>
-                        <td class="fst-bold text-white">{{ sv.role == 1 ? 'Quản lý' : 'Người Dùng' }}</td>
-                        <td class="fst-bold text-white">{{ sv.schoolfee }}</td>
+                        <td class="fst-bold ">{{ sv.id }}</td>
+                        <td class="fst-bold ">{{ sv.fullname }}</td>
+                        <td class="fst-bold ">{{ sv.username }}</td>
+                        <td class="fst-bold ">{{ sv.birthday }}</td>
+                        <td class="fst-bold ">{{sv.gender == 1 ? 'Nam' : 'Nữ'}}</td>
+                        <td class="fst-bold ">{{ sv.email }}</td>
+                        <td class="fst-bold ">{{ sv.role == 1 ? 'Quản lý' : 'Người Dùng' }}</td>
+                        <td class="fst-bold ">{{ sv.schoolfee }}</td>
                         <td>
                             <button class="btn btn-primary" ng-click="edit($index)">Sửa</button>
                         </td>
