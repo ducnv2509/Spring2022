@@ -1,0 +1,12 @@
+brooklyn.catalog:
+  id: SOF304.Lannt.MySampleInCatalog
+  version: "1.0"
+  itemType: template
+  description: My Sample
+  displayName: MySample
+  iconUrl: classpath:///sample-icon.png
+  libraries:
+  - file:///Path/to/archetype/sample/target/Lannt-0.0.1-SNAPSHOT.jar
+  item:
+    services:
+    - type: SOF304.Lannt.MySample

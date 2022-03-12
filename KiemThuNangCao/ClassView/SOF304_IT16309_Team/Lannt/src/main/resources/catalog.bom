@@ -1,0 +1,7 @@
+brooklyn.catalog:
+    version: "0.0.1-SNAPSHOT"
+    itemType: entity
+    items:
+    - id: SOF304.Lannt.MySample
+      item:
+        type: SOF304.Lannt.MySample

@@ -1,5 +1,5 @@
 content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.jdt.ui.javaPostfixProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.jdt.ui.javaChainProposalCategory\u0000
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="java.lang.CharSequence"><rhs name\="java.lang.StringBuilder"/></lhs><lhs name\="java.lang.AbstractStringBuilder"><rhs name\="java.lang.StringBuilder"/></lhs><lhs name\="java.lang.Appendable"><rhs name\="java.lang.StringBuilder"/></lhs><lhs name\="edu.polt.model.Student"><rhs name\="edu.polt.model.Student"/></lhs><lhs name\="org.apache.commons.beanutils.converters.AbstractConverter"><rhs name\="org.apache.commons.beanutils.converters.DateConverter"/></lhs><lhs name\="org.apache.commons.beanutils.Converter"><rhs name\="org.apache.commons.beanutils.converters.DateConverter"/></lhs><lhs name\="org.apache.commons.beanutils.converters.DateTimeConverter"><rhs name\="org.apache.commons.beanutils.converters.DateConverter"/></lhs><lhs name\="java.lang.Cloneable"><rhs name\="javax.servlet.http.Cookie"/><rhs name\="java.util.Properties"/></lhs><lhs name\="javax.servlet.http.Cookie"><rhs name\="javax.servlet.http.Cookie"/></lhs><lhs name\="java.io.File"><rhs name\="java.io.File"/></lhs><lhs name\="edu.model.Staff"><rhs name\="edu.model.Staff"/></lhs><lhs name\="edu.poly.model.Staff"><rhs name\="edu.poly.model.Staff"/></lhs><lhs name\="java.util.Hashtable"><rhs name\="java.util.Properties"/></lhs><lhs name\="java.util.Map"><rhs name\="java.util.Properties"/></lhs><lhs name\="java.util.Dictionary"><rhs name\="java.util.Properties"/></lhs><lhs name\="java.util.Properties"><rhs name\="java.util.Properties"/></lhs><lhs name\="javax.mail.Part"><rhs name\="javax.mail.internet.MimeMessage"/></lhs><lhs name\="javax.mail.Message"><rhs name\="javax.mail.internet.MimeMessage"/></lhs><lhs name\="javax.mail.Address"><rhs name\="javax.mail.internet.InternetAddress"/></lhs><lhs name\="javax.mail.Message$RecipientType"><rhs name\="javax.mail.Message$RecipientType"/></lhs></history>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"/>
 content_assist_number_of_computers=20
 content_assist_proposals_background=255,255,255
 content_assist_proposals_foreground=0,0,0
@@ -7,7 +7,6 @@ eclipse.preferences.version=1
 org.eclipse.jdt.internal.ui.navigator.layout=2
 org.eclipse.jdt.internal.ui.navigator.librariesnode=true
 org.eclipse.jdt.ui.formatterprofiles.version=21
-spelling_locale=en_GB
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true
