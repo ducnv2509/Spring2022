@@ -22,10 +22,6 @@ public class MathFuncTest2 {
         math = null;
     }
 
-    @Test()
-    public void getCalls() {
-    }
-
     @Test
     public void factorial() {
         assertTrue(math.factorial(0) == 1);
