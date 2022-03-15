@@ -1,3 +1,4 @@
+import model.Roots;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,8 +21,8 @@ public class SquareEquationTest {
     @Test
     public void solution() {
         Roots rt = se.Solution();
-        assertEquals(rt.x1, -1.5, 5);
-        assertEquals(rt.x2, 1.0, 5);
+        assertEquals(rt.x1, -1.5, 25);
+        assertEquals(rt.x2, 1.0, 25);
     }
 
     @Test

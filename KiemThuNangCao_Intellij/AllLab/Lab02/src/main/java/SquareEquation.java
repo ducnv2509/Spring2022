@@ -1,3 +1,5 @@
+import model.Roots;
+
 public class SquareEquation {
     private double a, b, c;
 

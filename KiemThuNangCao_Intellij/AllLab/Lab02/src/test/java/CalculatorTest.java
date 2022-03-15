@@ -61,9 +61,5 @@ public class CalculatorTest {
 
     }
 
-    @Test
-    public void delta() {
-        assertEquals(8, calculator.delta(2, 4, 1));
-    }
 
 }

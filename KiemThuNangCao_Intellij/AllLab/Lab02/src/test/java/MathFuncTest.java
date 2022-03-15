@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MathFuncTest2 {
+public class MathFuncTest {
     MathFunc math;
 
     @Before
