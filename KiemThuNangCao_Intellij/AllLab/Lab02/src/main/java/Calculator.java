@@ -8,10 +8,14 @@ public class Calculator {
     }
 
     public int Nhan(int a, int b) {
+
         return a * b;
     }
 
     public int Chia(int a, int b) {
+        if (a == 0){
+            throw new ArithmeticException("Vo Nghiem");
+        }
         return a / b;
     }
 
@@ -20,6 +24,9 @@ public class Calculator {
     }
 
     public int canBachai(int a) {
+        if (a < 0){
+            throw  new ArithmeticException("Solution has no roots");
+        }
         return (int) Math.sqrt(a);
     }
 
@@ -30,4 +37,9 @@ public class Calculator {
             return false;
         }
     }
+
+
+
+    
+
 }

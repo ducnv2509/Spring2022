@@ -6,6 +6,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
 
-{ TInhToanTest.class, MathFuncTest.class })
+{ TInhToanTest.class, ptb2Test.class, MathFuncTest.class })
 public class TestSuite { // nothing
 }

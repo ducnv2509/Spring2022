@@ -10,13 +10,24 @@ public class SquareEquation {
     }
 
     public Roots Solution() {
-        double d = b * b - 4 * a * c;
-        if(d < 0){
-            throw  new ArithmeticException("Solution has no roots");
-        }
         Roots result = new Roots();
-        result.x1 = (-b - Math.sqrt(d) / (2 * a));
-        result.x2 = (-b + Math.sqrt(d) / (2 * a));
-        return  result;
+        double d = b * b - 4 * a * c;
+        if (a == 0) {
+            if (b == 0) {
+                throw new ArithmeticException("Solution has no roots");
+            } else {
+                result.x1 = -c / b;
+            }
+        }else{
+            if (d < 0) {
+                throw new ArithmeticException("Solution has no roots");
+            } else if (d == 0) {
+                result.x1 = (-b) / (2 * a);
+            } else {
+                result.x1 = (-b - Math.sqrt(d)) / (2 * a);
+                result.x2 = (-b + Math.sqrt(d)) / (2 * a);
+            }
+        }
+        return result;
     }
 }

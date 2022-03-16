@@ -1,10 +1,10 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
@@ -35,14 +35,19 @@ public class CalculatorTest {
 
     @Test
     public void nhan() {
-        assertEquals(12, calculator.Nhan(7, 3));
-
+        assertAll(() ->
+                        assertEquals(21, calculator.Nhan(7, 3)),
+                () -> assertEquals(18, calculator.Nhan(6, 3))
+        );
     }
 
     @Test
     public void chia() {
         assertEquals(4, calculator.Chia(12, 3));
+        assertEquals(0, calculator.Chia(0, 3));
+        assertEquals(4, calculator.Chia(12, 3));
     }
+
     @Test
     public void binhPhuong() {
         assertEquals(8, calculator.BinhPhuong(2, 3));
@@ -51,13 +56,17 @@ public class CalculatorTest {
 
     @Test
     public void canBachai() {
-        assertEquals(5, calculator.canBachai(25));
-
+        assertAll(
+                () -> assertEquals(0, calculator.canBachai(0)),
+                () -> assertEquals(0, calculator.canBachai(-1)),
+                () -> assertEquals(1, calculator.canBachai(1)),
+                () -> assertEquals(5, calculator.canBachai(25))
+        );
     }
 
     @Test
     public void isEventNumber() {
-        assertTrue(calculator.isEventNumber(6));
+        Assertions.assertTrue(calculator.isEventNumber(6));
 
     }
 

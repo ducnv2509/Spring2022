@@ -7,7 +7,7 @@ public class MathFunc {
 
     public long factorial (int number){
         calls++;
-        if(number < 0 ){
+        if(number < 0 || number > 21){
             throw  new IllegalArgumentException();
         }
         long result = 1;

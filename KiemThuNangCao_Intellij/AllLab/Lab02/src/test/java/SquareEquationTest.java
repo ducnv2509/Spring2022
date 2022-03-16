@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 public class SquareEquationTest {
 
     private SquareEquation se;
+
     @Before
     public void setUp() throws Exception {
         se =  new SquareEquation(2, 1, -3);
@@ -21,22 +22,23 @@ public class SquareEquationTest {
     @Test
     public void solution() {
         Roots rt = se.Solution();
-        assertEquals(rt.x1, -1.5, 25);
-        assertEquals(rt.x2, 1.0, 25);
+        assertEquals(rt.x1, -1.5, 5);
+        assertEquals(rt.x2, 1.0, 5);
     }
 
     @Test
     public void solution2() {
         Roots rt = se.Solution();
         assertEquals(rt.x1, -1.5, 5);
-        assertEquals(rt.x2, 0.5, 5);
+        assertEquals(rt.x2, 10.0, 5);
     }
     @Test
     public void solution3() {
         Roots rt = se.Solution();
-        assertEquals(rt.x1, 2, 5);
-        assertEquals(rt.x2, 7, 10);
+        assertEquals(rt.x1, -1.5, 5);
+        assertEquals(rt.x2, 15.0, 5);
     }
+
 
 
 }

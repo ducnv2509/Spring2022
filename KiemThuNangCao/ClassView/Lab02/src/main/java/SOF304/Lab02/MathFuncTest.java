@@ -12,7 +12,7 @@ public class MathFuncTest {
 		return new MathFunc();
 	}
 
-	@MethodRef(name = "factorial", signature = "(I)J")
+
 	@Test
 	public void testFactorial() throws Exception {
 		MathFunc testSubject;
@@ -23,25 +23,25 @@ public class MathFuncTest {
 		testSubject = createTestSubject();
 		number = 0;
 		result = testSubject.factorial(number);
-		Assert.assertEquals(null, result);
+		Assert.assertEquals(1, result);
 
 		// test 2
 		testSubject = createTestSubject();
 		number = -1;
 		result = testSubject.factorial(number);
-		Assert.assertEquals(null, result);
+		Assert.assertEquals(-1, result);
 
 		// test 3
 		testSubject = createTestSubject();
 		number = 1;
 		result = testSubject.factorial(number);
-		Assert.assertEquals(null, result);
+		Assert.assertEquals(1, result);
 
 		// test 4
 		testSubject = createTestSubject();
 		number = 21;
 		result = testSubject.factorial(number);
-		Assert.assertEquals(null, result);
+		Assert.assertEquals(5.1090942e+19, result);
 
 		// test 5
 		testSubject = createTestSubject();
@@ -74,7 +74,6 @@ public class MathFuncTest {
 		Assert.assertEquals(null, result);
 	}
 
-	@MethodRef(name = "plus", signature = "(II)J")
 	@Test
 	public void testPlus() throws Exception {
 		MathFunc testSubject;
