@@ -35,9 +35,9 @@ public class MathFuncTest {
     }
 
     @Ignore
-    @org.junit.jupiter.api.Test
+    @Test
     public void todo(){
-        assertTrue(math.plus(1,1) == 3);
+        assertEquals(3, math.plus(1, 1));
     }
     @Test
     public void plus() {

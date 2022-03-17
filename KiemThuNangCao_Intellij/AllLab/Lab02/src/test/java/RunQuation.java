@@ -10,6 +10,5 @@ public class RunQuation {
         System.out.println("Passed tests: " + (result.getRunCount() - result.getFailureCount()));
         System.out.println("ignored tests: " + result.getIgnoreCount());
         System.out.println("success: " + result.wasSuccessful());
-
     }
 }

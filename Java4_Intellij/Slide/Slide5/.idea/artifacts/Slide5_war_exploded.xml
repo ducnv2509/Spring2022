@@ -15,6 +15,8 @@
           <element id="module-output" name="Slide5" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.28" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
           <element id="library" level="project" name="Maven: org.hibernate.orm:hibernate-core:6.0.0.CR1" />
           <element id="library" level="project" name="Maven: jakarta.persistence:jakarta.persistence-api:3.0.0" />
           <element id="library" level="project" name="Maven: jakarta.transaction:jakarta.transaction-api:2.0.0" />
