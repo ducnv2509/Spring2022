@@ -38,6 +38,19 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.10" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.persistence:jakarta.persistence:2.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.persistence:org.eclipse.persistence.asm:9.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.persistence:org.eclipse.persistence.antlr:2.7.10" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa.jpql:2.7.10" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.persistence:org.eclipse.persistence.core:2.7.10" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.persistence:org.eclipse.persistence.parent:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:5.6.5.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.1.2.Final" level="project" />
+    <orderEntry type="library" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
+    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.12.7" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.28" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.11.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-web-api:8.0.1" level="project" />
@@ -50,9 +63,6 @@
     <orderEntry type="library" name="Maven: jakarta.transaction:jakarta.transaction-api:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.jboss:jandex:2.4.2.Final" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.5.1" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:6.0.0.CR1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: net.bytebuddy:byte-buddy:1.12.7" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: jakarta.activation:jakarta.activation-api:2.0.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.activation:jakarta.activation:2.0.1" level="project" />
