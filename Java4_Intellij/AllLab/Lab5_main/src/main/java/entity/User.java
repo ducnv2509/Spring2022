@@ -1,11 +1,11 @@
 package entity;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "`User`")
 public class User {
     private String userId;
     private String password;

@@ -39,6 +39,7 @@ public class StudentServlet extends HttpServlet {
         if (uri.contains("StudentServlet")) {
             try {
                 Student student = new Student();
+                student.setDate(new Date());
                 BeanUtils.populate(student, request.getParameterMap());
                 list.add(student);
                 request.setAttribute("student", list);

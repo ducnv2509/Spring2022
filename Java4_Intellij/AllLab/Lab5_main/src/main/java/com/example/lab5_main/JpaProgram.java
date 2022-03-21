@@ -22,6 +22,8 @@ public class JpaProgram {
             user.setEmail("ducnv12312@gmail.com");
             entityManager.persist(user);
             transaction.commit();
+        }catch(Exception e){
+            System.out.println(e);
         }finally {
             if(transaction.isActive()){
                 transaction.rollback();

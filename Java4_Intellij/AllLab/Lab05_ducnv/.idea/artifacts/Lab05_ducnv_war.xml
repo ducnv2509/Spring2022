@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Lab05_ducnv:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>Lab05_ducnv</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="Lab05_ducnv-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Lab05_ducnv:war exploded" />
+    </root>
+  </artifact>
+</component>

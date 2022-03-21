@@ -41,4 +41,27 @@ public class PersonTest {
         }
     }
 
+    @Rule
+    public ExpectedException exception1  = ExpectedException.none();
+    @Test
+    public void testExpectedException1(){
+        exception1.expect(IllegalArgumentException.class);
+        new Person("Ducnv2509", 131);
+    }
+
+    @Test(expected =  IllegalArgumentException.class)
+    public void testWithExpected1() throws  Exception{
+        new Person("Ducnv2509", 131);
+    }
+
+    @Test
+    public void testWithTryCatch1() throws Exception{
+        try {
+            new Person("Ducnv2509", 131);
+            fail();
+        }catch (IllegalArgumentException e){
+//            assertEquals("Invalid age " , e.getMessage());
+        }
+    }
+
 }
