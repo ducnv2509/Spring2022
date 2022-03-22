@@ -45,10 +45,12 @@ public class KhoaHocTestGiaTriBien {
         }
     }
 
+
+
     @Test
     public void testHocPhiMin() {
         try {
-            new KhoaHoc("ducnv", "JAVA", "NOTE", 12, 12, "999");
+            new KhoaHoc("ducnv", "JAVA", "NOTE", 12, 12, "-1");
             fail();
         } catch (IllegalArgumentException e) {
 
@@ -58,7 +60,7 @@ public class KhoaHocTestGiaTriBien {
     @Test
     public void testHocPhiMax() {
         try {
-            new KhoaHoc("ducnv", "JAVA", "NOTE", 12, 12, "25000001");
+            new KhoaHoc("ducnv", "JAVA", "NOTE", 12, 12, "50000001");
             fail();
         } catch (IllegalArgumentException e) {
 

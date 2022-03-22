@@ -19,7 +19,7 @@
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <base href="/Lab05_duc2509_war/">
 </head>
 
 <body>
@@ -113,10 +113,10 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <button class="btn btn-primary" formmaction="UserServlet/create">Create</button>
-                            <button class="btn btn-warning" formmaction="UserServlet/update">Update</button>
-                            <button class="btn btn-danger" formmaction="UserServlet/delete">Delete</button>
-                            <button class="btn btn-info" formmaction="UserServlet/reset">Reset</button>
+                            <button class="btn btn-primary" formaction="UserServlet/create">Create</button>
+                            <button class="btn btn-warning" formaction="UserServlet/update">Update</button>
+                            <button class="btn btn-danger" formaction="UserServlet/delete">Delete</button>
+                            <button class="btn btn-info" formaction="UserServlet/reset">Reset</button>
                         </div>
                     </form>
                 </div>

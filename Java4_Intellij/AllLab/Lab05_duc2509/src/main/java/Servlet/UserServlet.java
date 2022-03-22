@@ -17,12 +17,14 @@ public class UserServlet extends HttpServlet {
         String uri = request.getRequestURI();
         ListUsers user = null;
         if (uri.contains("delete")) {
+            delete(request, response);
             user = new ListUsers();
+            request.setAttribute("user", user);
         } else if (uri.contains("edit")) {
             edit(request, response);
         } else if (uri.contains("reset")) {
             user = new ListUsers();
-            request.setAttribute("users", user);
+            request.setAttribute("user", user);
         }
         findAll(request, response);
         request.getRequestDispatcher("/views/users.jsp").forward(request, response);
@@ -31,13 +33,15 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
-        if (uri.contains("insert")) {
+        if (uri.contains("create")) {
             this.insert(request, response);
         } else if (uri.contains("delete")) {
-
+            delete(request, response);
+            request.setAttribute("user", new ListUsers());
         } else if (uri.contains("update")) {
             update(request, response);
         } else if (uri.contains("reset")) {
+            request.setAttribute("user", new ListUsers());
         }
         findAll(request, response);
         request.getRequestDispatcher("/views/users.jsp").forward(request, response);
@@ -85,7 +89,20 @@ public class UserServlet extends HttpServlet {
             BeanUtils.populate(user, request.getParameterMap());
             UserDao dao = new UserDao();
             dao.update(user);
+            request.setAttribute("user", user);
             request.setAttribute("message", "Update Success !!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Error: " + e.getMessage());
+        }
+    }
+
+    protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String userId = request.getParameter("userId");
+            UserDao dao = new UserDao();
+            dao.delete(userId);
+            request.setAttribute("message", "Delete Success !!!");
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Error: " + e.getMessage());

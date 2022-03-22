@@ -82,7 +82,7 @@ public class KhoaHocTestNgoaiLe {
     @Test
     public void testHocVienWithText() {
         try {
-            new KhoaHoc("ducnv", "JAVA", "NOTE", 12, Integer.parseInt("acv"), "25000000");
+            new KhoaHoc("ducnv", "JAVA", "NOTE", 12, Integer.parseInt("abc"), "25000000");
             fail();
         } catch (IllegalArgumentException e) {
 

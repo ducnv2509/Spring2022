@@ -30,9 +30,7 @@ public class KhoaHoc {
             throw new IllegalArgumentException("Thời lượng khoá học không hợp lệ");
         } else if (!hocPhi.matches("^\\d+$")) {
             throw new IllegalArgumentException("Học phí khoá học không hợp lệ");
-        } else if (hocPhi.length() > 8 || hocPhi.length() < 4) {
-            throw new IllegalArgumentException("Học phí khoá học không hợp lệ");
-        } else if (Double.parseDouble(hocPhi) > 25000000 || Double.parseDouble(hocPhi) < 1000) {
+        } else if (Double.parseDouble(hocPhi) > 50000000 || Double.parseDouble(hocPhi) < 1000) {
             throw new IllegalArgumentException("Học phí khoá học không hợp lệ");
         } else if (!String.valueOf(soHocVien).matches("^\\d+$")) {
             throw new IllegalArgumentException("Số học viên không hợp lệ");

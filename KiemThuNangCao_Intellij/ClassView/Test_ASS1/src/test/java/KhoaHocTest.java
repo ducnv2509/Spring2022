@@ -76,6 +76,8 @@ public class KhoaHocTest {
         assertEquals(24, kh.getSoHocVien());
         kh.setSoHocVien(25);
         assertEquals(25, kh.getSoHocVien());
+        kh.setSoHocVien(1);
+        assertEquals(1, kh.getSoHocVien());
 
     }
 
@@ -86,9 +88,9 @@ public class KhoaHocTest {
 
     @Test
     public void setHocPhi() {
-        kh.setHocPhi("24999999");
-        assertEquals("24999999", kh.getHocPhi());
-        kh.setHocPhi("25000000");
-        assertEquals("25000000", kh.getHocPhi());
+        kh.setHocPhi("44999999");
+        assertEquals("44999999", kh.getHocPhi());
+        kh.setHocPhi("50000000");
+        assertEquals("50000000", kh.getHocPhi());
     }
 }
