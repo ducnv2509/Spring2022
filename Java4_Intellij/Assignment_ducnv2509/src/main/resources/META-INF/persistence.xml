@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default">
+
+        <class>entity.Category</class>
+        <class>entity.Demo</class>
+        <class>entity.Favorite</class>
+        <class>entity.Orderdetails</class>
+        <class>entity.Orders</class>
+        <class>entity.Orderstates</class>
+        <class>entity.Products</class>
+        <class>entity.Share</class>
+        <class>entity.Supplier</class>
+        <class>entity.Users</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <!--            <property name="javax.persistence.drive_class" value="com.mysql.cj.jdbc.Driver" />-->
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/AssignmentJava4"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="123456"/>
+        </properties>
+    </persistence-unit>
+</persistence>

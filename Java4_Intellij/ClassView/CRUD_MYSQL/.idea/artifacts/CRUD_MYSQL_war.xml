@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CRUD_MYSQL:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>CRUD_MYSQL</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="CRUD_MYSQL-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="CRUD_MYSQL:war exploded" />
+    </root>
+  </artifact>
+</component>

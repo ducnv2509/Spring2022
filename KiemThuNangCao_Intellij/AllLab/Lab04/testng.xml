@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="D:/SP2022/KiemThuNangCao_Intellij/AllLab/Lab04/src/test/java/AutoTimKiem.java">
+        <classes>
+            <class name="AutoTimKiem">
+
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="D:/SP2022/KiemThuNangCao_Intellij/AllLab/Lab04/src/test/java/KiemtraTieuDeTest.java">
+       <classes>
+           <class name="KiemtraTieuDeTest">
+
+           </class>
+       </classes>
+    </test>
+</suite>

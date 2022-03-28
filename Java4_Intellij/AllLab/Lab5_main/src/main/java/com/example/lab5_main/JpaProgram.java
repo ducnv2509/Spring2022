@@ -15,13 +15,14 @@ public class JpaProgram {
         try {
             transaction.begin();
             User user = new User();
-            user.setPassword("ducn123");
-            user.setUserId("ducnv12311");
+            user.setPassword("6666");
+            user.setUserId("666");
             user.setFullname("Nguyen Van Duc");
             user.setAdmin(true);
-            user.setEmail("ducnv12312@gmail.com");
+            user.setEmail("ducnv1231u2@gmail.com");
             entityManager.persist(user);
             transaction.commit();
+            System.out.println("OK");
         }catch(Exception e){
             System.out.println(e);
         }finally {

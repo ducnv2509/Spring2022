@@ -20,6 +20,7 @@
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
           <factory-entry name="default" value="e67b8068-d9ce-45df-8263-4834d73e362b" />
+          <factory-entry name="ducnv" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
