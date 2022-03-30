@@ -27,7 +27,6 @@
     </style>
     <base href="/CRUD_Temp_war/">
 
-    </script>
 </head>
 
 <body>

@@ -16,11 +16,12 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
 
 @MultipartConfig
-@WebServlet({"/DashboardAdmin", "/DashboardAdmin/update", "/DashboardAdmin/index", "/DashboardAdmin/login", "/DashboardAdmin/register", "/DashboardAdmin/forgot", "/DashboardAdmin/listProduct", "/DashboardAdmin/createProduct", "/DashboardAdmin/edit"})
+@WebServlet({"/DashboardAdmin", "/DashboardAdmin/delete", "/DashboardAdmin/update", "/DashboardAdmin/index", "/DashboardAdmin/login", "/DashboardAdmin/register", "/DashboardAdmin/forgot", "/DashboardAdmin/listProduct", "/DashboardAdmin/store", "/DashboardAdmin/edit"})
 public class DashboardAdmin extends HttpServlet {
 
     ListProductsDAO productsDAO;
@@ -41,21 +42,18 @@ public class DashboardAdmin extends HttpServlet {
         } else if (uri.contains("forgot")) {
             request.getRequestDispatcher("/views/admin/Dashboard/ManagerAccount/ForgotPassword.jsp").forward(request, response);
         } else if (uri.contains("listProduct")) {
-//            edit(request,response);
             fillProducts(request, response);
             fillCategoryAndSupplier(request, response);
             request.setAttribute("views", "/views/admin/Dashboard/ManagerProducts/table.jsp");
-
         } else if (uri.contains("createProduct")) {
             edit(request, response);
             fillCategoryAndSupplier(request, response);
             request.setAttribute("views", "/views/admin/Dashboard/ManagerProducts/CRUD_Products.jsp");
-        } else if (uri.contains("edit")) {
-            edit(request, response);
-            fillProducts(request, response);
-            fillCategoryAndSupplier(request, response);
-            request.setAttribute("views", "/views/admin/Dashboard/ManagerProducts/CRUD_Products.jsp");
+        } else if (uri.contains("delete")) {
+            delete(request, response);
+            response.sendRedirect("/Assignment_Java4_war/DashboardAdmin/listProduct");
         }
+
         request.getRequestDispatcher("/views/admin/Dashboard/layoutAdmin.jsp").forward(request, response);
     }
 
@@ -65,10 +63,19 @@ public class DashboardAdmin extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String uri = request.getRequestURI();
-        if (uri.contains("listProduct")) {
+        if (uri.contains("update")) {
+            try {
+                update(request, response);
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            response.sendRedirect("/Assignment_Java4_war/DashboardAdmin/listProduct");
+        } else if (uri.contains("store")) {
             insert(request, response);
-        } else if (uri.contains("update")) {
-            update(request, response);
+            response.sendRedirect("/Assignment_Java4_war/DashboardAdmin/listProduct");
+        } else if (uri.contains("delete")) {
+            delete(request, response);
+            response.sendRedirect("/Assignment_Java4_war/DashboardAdmin/listProduct");
         }
 
     }
@@ -94,13 +101,6 @@ public class DashboardAdmin extends HttpServlet {
             BeanUtils.populate(products, request.getParameterMap());
             productsDAO.insert(products);
             request.setAttribute("message", "Insert success !!!");
-            System.out.println(dir);
-            System.out.println(uploadRuslt.get("url"));
-            System.out.println("" + category_id);
-            System.out.println("" + supplier_id);
-            fillProducts(request, response);
-            request.setAttribute("views", "/views/admin/Dashboard/ManagerProducts/table.jsp");
-            request.getRequestDispatcher("/views/admin/Dashboard/layoutAdmin.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", e.getMessage());
@@ -125,7 +125,7 @@ public class DashboardAdmin extends HttpServlet {
     private void fillProducts(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<Products> listP = productsDAO.findAll();
-            System.out.println("dcmmmmmmmmm " + listP.get(0).getCategoryByCategoryId().getId());
+//            System.out.println("dcmmmmmmmmm " + listP.get(0).getCategoryByCategoryId().getId());
             request.setAttribute("product", listP);
         } catch (Exception e) {
             e.printStackTrace();
@@ -151,9 +151,10 @@ public class DashboardAdmin extends HttpServlet {
             "api_secret", "yoa_1l--izubACPSc3gyDXfdLCQ",
             "secure", true));
 
-
-    private void update(HttpServletRequest request, HttpServletResponse response) {
+    private static final String UPLOAD_DIR = "uploads";
+    private void update(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException {
         try {
+
             File dir = new File("/uploads");
             if (!dir.exists()) {
                 dir.mkdirs();
@@ -173,18 +174,25 @@ public class DashboardAdmin extends HttpServlet {
             BeanUtils.populate(products, request.getParameterMap());
             productsDAO.update(products);
             request.setAttribute("message", "update success !!!");
-            System.out.println(dir);
-            System.out.println(uploadRuslt.get("url"));
-            System.out.println("" + category_id);
-            System.out.println("" + supplier_id);
-            fillProducts(request, response);
-            response.sendRedirect("/Assignment_Java4_war/DashboardAdmin/listProduct");
-//            request.setAttribute("views", "/views/admin/Dashboard/ManagerProducts/table.jsp");
-//            request.getRequestDispatcher("/views/admin/Dashboard/layoutAdmin.jsp").forward(request, response);
-        } catch (Exception e) {
+            request.setAttribute("product", products);
+        } catch (IOException e) {
             e.printStackTrace();
             request.setAttribute("error", e.getMessage());
+        } catch (ServletException | IllegalAccessException e) {
+            e.printStackTrace();
         }
 
+    }
+
+    private void delete(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            int userId = Integer.parseInt(request.getParameter("id"));
+            productsDAO.delete(userId);
+            System.out.println("OKKKKKK");
+            request.setAttribute("message", "Delete Success !!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Error: " + e.getMessage());
+        }
     }
 }

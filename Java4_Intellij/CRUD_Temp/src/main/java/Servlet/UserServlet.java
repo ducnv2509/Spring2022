@@ -145,7 +145,6 @@ public class UserServlet extends HttpServlet {
                 List<Users> list = usersDAO1.findKeyword(key);
                 request.setAttribute("users", list);
                 request.setAttribute("message", "OKKKOKOKO");
-                
             }
         } catch (Exception e) {
             e.printStackTrace();

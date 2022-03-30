@@ -209,4 +209,23 @@ public class Users {
     public void setSharesById(Collection<Share> sharesById) {
         this.sharesById = sharesById;
     }
+
+
+    public Users() {
+    }
+
+    public Users(int id, String username, String password, String fullName, String address, String email, String phone, Boolean gender, String avatar, Date created, Boolean isAdmin, Boolean status) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.avatar = avatar;
+        this.created = created;
+        this.isAdmin = isAdmin;
+        this.status = status;
+    }
 }
