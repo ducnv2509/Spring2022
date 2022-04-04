@@ -36,21 +36,6 @@ public class Lab6_2 {
         };
     }
 
-    @Test
-    public void checkLoginWithUserFailed() {
-        String alert = driver.switchTo().alert().getText();
-        Assert.assertEquals(alert, "User or Password is not valid");
-        System.out.println("IS: " + alert);
-        driver.switchTo().alert().accept();
-    }
-
-    @Test
-    public void checkLoginWithPasswordFailed() {
-        String alert = driver.switchTo().alert().getText();
-        Assert.assertEquals(alert, "User or Password is not valid");
-        System.out.println("IS: " + alert);
-    }
-
     @AfterTest
     public void afterTest() {
         driver.close();

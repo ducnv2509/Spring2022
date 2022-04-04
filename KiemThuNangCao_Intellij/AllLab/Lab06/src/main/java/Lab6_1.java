@@ -27,6 +27,7 @@ public class Lab6_1 {
         String title = driver.getTitle();
         Assert.assertEquals(title, "Guru99 Bank Manager HomePage");
         System.out.println("Is Title: " + title);
+
     }
 
     @Test
@@ -34,15 +35,9 @@ public class Lab6_1 {
         String welcome = driver.findElement(By.className("heading3")).getText();
         Assertions.assertEquals(welcome, "Welcome To Manager's Page of Guru99 Bank");
         System.out.println("IS: " + welcome);
+
     }
 
-
-    @Test
-    public void checkLoginWithUserFailed() {
-        String alert = driver.switchTo().alert().getText();
-        Assert.assertEquals(alert, "User or Password is not valid");
-        System.out.println("IS: " + alert);
-    }
 
     @AfterTest
     public void afterTest() {
