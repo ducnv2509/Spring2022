@@ -20,7 +20,7 @@ public class AutoTimKiem {
     public void tearDown() {
     }
 
-    @Test
+    @Test(groups = "fpt")
     public void timKiemTT(){
         WebDriverManager.chromedriver().setup();
         WebDriver goi = new ChromeDriver();
@@ -34,7 +34,7 @@ public class AutoTimKiem {
         goi.close();
     }
 
-    @Test
+    @Test(groups = "fpt")
     public void timKiemTT2(){
         WebDriverManager.chromedriver().setup();
         WebDriver goi = new ChromeDriver();
@@ -48,7 +48,7 @@ public class AutoTimKiem {
         goi.close();
     }
 
-    @Test
+    @Test(groups = "fpt")
     public void timKiemTT3(){
         WebDriverManager.chromedriver().setup();
         WebDriver goi = new ChromeDriver();

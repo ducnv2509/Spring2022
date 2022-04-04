@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <section class="bg-light py-5">
     <div class="container my-4">
         <div class="row text-center py-3">

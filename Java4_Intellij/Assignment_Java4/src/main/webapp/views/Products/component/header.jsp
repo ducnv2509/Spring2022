@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ducit
@@ -7,6 +8,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="navbar navbar-expand-lg navbar-light shadow">
+    <form action="SearchControl" method="get" class="d-flex">
+        <input class="form-control me-2" oninput="searchByName(this)" type="search" name="q" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
     <div class="container d-flex justify-content-between align-items-center">
 
         <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
@@ -54,10 +59,30 @@
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                 </a>
-                <a class="nav-icon position-relative text-decoration-none" href="#">
-                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                </a>
+                <c:if test="${sessionScope.acc != null}">
+                    <a class="nav-icon position-relative text-decoration-none">
+                        Hello ${sessionScope.acc.fullName}
+                    </a>
+                </c:if>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-fw fa-user text-dark"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <c:if test="${sessionScope.acc == null}">
+                            <li><a class="dropdown-item" href="/Assignment_Java4_war/LoginControl">Login</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.acc.role == true}">
+                            <li><a class="dropdown-item" href="/Assignment_Java4_war/AccountServlet/index">Dashboard</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${sessionScope.acc != null}">
+                            <li><a class="dropdown-item" href="/Assignment_Java4_war/LogoutServlet">Logout</a></li>
+                        </c:if>
+                    </ul>
+                </div>
+
             </div>
         </div>
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="E:/New folder/Spring2022/KiemThuNangCao_Intellij/AllLab/Lab04/src/test/java/AutoTimKiem.java">
+
+        <groups>
+            <run>
+                <include name="AutoTimKiem"/>
+
+            </run>
+        </groups>
+        <classes>
+            <class name="AutoTimKiem"/>
+        </classes>
+    </test>
+</suite>

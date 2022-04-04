@@ -1,11 +1,15 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="entity.Products" %>
+<%@ page import="DAO.OrderDAO" %><%--
   Created by IntelliJ IDEA.
   User: ducit
   Date: 3/27/2022
   Time: 10:12 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"
+         session="true"
+         language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,9 +66,9 @@
         <jsp:include page="component/categories.jsp"/>
         <div class="col-lg-9">
             <jsp:include page="component/chooseGender.jsp"/>
-            <div class="row">
+            <div id="content" class="row">
                 <c:forEach var="i" items="${listA}">
-                    <div class="col-md-4">
+                    <div class="product col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
                                 <img class="card-img rounded-0 img-fluid"
@@ -78,7 +82,7 @@
                                                href="/Assignment_Java4_war/detailProduct?id=${i.id}"><i
                                                 class="far fa-eye"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2"
-                                               href="/Assignment_Java4_war/detailProduct?id=${i.id}"><i
+                                               href="/Assignment_Java4_war/addCart?id=${i.id}"><i
                                                 class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
@@ -111,6 +115,7 @@
                     </div>
                 </c:forEach>
             </div>
+            <button onclick="loadMore()" class="btn btn-primary"> Load More</button>
             <div div="row">
                 <ul class="pagination pagination-lg justify-content-end">
                     <c:forEach begin="1" end="${endP}" var="i">
@@ -138,6 +143,46 @@
 <script src="${pageContext.servletContext.contextPath}/views/assets/js/templatemo.js"></script>
 <script src="${pageContext.servletContext.contextPath}/views/assets/js/custom.js"></script>
 <!-- End Script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function loadMore() {
+        var amount = document.getElementsByClassName("product").length;
+        $.ajax({
+            url: "/Assignment_Java4_war/load",
+            type: "get",
+            data: {
+                exits: amount
+            },
+            success: function (data) {
+                var row = document.getElementById("content");
+                row.innerHTML += data;
+
+            },
+            error: function (xhr) {
+
+            }
+        })
+    }
+
+    function searchByName(param) {
+        var txtSearch = param.value;
+        $.ajax({
+            url: "/Assignment_Java4_war/SearchByAjax",
+            type: "get",
+            data: {
+                q: txtSearch
+            },
+            success: function (data) {
+                var row = document.getElementById("content");
+                row.innerHTML = data;
+
+            },
+            error: function (xhr) {
+
+            }
+        })
+    }
+</script>
 </body>
 
 </html>

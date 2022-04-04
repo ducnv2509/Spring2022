@@ -51,6 +51,7 @@ public class Products {
     @OneToMany(mappedBy = "productsByProductId")
     private Collection<Orderdetails> orderdetailsById;
     @ManyToOne(optional = false)
+
     @JoinColumn(name = "category_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Category categoryByCategoryId;
 

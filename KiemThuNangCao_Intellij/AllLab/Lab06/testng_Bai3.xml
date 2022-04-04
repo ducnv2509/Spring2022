@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="E:/New folder/Spring2022/KiemThuNangCao_Intellij/AllLab/Lab06/src/main/java/Bai3.java">
+        <parameter name="BrowserName" value="ducnv.edu.vn"/>
+        <parameter name="username" value="ducnv"/>
+        <parameter name="password" value="123"/>
+        <classes>
+            <class name="Bai3">
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -109,7 +109,7 @@ public class ListProductsDAO extends DAO<Products, Integer> {
         try {
             Connection con = BaseService.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, (index - 1) * 3);
+            ps.setInt(1, (index - 1) * 6);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Products(
@@ -180,6 +180,47 @@ public class ListProductsDAO extends DAO<Products, Integer> {
             Connection con = BaseService.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + search + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Products(
+                        rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getDate(12), rs.getDate(13)
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Products> getTop3() {
+        List<Products> list = new ArrayList<>();
+        String sql = "select  top 3 * from products";
+        try {
+            Connection con = BaseService.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Products(
+                        rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getDate(12), rs.getDate(13)
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Products> getNextTop3(int amount) {
+        List<Products> list = new ArrayList<>();
+        String sql = "select  * from products order by  id offset ? rows fetch  next  3 rows  only ";
+        try {
+            Connection con = BaseService.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, amount);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Products(

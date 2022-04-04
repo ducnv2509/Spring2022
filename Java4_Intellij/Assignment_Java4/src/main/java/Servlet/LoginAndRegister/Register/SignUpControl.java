@@ -1,6 +1,7 @@
 package Servlet.LoginAndRegister.Register;
 
 import DAO.AccountDAO;
+import Utils.EncryptUtils;
 import entity.Users;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -41,12 +42,14 @@ public class SignUpControl extends HttpServlet {
                 try {
                     Users users = new Users();
                     BeanUtils.populate(users, request.getParameterMap());
+                    String hashed = EncryptUtils.hashPassword(users.getPassword());
+                    users.setPassword(hashed);
                     users.setAvatar(null);
                     users.setCreated(null);
-                    users.setAdmin(false);
+                    users.setRole(false);
                     users.setStatus(true);
                     accountDAO.insert(users);
-                    response.sendRedirect("/Assignment_Java4_war/HomePage");
+                    response.sendRedirect("/Assignment_Java4_war/LoginControl");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

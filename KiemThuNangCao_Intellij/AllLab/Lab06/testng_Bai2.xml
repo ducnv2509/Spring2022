@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="E:/New folder/Spring2022/KiemThuNangCao_Intellij/AllLab/Lab06/src/main/java/Bai2.java">
+        <classes>
+            <parameter name="param" value="I am Duc Nguyen">
+                <class name="Bai2"/>
+            </parameter>
+        </classes>
+    </test>
+</suite>

@@ -1,11 +1,12 @@
 package entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collection;
 
 @Entity
 public class Users {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -39,7 +40,7 @@ public class Users {
     private Date created;
     @Basic
     @Column(name = "isAdmin", nullable = true)
-    private Boolean isAdmin;
+    private Boolean role;
     @Basic
     @Column(name = "status", nullable = true)
     private Boolean status;
@@ -130,12 +131,12 @@ public class Users {
         this.created = created;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
+    public Boolean getRole() {
+        return role;
     }
 
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
+    public void setRole(Boolean admin) {
+        role = admin;
     }
 
     public Boolean getStatus() {
@@ -163,7 +164,7 @@ public class Users {
         if (gender != null ? !gender.equals(users.gender) : users.gender != null) return false;
         if (avatar != null ? !avatar.equals(users.avatar) : users.avatar != null) return false;
         if (created != null ? !created.equals(users.created) : users.created != null) return false;
-        if (isAdmin != null ? !isAdmin.equals(users.isAdmin) : users.isAdmin != null) return false;
+        if (role != null ? !role.equals(users.role) : users.role != null) return false;
         if (status != null ? !status.equals(users.status) : users.status != null) return false;
 
         return true;
@@ -181,7 +182,7 @@ public class Users {
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
         result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
         result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + (isAdmin != null ? isAdmin.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
     }
@@ -214,7 +215,7 @@ public class Users {
     public Users() {
     }
 
-    public Users(int id, String username, String password, String fullName, String address, String email, String phone, Boolean gender, String avatar, Date created, Boolean isAdmin, Boolean status) {
+    public Users(int id, String username, String password, String fullName, String address, String email, String phone, Boolean gender, String avatar, Date created, Boolean role, Boolean status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -225,7 +226,7 @@ public class Users {
         this.gender = gender;
         this.avatar = avatar;
         this.created = created;
-        this.isAdmin = isAdmin;
+        this.role = role;
         this.status = status;
     }
 }

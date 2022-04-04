@@ -41,9 +41,12 @@
                         <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                              data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
+                                <c:url var="AccountServlet" value="/AccountServlet"/>
                                 <a class="nav-link" href="/Assignment_Java4_war/DashboardAdmin/login">Login</a>
                                 <a class="nav-link" href="/Assignment_Java4_war/DashboardAdmin/register">Register</a>
-                                <a class="nav-link" href="/Assignment_Java4_war/DashboardAdmin/forgot">Forgot Password</a>
+                                <a class="nav-link" href="/Assignment_Java4_war/DashboardAdmin/forgot">Forgot
+                                    Password</a>
+                                <a class="nav-link" href="${AccountServlet}/listAccount">Quản lý Account</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -56,8 +59,12 @@
                              data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <%--                                    <a class="nav-link" href="401.html">Sản phẩm</a>--%>
-                                    <c:url var="DashboardAdmin" value="/DashboardAdmin"/>
-                                    <a class="nav-link" href="${DashboardAdmin}/listProduct">Quản lý sản phẩm</a>
+                                <c:url var="DashboardAdmin" value="/DashboardAdmin"/>
+                                <c:url var="CategoryServlet" value="/CategoryServlet"/>
+                                <c:url var="SupplierServlet" value="/SupplierServlet"/>
+                                <a class="nav-link" href="${DashboardAdmin}/listProduct">Quản lý sản phẩm</a>
+                                <a class="nav-link" href="${CategoryServlet}/listCategory">Quản lý Category</a>
+                                <a class="nav-link" href="${SupplierServlet}/listSupplier">Quản lý Nhà cung cấp</a>
                                 <a class="nav-link" href="500.html">Quản lý đơn hàng</a>
                             </nav>
                         </div>

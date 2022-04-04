@@ -140,7 +140,6 @@
         DataTable Example
     </div>
     <div class="card-body">
-        <%--        <form action="DashboardAdmin" method="post" enctype="multipart/form-data">--%>
         <table id="datatablesSimple">
             <thead>
             <tr>
@@ -186,46 +185,47 @@
                             sửa
                         </button>
                         <!--Đây là modal xoá nhé-->
+                        <form action="DashboardAdmin" method="post" enctype="multipart/form-data">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal_delete${product.id}">
+                                Xoá
+                            </button>
 
-                        <button  class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal_delete${product.id}">
-                            Xoá
-                        </button>
+                            <!-- Modal -->
 
-                        <!-- Modal -->
-
-                        <!-- Button trigger modal -->
-                        <div class="modal fade" id="exampleModal_delete${product.id}" tabindex="-1"
-                             aria-labelledby="exampleModalLabel_delete${product.id}" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel_delete${product.id}">
-                                            Bạn có muốn xoá không ?</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="text-center">
-                                            <img src="${pageContext.servletContext.contextPath}/views/images/are-you-sure-will-ferrel.gif"
-                                                 alt="">
+                            <!-- Button trigger modal -->
+                            <div class="modal fade" id="exampleModal_delete${product.id}" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel_delete${product.id}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel_delete${product.id}">
+                                                Bạn có muốn xoá không ?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                         </div>
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <img src="${pageContext.servletContext.contextPath}/views/images/are-you-sure-will-ferrel.gif"
+                                                     alt="">
+                                            </div>
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">
-                                            Close
-                                        </button>
-                                            <%--                                                                                                    <a class="btn btn-danger" href="/Assignment_Java4_war/DashboardAdmin/delete?id=${product.id}" role="button">Xoá</a>--%>
-                                        <button class="btn btn-danger"
-                                                formaction="DashboardAdmin/delete?id=${product.id}"
-                                        >Xoá
-                                        </button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                                <%--                                                                                                    <a class="btn btn-danger" href="/Assignment_Java4_war/DashboardAdmin/delete?id=${product.id}" role="button">Xoá</a>--%>
+                                            <button class="btn btn-danger"
+                                                    formaction="DashboardAdmin/delete?id=${product.id}"
+                                            >Xoá
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         <!-- Hết rồi nhé-->
                     </td>
                 </tr>
@@ -240,7 +240,6 @@
                                         aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                    <%--                                    <form action="DashboardAdmin" method="post" enctype="multipart/form-data">--%>
                                 <form action="DashboardAdmin" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -338,8 +337,6 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="formFile">Image</label>
-                                                    <%--                                                <img src="${product.imageProduct}" class="img-fluid form-control"--%>
-                                                    <%--                                                     width="100px" alt="">--%>
                                                 <input class="form-control" id="formFile" type="file"
                                                        name="imageProduct" value="${product.imageProduct}">
                                             </div>
@@ -374,7 +371,6 @@
             </c:forEach>
             </tbody>
         </table>
-        <%--        </form>--%>
     </div>
 </div>
 

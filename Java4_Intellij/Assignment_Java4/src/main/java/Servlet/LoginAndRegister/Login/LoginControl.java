@@ -1,6 +1,7 @@
 package Servlet.LoginAndRegister.Login;
 
 import DAO.AccountDAO;
+import Utils.EncryptUtils;
 import com.cloudinary.provisioning.Account;
 import entity.Users;
 
@@ -28,13 +29,25 @@ public class LoginControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        Users a = accountDAO.login(username, password);
-        if (a == null) {
+        Users u = accountDAO.findByUsername(request.getParameter("username"));
+        boolean checked = EncryptUtils.checkPass(password, u.getPassword());
+        if (checked == true) {
+            HttpSession session = request.getSession();
+            session.setAttribute("acc", u);
+            response.sendRedirect("/Assignment_Java4_war/HomePage");
+        } else {
             request.setAttribute("message", "Wrong user or password");
             request.getRequestDispatcher("/views/LoginAndRegister/Login/login-form-15/login.jsp").forward(request, response);
-        } else {
-            response.sendRedirect("/Assignment_Java4_war/HomePage");
         }
+//        Users a = accountDAO.login(username, password);
+//        if (a == null) {
+//            request.setAttribute("message", "Wrong user or password");
+//            request.getRequestDispatcher("/views/LoginAndRegister/Login/login-form-15/login.jsp").forward(request, response);
+//        } else {
+//            HttpSession session = request.getSession();
+//            session.setAttribute("acc", a);
+//            response.sendRedirect("/Assignment_Java4_war/HomePage");
+//        }
     }
 
 

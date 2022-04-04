@@ -32,10 +32,6 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
-<%--                <jsp:include page="../component/card.jsp"/>--%>
-<%--                <jsp:include page="../component/chart.jsp"/>--%>
-<%--                <jsp:include page="../component/tableProducts.jsp"/>--%>
-<%--                <c:url var="DashboardAdmin" value="/DashboardAdmin"/>--%>
                 <jsp:include page="${views}"/>
             </div>
         </main>

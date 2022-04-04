@@ -32,6 +32,8 @@ public class DashboardAdmin extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         String uri = request.getRequestURI();
         if (uri.contains("index")) {
             request.setAttribute("views", "/views/admin/component/baseLayout.jsp");
@@ -45,13 +47,6 @@ public class DashboardAdmin extends HttpServlet {
             fillProducts(request, response);
             fillCategoryAndSupplier(request, response);
             request.setAttribute("views", "/views/admin/Dashboard/ManagerProducts/table.jsp");
-        } else if (uri.contains("createProduct")) {
-            edit(request, response);
-            fillCategoryAndSupplier(request, response);
-            request.setAttribute("views", "/views/admin/Dashboard/ManagerProducts/CRUD_Products.jsp");
-        } else if (uri.contains("delete")) {
-            delete(request, response);
-            response.sendRedirect("/Assignment_Java4_war/DashboardAdmin/listProduct");
         }
 
         request.getRequestDispatcher("/views/admin/Dashboard/layoutAdmin.jsp").forward(request, response);
@@ -125,7 +120,6 @@ public class DashboardAdmin extends HttpServlet {
     private void fillProducts(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<Products> listP = productsDAO.findAll();
-//            System.out.println("dcmmmmmmmmm " + listP.get(0).getCategoryByCategoryId().getId());
             request.setAttribute("product", listP);
         } catch (Exception e) {
             e.printStackTrace();
@@ -151,7 +145,6 @@ public class DashboardAdmin extends HttpServlet {
             "api_secret", "yoa_1l--izubACPSc3gyDXfdLCQ",
             "secure", true));
 
-    private static final String UPLOAD_DIR = "uploads";
     private void update(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException {
         try {
 
