@@ -9,7 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="navbar navbar-expand-lg navbar-light shadow">
     <form action="SearchControl" method="get" class="d-flex">
-        <input class="form-control me-2" oninput="searchByName(this)" type="search" name="q" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" oninput="searchByName(this)" type="search" name="q" placeholder="Search"
+               aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     <div class="container d-flex justify-content-between align-items-center">
@@ -55,13 +56,14 @@
                    data-bs-target="#templatemo_search">
                     <i class="fa fa-fw fa-search text-dark mr-2"></i>
                 </a>
-                <a class="nav-icon position-relative text-decoration-none" href="#">
+                <a class="nav-icon position-relative text-decoration-none"
+                   href="/Assignment_Java4_war/ShowCart">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"> ${cart_list.size()}</span>
                 </a>
-                <c:if test="${sessionScope.acc != null}">
+                <c:if test="${sessionScope.auth != null}">
                     <a class="nav-icon position-relative text-decoration-none">
-                        Hello ${sessionScope.acc.fullName}
+                        Hello ${sessionScope.auth.fullName}
                     </a>
                 </c:if>
                 <div class="dropdown">
@@ -70,14 +72,14 @@
                         <i class="fa fa-fw fa-user text-dark"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <c:if test="${sessionScope.acc == null}">
+                        <c:if test="${sessionScope.auth == null}">
                             <li><a class="dropdown-item" href="/Assignment_Java4_war/LoginControl">Login</a></li>
                         </c:if>
-                        <c:if test="${sessionScope.acc.role == true}">
+                        <c:if test="${sessionScope.auth.role == true}">
                             <li><a class="dropdown-item" href="/Assignment_Java4_war/AccountServlet/index">Dashboard</a>
                             </li>
                         </c:if>
-                        <c:if test="${sessionScope.acc != null}">
+                        <c:if test="${sessionScope.auth != null}">
                             <li><a class="dropdown-item" href="/Assignment_Java4_war/LogoutServlet">Logout</a></li>
                         </c:if>
                     </ul>

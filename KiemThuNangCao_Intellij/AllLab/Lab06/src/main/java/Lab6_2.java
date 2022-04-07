@@ -19,7 +19,7 @@ public class Lab6_2 {
         driver.get("https://www.demo.guru99.com/V4/");
     }
 
-    @Test(dataProvider = "dataTest")
+    @Test(dataProvider = "dataTestFailed")
     public void f(String username, String password) {
         driver.findElement(By.name("uid")).sendKeys(username);
         driver.findElement(By.name("password")).sendKeys(password);
@@ -28,13 +28,33 @@ public class Lab6_2 {
         Assert.assertEquals(alert, "User or Password is not valid");
         driver.switchTo().alert().accept();
     }
-    @DataProvider(name = "dataTest")
+
+    @DataProvider(name = "dataTestFailed")
     public Object[][] db() {
         return new Object[][]{
                 {"mngr394913", "12345"},
-                {"mngr394912", "revegAz"}
+                {"mngr394912", "revegAz"},
+                {"mngr394912", "revegsAz"}
         };
     }
+    @Test(dataProvider = "dataTestSuccess")
+    public void fa(String username, String password) {
+        driver.findElement(By.name("uid")).sendKeys(username);
+        driver.findElement(By.name("password")).sendKeys(password);
+        driver.findElement(By.name("btnLogin")).click();
+        String url = driver.getCurrentUrl();
+        Assert.assertEquals(url, "https://www.demo.guru99.com/V4/manager/Managerhomepage.php");
+    }
+
+
+    @DataProvider(name = "dataTestSuccess")
+    public Object[][] dataSuccess() {
+        return new Object[][]{
+                {"mngr394913", "revegAz"}
+        };
+    }
+
+
 
     @AfterTest
     public void afterTest() {

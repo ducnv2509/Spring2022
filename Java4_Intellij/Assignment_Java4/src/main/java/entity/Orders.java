@@ -42,7 +42,7 @@ public class Orders {
 
     // sửa nè
     @ManyToOne(optional = false)
-    @JoinColumn(name = "orderState", referencedColumnName = "id",  insertable = false, updatable = false)
+    @JoinColumn(name = "orderState", referencedColumnName = "id", insertable = false, updatable = false)
     private Orders orderStatesByOrderState;
 
     public int getId() {
@@ -130,8 +130,6 @@ public class Orders {
     @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Orders usersByUserId;
     // sửa nè
-
-
 
 
     @Override

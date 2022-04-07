@@ -1,16 +1,30 @@
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="entity.Users" %>
+<%@ page import="DAO.CustomerDAO.DAO.ProductDAO" %>
+<%@ page import="DAO.CustomerDAO.connection.DbCon" %>
 <%@ page import="entity.Products" %>
-<%@ page import="DAO.OrderDAO" %><%--
-  Created by IntelliJ IDEA.
-  User: ducit
-  Date: 3/27/2022
-  Time: 10:12 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="DAO.CustomerDAO.DAO.Cart" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8"
          session="true"
          language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+    Users auth = (Users) request.getSession().getAttribute("auth");
+    if (auth != null) {
+        request.setAttribute("auth", auth);
+    }
+    ProductDAO pd = new ProductDAO(DbCon.getConnection());
+    List<Products> products = pd.getAllProducts();
+
+    ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+    if (cart_list != null) {
+        request.setAttribute("cart_list", cart_list);
+    }
+%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +45,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/views/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
         .activeC {
             color: red;
@@ -82,7 +97,7 @@
                                                href="/Assignment_Java4_war/detailProduct?id=${i.id}"><i
                                                 class="far fa-eye"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2"
-                                               href="/Assignment_Java4_war/addCart?id=${i.id}"><i
+                                               href="/Assignment_Java4_war/add-to-cart?id=${i.id}"><i
                                                 class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>

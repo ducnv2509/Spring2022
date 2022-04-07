@@ -9,7 +9,7 @@ import java.io.IOException;
 public class getLayout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/views/Products/List_Products.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/Products/component/order.jsp").forward(request, response);
     }
 
     @Override

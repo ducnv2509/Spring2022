@@ -39,11 +39,11 @@ public class HomePageServlet extends HttpServlet {
         request.setAttribute("listA", list);
         request.setAttribute("endP", endPage);
         request.setAttribute("tag", index);
-        String uri = request.getRequestURI();
-        if (uri.contains("show")) {
-            findIdProduct(request, response);
-            request.getRequestDispatcher("/views/Products/detailProduct.jsp").forward(request, response);
-        }
+//        String uri = request.getRequestURI();
+//        if (uri.contains("show")) {
+//            findIdProduct(request, response);
+//            request.getRequestDispatcher("/views/Products/detailProduct.jsp").forward(request, response);
+//        }
         findAllProducts(request, response);
         request.getRequestDispatcher("/views/Products/List_Products.jsp").forward(request, response);
     }

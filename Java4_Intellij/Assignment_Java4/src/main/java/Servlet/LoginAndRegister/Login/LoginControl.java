@@ -33,7 +33,7 @@ public class LoginControl extends HttpServlet {
         boolean checked = EncryptUtils.checkPass(password, u.getPassword());
         if (checked == true) {
             HttpSession session = request.getSession();
-            session.setAttribute("acc", u);
+            session.setAttribute("auth", u);
             response.sendRedirect("/Assignment_Java4_war/HomePage");
         } else {
             request.setAttribute("message", "Wrong user or password");

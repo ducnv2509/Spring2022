@@ -1,7 +1,7 @@
 package entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collection;
 
 @Entity
@@ -21,7 +21,7 @@ public class Products {
     private Integer supplierId;
     @Basic
     @Column(name = "quantity", nullable = true)
-    private Integer quantity;
+    private int quantity;
     @Basic
     @Column(name = "price", nullable = true)
     private Integer price;
@@ -51,10 +51,8 @@ public class Products {
     @OneToMany(mappedBy = "productsByProductId")
     private Collection<Orderdetails> orderdetailsById;
     @ManyToOne(optional = false)
-
     @JoinColumn(name = "category_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Category categoryByCategoryId;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "supplier_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Supplier supplierBySupplierId;
@@ -63,7 +61,7 @@ public class Products {
 
     }
 
-    public Products(int id, String nameProduct, Integer categoryId, Integer supplierId, Integer quantity, Integer price, String color, String size, String imageProduct, String description, String title, Date lastUpdate, Date created) {
+    public Products(int id, String nameProduct, Integer categoryId, Integer supplierId, int quantity, Integer price, String color, String size, String imageProduct, String description, String title, Date lastUpdate, Date created) {
         this.id = id;
         this.nameProduct = nameProduct;
         this.categoryId = categoryId;
@@ -111,11 +109,11 @@ public class Products {
         this.supplierId = supplierId;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -175,7 +173,7 @@ public class Products {
         this.lastUpdate = lastUpdate;
     }
 
-    public Date getCreated() {
+    public java.util.Date getCreated() {
         return created;
     }
 
@@ -195,7 +193,7 @@ public class Products {
             return false;
         if (categoryId != null ? !categoryId.equals(products.categoryId) : products.categoryId != null) return false;
         if (supplierId != null ? !supplierId.equals(products.supplierId) : products.supplierId != null) return false;
-        if (quantity != null ? !quantity.equals(products.quantity) : products.quantity != null) return false;
+//        if (quantity != null ? !quantity.equals(products.quantity) : products.quantity != null) return false;
         if (price != null ? !price.equals(products.price) : products.price != null) return false;
         if (color != null ? !color.equals(products.color) : products.color != null) return false;
         if (size != null ? !size.equals(products.size) : products.size != null) return false;
@@ -216,7 +214,7 @@ public class Products {
         result = 31 * result + (nameProduct != null ? nameProduct.hashCode() : 0);
         result = 31 * result + (categoryId != null ? categoryId.hashCode() : 0);
         result = 31 * result + (supplierId != null ? supplierId.hashCode() : 0);
-        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
+//        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (color != null ? color.hashCode() : 0);
         result = 31 * result + (size != null ? size.hashCode() : 0);

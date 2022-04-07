@@ -31,6 +31,14 @@ public class Lab6_1 {
     }
 
     @Test
+    public void checkLoginSuccessURL() {
+        String title = driver.getCurrentUrl();
+        Assert.assertEquals(title, "https://www.demo.guru99.com/V4/manager/Managerhomepage.php");
+        System.out.println("Is Title: " + title);
+
+    }
+
+    @Test
     public void checkLoginSuccessContent() {
         String welcome = driver.findElement(By.className("heading3")).getText();
         Assertions.assertEquals(welcome, "Welcome To Manager's Page of Guru99 Bank");

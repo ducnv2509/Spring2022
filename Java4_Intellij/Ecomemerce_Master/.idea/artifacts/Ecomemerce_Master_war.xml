@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Ecomemerce_Master:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Ecomemerce_Master</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Ecomemerce_Master-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Ecomemerce_Master:war exploded" />
+    </root>
+  </artifact>
+</component>
