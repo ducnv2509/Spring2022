@@ -40,7 +40,8 @@
                 </ul>
             </div>
             <form action="SearchControl" method="get" class="d-flex">
-                <input class="form-control me-2" oninput="searchByName(this)" type="search" name="q" placeholder="Search"
+                <input class="form-control me-2" oninput="searchByName(this)" type="search" name="q"
+                       placeholder="Search"
                        aria-label="Search">
             </form>
             <div class="navbar align-self-center d-flex">
@@ -57,7 +58,7 @@
                     <i class="fa fa-fw fa-search text-dark mr-2"></i>
                 </a>
                 <a class="nav-icon position-relative text-decoration-none"
-<%--                   buggg--%>
+                <%--                   buggg--%>
                    href="/ecommerce_Java4_war/ShowCart">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"> ${cart_list.size()}</span>
@@ -74,14 +75,15 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <c:if test="${sessionScope.auth == null}">
-                            <li><a class="dropdown-item" href="/Assignment_Java4_war/LoginControl">Login</a></li>
+                            <li><a class="dropdown-item" href="/ecommerce_Java4_war/LoginControl">Login</a></li>
                         </c:if>
                         <c:if test="${sessionScope.auth.role == true}">
-                            <li><a class="dropdown-item" href="/Assignment_Java4_war/AccountServlet/index">Dashboard</a>
+                            <li><a class="dropdown-item" href="/ecommerce_Java4_war/DashboardAdmin/index">Dashboard</a>
                             </li>
                         </c:if>
                         <c:if test="${sessionScope.auth != null}">
-                            <li><a class="dropdown-item" href="/Assignment_Java4_war/LogoutServlet">Logout</a></li>
+                            <li><a class="dropdown-item" href="/ecommerce_Java4_war/ProfileServlet">Profile</a></li>
+                            <li><a class="dropdown-item" href="/ecommerce_Java4_war/LogoutServlet">Logout</a></li>
                         </c:if>
                     </ul>
                 </div>

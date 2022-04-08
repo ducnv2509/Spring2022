@@ -80,6 +80,34 @@
 <!-- Start Content -->
 <div class="container py-5">
     <div class="row">
+        <div class="col">
+            <c:if test="${not empty sessionScope.message}">
+                <script>
+                    Swal.fire({
+                        icon: "success",
+                        title: "SuccessFully!",
+                        text: "${sessionScope.message}",
+                        showConfirmButton: false,
+                        closeOnClickOutside: false,
+                        allowOutsideClick: false,
+                        timer: 1600,
+                    });
+                </script>
+                <c:remove var="message" scope="session"/>
+            </c:if>
+            <c:if test="${not empty sessionScope.error}">
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'ERROR!',
+                        text: '${sessionScope.error}',
+                    })
+                </script>
+                <c:remove var="error" scope="session"/>
+            </c:if>
+        </div>
+    </div>
+    <div class="row">
 
         <jsp:include page="include/component/categories.jsp"/>
         <div class="col-lg-9">

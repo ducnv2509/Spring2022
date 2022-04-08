@@ -71,9 +71,9 @@
                 <%--                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>--%>
                 <%--                        Charts--%>
                 <%--                    </a>--%>
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="/ecommerce_Java4_war/DashboardAdminOrder/index">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    Danh sách sản phẩm
+                    Chốt đơn
                 </a>
             </div>
         </div>

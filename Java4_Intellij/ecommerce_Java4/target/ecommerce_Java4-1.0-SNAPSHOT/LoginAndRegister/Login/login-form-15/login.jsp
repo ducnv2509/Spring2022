@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,7 +30,7 @@
             <div class="col-md-7 col-lg-5">
                 <div class="wrap">
                     <div class="img"
-                         style="background-image: url(${pageContext.servletContext.contextPath}/views/LoginAndRegister/Login/login-form-15/images/bg-1.jpg);"></div>
+                         style="background-image: url(${pageContext.servletContext.contextPath}/LoginAndRegister/Login/login-form-15/images/bg-1.jpg);"></div>
                     <div class="login-wrap p-4 p-md-5">
                         <div class="d-flex">
                             <div class="w-100">
@@ -46,9 +47,6 @@
                                             class="fa fa-twitter"></span></a>
                                 </p>
                             </div>
-                        </div>
-                        <div class="alert alert-danger" role="alert">
-                            ${message}
                         </div>
                         <form action="LoginControl" class="signin-form" method="post">
                             <div class="form-group mt-3">

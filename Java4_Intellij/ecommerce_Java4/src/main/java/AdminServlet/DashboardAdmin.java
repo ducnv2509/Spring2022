@@ -289,10 +289,16 @@ public class DashboardAdmin extends HttpServlet {
 
     private void updateAccount(HttpServletRequest request, HttpServletResponse response) {
         try {
+            HttpSession session = request.getSession();
+            Users usersSes = (Users) session.getAttribute("auth");
+            Users id = accountDAO.findByID(usersSes.getId());
             Users userOld = accountDAO.findByID(Integer.parseInt(request.getParameter("id")));
             Users users = new Users();
             users.setCreated(new Date());
             users.setPassword(userOld.getPassword());
+            users.setAddress(id.getAddress());
+            users.setAvatar(id.getAvatar());
+            users.setCreated(id.getCreated());
             BeanUtils.populate(users, request.getParameterMap());
             accountDAO.update(users);
             request.setAttribute("message", "Update success !!!");

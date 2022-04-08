@@ -82,7 +82,7 @@
                             </li>
                         </c:if>
                         <c:if test="${sessionScope.auth != null}">
-                            <li><a class="dropdown-item" href="/ecommerce_Java4_war/Profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="/ecommerce_Java4_war/ProfileServlet">Profile</a></li>
                             <li><a class="dropdown-item" href="/ecommerce_Java4_war/LogoutServlet">Logout</a></li>
                         </c:if>
                     </ul>

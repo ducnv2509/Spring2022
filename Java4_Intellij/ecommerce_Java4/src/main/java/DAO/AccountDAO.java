@@ -108,4 +108,50 @@ public class AccountDAO extends DAO<Users, Integer> {
         }
         return null;
     }
+
+    public Users updatePassword(String pass, int id) {
+        String sql = "update users set password = ? where id = ? ";
+        try {
+            Connection con = BaseService.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pass);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Users findByUsernameAndEmail(String username, String email) {
+        EntityManager em = JpaUtils.getEntityManager();
+        String jpql = "select u from Users u where u.username =: username and u.email =: email";
+        try {
+            TypedQuery<Users> query = em.createQuery(jpql, Users.class);
+            query.setParameter("username", username);
+            query.setParameter("email", email);
+            return query.getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Users updatePasswordByUsername(String pass, String username) {
+        String sql = "update users set password = ? where username = ?";
+        try {
+            Connection con = BaseService.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pass);
+            ps.setString(2, username);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        new AccountDAO().updatePasswordByUsername("333", "demo");
+        System.out.println("ok");
+    }
 }

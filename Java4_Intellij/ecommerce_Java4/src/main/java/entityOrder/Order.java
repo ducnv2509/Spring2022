@@ -9,6 +9,7 @@ public class Order extends Products {
     private String date;
     private int statusState;
 
+
     public int getStatusState() {
         return statusState;
     }
@@ -17,8 +18,11 @@ public class Order extends Products {
         this.statusState = statusState;
     }
 
-    public Order() {
+    public Order(int anInt, String string, String rsString, String s, String string1, int rsInt, int i, int anInt1) {
 
+    }
+
+    public Order() {
     }
 
     public Order(int orderId, int uid, int quantity, String date, int statusState) {
@@ -36,8 +40,8 @@ public class Order extends Products {
         this.quantity = quantity;
         this.date = date;
         this.statusState = statusState;
-
     }
+
 
     public int getOrderId() {
         return orderId;
