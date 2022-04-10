@@ -31,6 +31,7 @@ public class LoginControl extends HttpServlet {
         if (checked == true) {
             HttpSession session = request.getSession();
             session.setAttribute("auth", u);
+            session.setAttribute("message", "Login successfully !");
             response.sendRedirect("/ecommerce_Java4_war/HomePage");
         } else {
             request.setAttribute("message", "Wrong user or password");

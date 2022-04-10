@@ -51,6 +51,10 @@ public class DashboardAdmin extends HttpServlet {
         if (uri.contains("index")) {
             request.setAttribute("views", "/views/dashboardAdmin/component/baseLayout.jsp");
         } else if (uri.contains("mnCategory")) {
+//            int quantity = categoryDAO.getQuantityByCategory(3);
+//            System.out.println("----------------------------");
+//            System.out.println(request.getParameter("id_c"));
+//            request.setAttribute("quantity", quantity);
             fillCategory(request, response);
             request.setAttribute("views", "/views/dashboardAdmin/ManagerCategory/CRUD_Category.jsp");
         } else if (uri.contains("mnSupplier")) {
@@ -73,31 +77,40 @@ public class DashboardAdmin extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String uri = request.getRequestURI();
+        HttpSession session = request.getSession();
         if (uri.contains("updateP")) {
             try {
                 update(request, response);
+                session.setAttribute("message", "Update Success!!!");
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnProducts");
         } else if (uri.contains("storeP")) {
             insert(request, response);
+            session.setAttribute("message", "Insert Success!!!");
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnProducts");
         } else if (uri.contains("deleteP")) {
             delete(request, response);
+            session.setAttribute("message", "Delete Success!!!");
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnProducts");
         } else if (uri.contains("updateA")) {
             updateAccount(request, response);
+            session.setAttribute("message", "Update Success!!!");
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnAccount");
         } else if (uri.contains("storeA")) {
             insertAccount(request, response);
+            session.setAttribute("message", "Insert Success!!!");
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnAccount");
         } else if (uri.contains("deleteA")) {
             deleteAccount(request, response);
+            session.setAttribute("message", "Delete Success!!!");
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnAccount");
         } else if (uri.contains("updateC")) {
             try {
                 updateCategory(request, response);
+                session.setAttribute("message", "Update Success!!!");
+
             } catch (InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -105,6 +118,7 @@ public class DashboardAdmin extends HttpServlet {
         } else if (uri.contains("storeC")) {
             try {
                 insertCategory(request, response);
+                session.setAttribute("message", "Insert Success!!!");
             } catch (InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -112,10 +126,12 @@ public class DashboardAdmin extends HttpServlet {
 
         } else if (uri.contains("deleteC")) {
             deleteCategory(request, response);
+            session.setAttribute("message", "Delete Success!!!");
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnCategory");
         } else if (uri.contains("updateS")) {
             try {
                 updateSupplier(request, response);
+                session.setAttribute("message", "Update Success!!!");
             } catch (InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -123,6 +139,7 @@ public class DashboardAdmin extends HttpServlet {
         } else if (uri.contains("storeS")) {
             try {
                 insertSupplier(request, response);
+                session.setAttribute("message", "Insert Success!!!");
             } catch (InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -131,6 +148,7 @@ public class DashboardAdmin extends HttpServlet {
 
         } else if (uri.contains("deleteS")) {
             deleteSupplier(request, response);
+            session.setAttribute("message", "Delete Success!!!");
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnSupplier");
         }
     }
@@ -155,10 +173,6 @@ public class DashboardAdmin extends HttpServlet {
             products.setImageProduct(uploadRuslt.get("url").toString());
             BeanUtils.populate(products, request.getParameterMap());
             productsDAO.insert(products);
-            System.out.println("--------------------------------");
-            System.out.println(c_id);
-            System.out.println(s_id);
-            request.setAttribute("message", "Insert success !!!");
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", e.getMessage());

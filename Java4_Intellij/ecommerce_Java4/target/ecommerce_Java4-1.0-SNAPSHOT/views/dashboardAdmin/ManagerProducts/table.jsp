@@ -7,11 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--<c:url var="DashboardAdmin" value="/DashboardAdmin"/>--%>
 
 <%--<a class="btn btn-primary" href="${DashboardAdmin}/createProduct" role="button">Thêm mới</a>--%>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary mb-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Thêm mới
+</button>
+
+<button type="button" class="btn btn-primary ms-5 mt-5 mb-5">
+    Import Excel
 </button>
 
 <!-- Modal -->

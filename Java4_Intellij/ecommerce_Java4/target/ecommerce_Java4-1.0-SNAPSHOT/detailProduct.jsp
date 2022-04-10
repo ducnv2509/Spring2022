@@ -186,7 +186,7 @@
                                            href="/ecommerce_Java4_war/detailProduct?id=${i.id}"><i
                                             class="far fa-eye"></i></a></li>
                                     <li><a class="btn btn-success text-white mt-2"
-                                           href="/ecommerce_Java4_war/detailProduct?id=${i.id}"><i
+                                           href="/ecommerce_Java4_war/add-to-cart?id=${i.id}"><i
                                             class="fas fa-cart-plus"></i></a></li>
                                 </ul>
                             </div>

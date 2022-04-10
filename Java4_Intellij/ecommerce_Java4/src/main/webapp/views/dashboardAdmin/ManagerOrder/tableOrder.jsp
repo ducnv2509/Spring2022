@@ -17,7 +17,7 @@
     Users users = (Users) session.getAttribute("auth");
     AccountDAO accountDAO = new AccountDAO();
     StatusOrderDAO statusOrderDAO = new StatusOrderDAO();
-    List<FlowStatus> list = statusOrderDAO.ListStatus(users.getId());
+    List<FlowStatus> list = statusOrderDAO.ListStatus1();
 %>
 <div class="card-header">
     <i class="fas fa-table me-1"></i>

@@ -20,12 +20,41 @@
     <link href="${pageContext.servletContext.contextPath}/views/dashboardAdmin/css/styles.css" rel="stylesheet"/>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <base href="/ecommerce_Java4_war/">
 </head>
 <body class="sb-nav-fixed">
 <jsp:include page="component/navbar.jsp"/>
 <div id="layoutSidenav">
     <jsp:include page="component/layoutSidenav_nav.jsp"/>
+    <div class="row">
+        <div class="col">
+            <c:if test="${not empty sessionScope.message}">
+                <script>
+                    Swal.fire({
+                        icon: "success",
+                        title: "SuccessFully!",
+                        text: "${sessionScope.message}",
+                        showConfirmButton: false,
+                        closeOnClickOutside: false,
+                        allowOutsideClick: false,
+                        timer: 1600,
+                    });
+                </script>
+                <c:remove var="message" scope="session"/>
+            </c:if>
+            <c:if test="${not empty sessionScope.error}">
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'ERROR!',
+                        text: '${sessionScope.error}',
+                    })
+                </script>
+                <c:remove var="error" scope="session"/>
+            </c:if>
+        </div>
+    </div>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
@@ -33,6 +62,7 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
+
                 <jsp:include page="${views}"/>
             </div>
         </main>

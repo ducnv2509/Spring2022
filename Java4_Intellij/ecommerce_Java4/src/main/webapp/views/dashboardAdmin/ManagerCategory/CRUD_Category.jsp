@@ -24,9 +24,10 @@
             </div>
             <div class="modal-body">
                 <form action="DashboardAdmin" method="post">
+
                     <div class="row">
                         <div class="form-group">
-                            <label >Tên Category</label>
+                            <label>Tên Category</label>
                             <label>
                                 <input type="text" name="nameCategory" class="form-control">
                             </label>
@@ -67,7 +68,7 @@
             <tr>
                 <th>ID</th>
                 <th>Tên danh mục</th>
-                <th>Số lượng sản phẩm</th>
+                <%--                <th>Số lượng sản phẩm</th>--%>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -75,7 +76,7 @@
             <tr>
                 <th>ID</th>
                 <th>Tên danh mục</th>
-                <th>Số lượng sản phẩm</th>
+                <%--                <th>Số lượng sản phẩm</th>--%>
                 <th>Actions</th>
             </tr>
             </tfoot>
@@ -84,7 +85,9 @@
                 <tr>
                     <td>${category.id}</td>
                     <td>${category.nameCategory}</td>
-                    <td>${quantity}</td>
+                        <%--                    <td>--%>
+                        <%--&lt;%&ndash;                        <input type="text" class="hidden" value="${category.id}" name="id_c">&ndash;%&gt;--%>
+                        <%--                            ${quantity}</td>--%>
                     <td>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"

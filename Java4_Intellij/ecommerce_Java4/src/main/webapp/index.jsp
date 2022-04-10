@@ -49,6 +49,7 @@
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/include/assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .activeC {
             color: red;
@@ -80,6 +81,34 @@
 <!-- Start Content -->
 <div class="container py-5">
     <div class="row">
+        <div class="col">
+            <c:if test="${not empty sessionScope.message}">
+                <script>
+                    Swal.fire({
+                        icon: "success",
+                        title: "SuccessFully!",
+                        text: "${sessionScope.message}",
+                        showConfirmButton: false,
+                        closeOnClickOutside: false,
+                        allowOutsideClick: false,
+                        timer: 1600,
+                    });
+                </script>
+                <c:remove var="message" scope="session"/>
+            </c:if>
+            <c:if test="${not empty sessionScope.error}">
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'ERROR!',
+                        text: '${sessionScope.error}',
+                    })
+                </script>
+                <c:remove var="error" scope="session"/>
+            </c:if>
+        </div>
+    </div>
+    <div class="row">
 
         <jsp:include page="include/component/categories.jsp"/>
         <div class="col-lg-9">
@@ -109,7 +138,8 @@
                                 <a href="/ecommerce_Java4_war/detailProduct?id=${i.id}"
                                    class="h3 text-decoration-none">${i.nameProduct}</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
+                                    <li>Size: <strong>${i.size}</strong></li>
+                                    <li>Color: <strong>${i.color}</strong></li>
                                     <li class="pt-2">
                                         <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
                                         <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>

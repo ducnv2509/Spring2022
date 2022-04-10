@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="logFolder">logs</Property>
+    </Properties>
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="HibernateFile" fileName="${logFolder}/hibernate.log">
+            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <File name="GPCoderAppFile" fileName="${logFolder}/gpcoderApp.log">
+            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+    </Appenders>
+    <Loggers>
+        <Logger name="org.hibernate" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="HibernateFile"/>
+        </Logger>
+
+        <!-- Log SQL statements -->
+        <Logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="HibernateFile"/>
+        </Logger>
+
+        <!-- Parameters which are bound to SQL statements (ie. WHERE clause) -->
+        <Logger name="org.hibernate.type.descriptor.sql" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="HibernateFile"/>
+        </Logger>
+
+        <!-- Log GP Coder App statements -->
+        <Logger name="com.gpcoder" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="GPCoderAppFile"/>
+        </Logger>
+
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="GPCoderAppFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+        <!--<Configuration status="WARN">-->
+        <!--    <Properties>-->
+        <!--        <Property name="filename">-->
+        <!--            ./logs-->
+        <!--        </Property>-->
+        <!--    </Properties>-->
+        <!--    <Appenders>-->
+        <!--        <RollingFile name="file" fileName="${filename}/logdemo.log"-->
+        <!--                     filePattern="${filename}/logdemo-%d{HH-mm-ss-SSS}.log">-->
+        <!--            <PatternLayout>-->
+        <!--                <pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>-->
+        <!--            </PatternLayout>-->
+        <!--            <SizeBasedTriggeringPolicy size="10 MB"/>-->
+        <!--        </RollingFile>-->
+        <!--        <Console name="ducnv" target="SYSTEM_OUT">-->
+        <!--            <PatternLayout pattern="%d{HH:mm:ss:SSS} [%t] %-5level %logger{36} - %msg%n"/>-->
+        <!--        </Console>-->
+        <!--    </Appenders>-->
+        <!--    <Loggers>-->
+        <!--        <Logger name="importExcel" level="info" additivity="false">-->
+        <!--            <AppenderRef ref="ducnv"/>-->
+        <!--            <AppenderRef ref="file"/>-->
+        <!--        </Logger>-->
+        <!--        <Root level="fatal">-->
+        <!--            <AppenderRef ref="ducnv"/>-->
+        <!--            <AppenderRef ref="file"/>-->
+        <!--        </Root>-->
+        <!--    </Loggers>-->
+        <!--</Configuration>-->

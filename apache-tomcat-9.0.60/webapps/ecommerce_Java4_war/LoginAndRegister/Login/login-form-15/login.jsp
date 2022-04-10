@@ -72,7 +72,7 @@
                                     </label>
                                 </div>
                                 <div class="w-50 text-md-right">
-                                    <a href="#">Forgot Password</a>
+                                    <a href="/ecommerce_Java4_war/ForgotPassword">Forgot Password</a>
                                 </div>
                             </div>
                         </form>

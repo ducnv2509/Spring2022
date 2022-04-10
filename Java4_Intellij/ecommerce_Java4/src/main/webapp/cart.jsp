@@ -55,11 +55,7 @@
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/include/assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <style>
-        .activeC {
-            color: red;
-        }
-    </style>
+
     <!--
 
     TemplateMo 559 Zay Shop
@@ -117,14 +113,16 @@
             <td>
                 <form action="order-now" method="get" class="form-inline">
                     <input type="hidden" name="id" value="<%= c.getId()%>" class="form-input">
-                    <div class="form-group d-flex justify-content-between">
-                        <a class="btn bnt-sm btn-incre" href="quantity-inc-dec?action=inc&id=<%=c.getId()%>"><i
-                                class="fas fa-plus-square"></i></a>
-                        <input type="text" name="quantity" class="form-control" value="<%=c.getQuantity()%>" readonly>
+                    <div class="form-group d-flex">
                         <a class="btn btn-sm btn-decre" href="quantity-inc-dec?action=dec&id=<%=c.getId()%>"><i
                                 class="fas fa-minus-square"></i></a>
+                        <input type="text" name="quantity" class="form-control" value="<%=c.getQuantity()%>"
+                               style="width: 250px;"
+                               required>
+                        <a class="btn bnt-sm btn-incre" href="quantity-inc-dec?action=inc&id=<%=c.getId()%>"><i
+                                class="fas fa-plus-square"></i></a>
+                        <button type="submit" class="btn btn-primary btn-sm">Buy</button>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Buy</button>
                 </form>
             </td>
             <td><a href="remove-from-cart?id=<%=c.getId() %>" class="btn btn-sm btn-danger">Remove</a></td>

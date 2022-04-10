@@ -38,7 +38,7 @@
             </a>
             <ul id="collapseThree" class="collapse list-unstyled pl-3">
                 <c:forEach items="${category}" var="c">
-                    <li><a class="text-decoration-none ${tag == c.id ? "active" : ""}"
+                    <li><a class="text-decoration-none"
                            href="/ecommerce_Java4_war/CategoryControl?id=${c.id}">${c.nameCategory}</a></li>
                 </c:forEach>
             </ul>

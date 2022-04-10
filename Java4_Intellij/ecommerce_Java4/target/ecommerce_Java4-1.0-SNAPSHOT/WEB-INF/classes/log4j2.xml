@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="filename">
+            ./logs
+        </Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="file" fileName="${filename}/logdemo.log"
+                     filePattern="${filename}/logdemo-%d{HH-mm-ss-SSS}.log">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <SizeBasedTriggeringPolicy size="10 MB"/>
+        </RollingFile>
+        <Console name="ducnv" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss:SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="importExcel" level="info" additivity="false">
+            <AppenderRef ref="ducnv"/>
+            <AppenderRef ref="file"/>
+        </Logger>
+        <Root level="fatal">
+            <AppenderRef ref="ducnv"/>
+            <AppenderRef ref="file"/>
+        </Root>
+    </Loggers>
+</Configuration>

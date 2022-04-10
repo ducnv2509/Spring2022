@@ -4,9 +4,13 @@ import Utils.BaseService;
 import Utils.JpaUtils;
 import entity.Supplier;
 import entity.Users;
+import importExcel.HelloExample;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PostPersist;
 import javax.persistence.TypedQuery;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,6 +36,7 @@ public class AccountDAO extends DAO<Users, Integer> {
         }
     }
 
+
     @Override
     public void update(Users entity) {
         EntityManager em = JpaUtils.getEntityManager();
@@ -55,7 +60,7 @@ public class AccountDAO extends DAO<Users, Integer> {
         EntityTransaction trans = em.getTransaction();
         try {
             trans.begin();
-            Supplier user = em.find(Supplier.class, key);
+            Users user = em.find(Users.class, key);
             if (user != null) {
                 em.remove(user);
             } else {

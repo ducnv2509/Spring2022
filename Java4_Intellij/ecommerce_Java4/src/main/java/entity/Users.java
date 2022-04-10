@@ -1,10 +1,16 @@
 package entity;
 
+import DAO.AccountDAO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class Users {
+    final static Logger logger = LogManager.getLogger(Users.class.getName());
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -156,6 +162,22 @@ public class Users {
         this.role = role;
         this.status = status;
     }
+
+    @PostPersist
+    public void logNewUserAdded() {
+        logger.info("Added user '" + username + "' with ID: " + id);
+    }
+
+    @PostRemove
+    public void logUserRemoval() {
+        logger.info("Deleted user: " + username);
+    }
+
+    @PostUpdate
+    public void logUserUpdate() {
+        logger.info("Updated user: " + username);
+    }
+
 
     @Override
     public boolean equals(Object o) {
