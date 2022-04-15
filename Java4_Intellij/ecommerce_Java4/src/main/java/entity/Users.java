@@ -1,6 +1,9 @@
 package entity;
 
 import DAO.AccountDAO;
+import Utils.SaveLogin;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -163,21 +166,6 @@ public class Users {
         this.status = status;
     }
 
-    @PostPersist
-    public void logNewUserAdded() {
-        logger.info("Added user '" + username + "' with ID: " + id);
-    }
-
-    @PostRemove
-    public void logUserRemoval() {
-        logger.info("Deleted user: " + username);
-    }
-
-    @PostUpdate
-    public void logUserUpdate() {
-        logger.info("Updated user: " + username);
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -217,5 +205,22 @@ public class Users {
         result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
+    }
+
+    private static final Log log = LogFactory.getLog(Users.class);
+
+    @PostPersist
+    public void logNewUserAdded() {
+        log.info("Added account: '" + username + "' with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostRemove
+    public void logUserRemoval() {
+        log.info("Deleted account: " + username + " with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostUpdate
+    public void logUserUpdate() {
+        log.info("Updated account: " + username + " with name: " + SaveLogin.user.getFullName());
     }
 }

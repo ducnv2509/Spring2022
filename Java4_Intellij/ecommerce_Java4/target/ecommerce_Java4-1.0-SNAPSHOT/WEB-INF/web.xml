@@ -6,8 +6,9 @@
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
-    <context-param>
-        <param-name>log4jConfiguration</param-name>
-        <param-value>log4j2.xml</param-value>
-    </context-param>
+
+<!--    <context-param>-->
+<!--        <param-name>log4jConfiguration</param-name>-->
+<!--        <param-value>log4j2.xml</param-value>-->
+<!--    </context-param>-->
 </web-app>

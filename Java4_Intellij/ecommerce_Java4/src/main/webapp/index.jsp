@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/include/assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <base href="/ecommerce_Java4_war/">
     <style>
         .activeC {
             color: red;
@@ -68,7 +69,10 @@
 <!-- Start Top Nav -->
 <jsp:include page="include/component/info.jsp"/>
 <!-- Close Top Nav -->
-
+<div id="spinner" class="spinner" style="display:none;">
+    Getting value. Please wait....<br>
+    <img id="img-spinner" src="loader.gif" alt="Loading"/>
+</div>
 
 <!-- Header -->
 <jsp:include page="include/component/header.jsp"/>
@@ -193,6 +197,17 @@
 <!-- End Script -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+    $(document).ready(function () {
+        $("#spinner").bind("ajaxSend", function () {
+            $(this).show();
+        }).bind("ajaxStop", function () {
+            $(this).hide();
+        }).bind("ajaxError", function () {
+            $(this).hide();
+        });
+
+    });
+
     function loadMore() {
         var amount = document.getElementsByClassName("product").length;
         $.ajax({

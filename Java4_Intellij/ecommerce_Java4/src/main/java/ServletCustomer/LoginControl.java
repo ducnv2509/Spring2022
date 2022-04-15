@@ -2,6 +2,7 @@ package ServletCustomer;
 
 import DAO.AccountDAO;
 import Utils.EncryptUtils;
+import Utils.SaveLogin;
 import entity.Users;
 
 import javax.servlet.*;
@@ -32,6 +33,7 @@ public class LoginControl extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("auth", u);
             session.setAttribute("message", "Login successfully !");
+            SaveLogin.user = u;
             response.sendRedirect("/ecommerce_Java4_war/HomePage");
         } else {
             request.setAttribute("message", "Wrong user or password");

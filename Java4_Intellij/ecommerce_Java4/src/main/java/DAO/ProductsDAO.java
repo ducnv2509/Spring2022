@@ -4,6 +4,7 @@ import Utils.BaseService;
 import Utils.JpaUtils;
 import entity.Products;
 import entityOrder.Cart;
+import lombok.extern.log4j.Log4j2;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class ProductsDAO extends DAO<Products, Integer> {
 
     private Connection con;
@@ -37,6 +39,32 @@ public class ProductsDAO extends DAO<Products, Integer> {
         try {
             trans.begin();
             em.persist(entity);
+            trans.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            trans.rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+
+    }
+
+    public void insertExcel(List<Products> entity) {
+        EntityManager em = JpaUtils.getEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            final int numberOfRecords = 30;
+            final int batchSize = 10;
+            for (int i = 0; i <= entity.size() - 1; i++) {
+                em.persist(entity.get(i));
+                if (i % batchSize == 20) {
+                    log.info("Flush a batch of INSERT & release memory: {} time(s)", (i / batchSize));
+                    em.flush();
+                    em.clear();
+                }
+            }
             trans.commit();
         } catch (Exception e) {
             e.printStackTrace();

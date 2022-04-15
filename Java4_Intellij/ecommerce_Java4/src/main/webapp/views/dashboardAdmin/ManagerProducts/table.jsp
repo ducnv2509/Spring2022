@@ -14,17 +14,18 @@
 <button type="button" class="btn btn-primary mb-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Thêm mới
 </button>
-
-<button type="button" class="btn btn-primary ms-5 mt-5 mb-5">
-    Import Excel
-</button>
+<form class="mb-3" action="ImportExcelServlet" method="post" enctype="multipart/form-data">
+    <input type="file" class="form-control" name="file_import">
+    <button class="btn btn-primary mt-3" type="submit">Import</button>
+</form>
+<%--<a class="btn btn-primary" href="/ecommerce_Java4_war/ImportExcelServlet" role="button">Import</a>--%>
 
 <!-- Modal -->
 <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">CRUD_Products</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -32,7 +33,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Chủng loại</label>
+                                <label>Chủng loại</label>
                                 <select name="category_id" class="form-select" aria-label="Default select example">
                                     <c:forEach var="i" items="${category}">
                                         <option value="${i.id}">${i.nameCategory}</option>
@@ -42,7 +43,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Nhà cung cấp</label>
+                                <label>Nhà cung cấp</label>
                                 <select name="supplier_id" class="form-select" aria-label="Default select example">
                                     <c:forEach var="i" items="${supplier}">
                                         <option value="${i.id}">${i.nameSupplier}</option>
@@ -62,8 +63,8 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Số lượng</label>
-                                <input type="number" min="1" name="quantity" class="form-control"
-                                       value=""
+                                <input type="number" min="1" max="500" name="quantity" class="form-control"
+                                       required=""
                                 >
                             </div>
                         </div>
@@ -73,7 +74,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Đơn Giá</label>
-                                <input type="number" min="100" name="price" class="form-control" value="">
+                                <input type="number" min="100" max="1000" name="price" class="form-control" value=""
+                                       required=""
+                                >
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -116,7 +119,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -233,8 +235,7 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel_edit${product.id}">Modal
-                                    title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel_edit${product.id}">CRUD_Products</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
@@ -355,7 +356,6 @@
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>

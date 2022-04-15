@@ -5,13 +5,17 @@ import DAO.CategoryDAO;
 import DAO.ProductsDAO;
 import DAO.SupplierDAO;
 import Utils.EncryptUtils;
+import Utils.Validate;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import entity.Category;
 import entity.Products;
 import entity.Supplier;
 import entity.Users;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.PropertyConfigurator;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -22,6 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 @MultipartConfig
 @WebServlet({"/DashboardAdmin", "/DashboardAdmin/mnProducts", "/DashboardAdmin/mnCategory", "/DashboardAdmin/mnSupplier",
@@ -30,6 +35,7 @@ import java.util.Map;
         "/DashboardAdmin/storeS", "/DashboardAdmin/updateS", "/DashboardAdmin/deleteS", "/DashboardAdmin/storeA", "/DashboardAdmin/updateA",
         "/DashboardAdmin/deleteA"
 })
+@Log4j2
 public class DashboardAdmin extends HttpServlet {
     ProductsDAO productsDAO;
     CategoryDAO categoryDAO;
@@ -49,12 +55,10 @@ public class DashboardAdmin extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String uri = request.getRequestURI();
         if (uri.contains("index")) {
+            fillProducts(request, response);
+            fillCategoryAndSupplier(request, response);
             request.setAttribute("views", "/views/dashboardAdmin/component/baseLayout.jsp");
         } else if (uri.contains("mnCategory")) {
-//            int quantity = categoryDAO.getQuantityByCategory(3);
-//            System.out.println("----------------------------");
-//            System.out.println(request.getParameter("id_c"));
-//            request.setAttribute("quantity", quantity);
             fillCategory(request, response);
             request.setAttribute("views", "/views/dashboardAdmin/ManagerCategory/CRUD_Category.jsp");
         } else if (uri.contains("mnSupplier")) {
@@ -117,6 +121,7 @@ public class DashboardAdmin extends HttpServlet {
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnCategory");
         } else if (uri.contains("storeC")) {
             try {
+                log.info("OK");
                 insertCategory(request, response);
                 session.setAttribute("message", "Insert Success!!!");
             } catch (InvocationTargetException | IllegalAccessException e) {
@@ -144,8 +149,6 @@ public class DashboardAdmin extends HttpServlet {
                 e.printStackTrace();
             }
             response.sendRedirect("/ecommerce_Java4_war/DashboardAdmin/mnSupplier");
-
-
         } else if (uri.contains("deleteS")) {
             deleteSupplier(request, response);
             session.setAttribute("message", "Delete Success!!!");
@@ -154,6 +157,9 @@ public class DashboardAdmin extends HttpServlet {
     }
 
     private void insert(HttpServletRequest request, HttpServletResponse response) {
+        if (!validateForm(request, response)) {
+            return;
+        }
         try {
             File dir = new File("/uploads");
             if (!dir.exists()) {
@@ -169,13 +175,14 @@ public class DashboardAdmin extends HttpServlet {
             int s_id = Integer.parseInt(supplier_id);
             products.setCategoryId(c_id);
             products.setSupplierId(s_id);
+            //
             Map uploadRuslt = cloudinary.uploader().upload(photoFile, ObjectUtils.emptyMap());
+            //
             products.setImageProduct(uploadRuslt.get("url").toString());
             BeanUtils.populate(products, request.getParameterMap());
             productsDAO.insert(products);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", e.getMessage());
         }
 
     }
@@ -198,8 +205,10 @@ public class DashboardAdmin extends HttpServlet {
             "secure", true));
 
     private void update(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException {
+        if (!validateForm(request, response)) {
+            return;
+        }
         try {
-
             File dir = new File("/uploads");
             if (!dir.exists()) {
                 dir.mkdirs();
@@ -218,12 +227,8 @@ public class DashboardAdmin extends HttpServlet {
             products.setImageProduct(uploadRuslt.get("url").toString());
             BeanUtils.populate(products, request.getParameterMap());
             productsDAO.update(products);
-            request.setAttribute("message", "update success !!!");
             request.setAttribute("product", products);
-        } catch (IOException e) {
-            e.printStackTrace();
-            request.setAttribute("error", e.getMessage());
-        } catch (ServletException | IllegalAccessException e) {
+        } catch (IOException | ServletException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
@@ -233,10 +238,8 @@ public class DashboardAdmin extends HttpServlet {
             int userId = Integer.parseInt(request.getParameter("id"));
             productsDAO.delete(userId);
             System.out.println("OKKKKKK");
-            request.setAttribute("message", "Delete Success !!!");
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error: " + e.getMessage());
         }
     }
 
@@ -250,7 +253,6 @@ public class DashboardAdmin extends HttpServlet {
             request.setAttribute("category", listC);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error: " + e.getMessage());
         }
     }
 
@@ -260,7 +262,6 @@ public class DashboardAdmin extends HttpServlet {
             request.setAttribute("category", listP);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error: " + e.getMessage());
         }
     }
 
@@ -270,7 +271,6 @@ public class DashboardAdmin extends HttpServlet {
             request.setAttribute("supplier", listP);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error: " + e.getMessage());
         }
     }
 
@@ -280,12 +280,24 @@ public class DashboardAdmin extends HttpServlet {
             request.setAttribute("account", listP);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error: " + e.getMessage());
         }
     }
     // Account
 
     private void insertAccount(HttpServletRequest request, HttpServletResponse response) {
+        if (!validateAccount(request, response)) {
+            return;
+        } else if (!checkEmailRegex(request, response)) {
+            return;
+        } else if (checkEmailMatch(request, response)) {
+            return;
+        } else if (!checkPhoneRegex(request, response)) {
+            return;
+        } else if (checkPhoneMatch(request, response)) {
+            return;
+        } else if (checkUserName(request, response)) {
+            return;
+        }
         try {
             Users users = new Users();
             users.setCreated(new Date());
@@ -293,15 +305,16 @@ public class DashboardAdmin extends HttpServlet {
             String hashed = EncryptUtils.hashPassword(users.getPassword());
             users.setPassword(hashed);
             accountDAO.insert(users);
-            request.setAttribute("message", "Insert success !!!");
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", e.getMessage());
         }
 
     }
 
     private void updateAccount(HttpServletRequest request, HttpServletResponse response) {
+        if (!validateAccount(request, response)) {
+            return;
+        }
         try {
             HttpSession session = request.getSession();
             Users usersSes = (Users) session.getAttribute("auth");
@@ -315,10 +328,8 @@ public class DashboardAdmin extends HttpServlet {
             users.setCreated(id.getCreated());
             BeanUtils.populate(users, request.getParameterMap());
             accountDAO.update(users);
-            request.setAttribute("message", "Update success !!!");
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", e.getMessage());
         }
 
     }
@@ -327,28 +338,31 @@ public class DashboardAdmin extends HttpServlet {
         try {
             int userId = Integer.parseInt(request.getParameter("id"));
             accountDAO.delete(userId);
-            request.setAttribute("message", "Delete Success !!!");
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error: " + e.getMessage());
         }
     }
 
     // category
 
     private void insertCategory(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException, IllegalAccessException {
+        if (!validateCategory(request, response)) {
+            return;
+        } else if (checkCategoryMatch(request, response)) {
+            return;
+        }
         Category category = new Category();
         BeanUtils.populate(category, request.getParameterMap());
         categoryDAO.insert(category);
-        request.setAttribute("message", "Insert success !!!");
-//        request.setAttribute("category", category);
     }
 
     private void updateCategory(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException, IllegalAccessException {
+        if (!validateCategory(request, response)) {
+            return;
+        }
         Category category = new Category();
         BeanUtils.populate(category, request.getParameterMap());
         categoryDAO.update(category);
-        request.setAttribute("message", "Update success !!!");
         request.setAttribute("category", category);
     }
 
@@ -356,38 +370,190 @@ public class DashboardAdmin extends HttpServlet {
         try {
             int userId = Integer.parseInt(request.getParameter("id"));
             categoryDAO.delete(userId);
-            request.setAttribute("message", "Delete Success !!!");
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error: " + e.getMessage());
         }
     }
     //Supplier
 
     private void insertSupplier(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException, IllegalAccessException {
+        if (!validateSupplier(request, response)) {
+            return;
+        } else if (!checkPhoneRegex(request, response)) {
+            return;
+        } else if (checkSupplierMatch(request, response)) {
+            return;
+        } else if (checkPhoneMatchSupplier(request, response)) {
+            return;
+        }
+
         Supplier supplier = new Supplier();
         BeanUtils.populate(supplier, request.getParameterMap());
         supplierDAO.insert(supplier);
-        request.setAttribute("message", "Insert success !!!");
 //        request.setAttribute("category", category);
     }
 
     private void updateSupplier(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException, IllegalAccessException {
+        if (!validateSupplier(request, response)) {
+            return;
+        } else if (!checkPhoneRegex(request, response)) {
+            return;
+        }
         Supplier supplier = new Supplier();
         BeanUtils.populate(supplier, request.getParameterMap());
         supplierDAO.update(supplier);
-        request.setAttribute("message", "Update success !!!");
-//        request.setAttribute("category", s);
     }
 
     private void deleteSupplier(HttpServletRequest request, HttpServletResponse response) {
         try {
             int userId = Integer.parseInt(request.getParameter("id"));
             supplierDAO.delete(userId);
-            request.setAttribute("message", "Delete Success !!!");
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error: " + e.getMessage());
         }
     }
+
+    private boolean validateForm(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String name = request.getParameter("nameProduct");
+        String quantity = request.getParameter("quantity");
+        String price = request.getParameter("price");
+        String color = request.getParameter("color");
+        String size = request.getParameter("size");
+
+        if (name.length() == 0 || quantity.length() == 0 || price.length() == 0 || color.length() == 0 ||
+                size.length() == 0) {
+            session.setAttribute("error", "Can not be empty!!!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateAccount(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String username = request.getParameter("username");
+        String fullName = request.getParameter("fullName");
+        String password = request.getParameter("password");
+        String re_password = request.getParameter("re_password");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        if (username.length() == 0 || fullName.length() == 0 || password.length() == 0 || email.length() == 0 ||
+                phone.length() == 0 || re_password.length() == 0) {
+            session.setAttribute("error", "Can not be empty!!!");
+            return false;
+        }
+        if (!re_password.equals(password)) {
+            session.setAttribute("error", "Password not match !!!");
+            return false;
+        }
+        return true;
+    }
+
+
+    private boolean validateSupplier(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String nameSupplier = request.getParameter("nameSupplier");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+
+        if (nameSupplier.length() == 0 || phone.length() == 0 || address.length() == 0) {
+            session.setAttribute("error", "Can not be empty!!!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateCategory(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String nameCategory = request.getParameter("nameCategory");
+
+
+        if (nameCategory.length() == 0) {
+            session.setAttribute("error", "Can not be empty!!!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkEmailRegex(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String email = request.getParameter("email");
+        if (!Validate.checkEmail(email)) {
+            session.setAttribute("error", "Email Failed!!!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkEmailMatch(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String email = request.getParameter("email");
+        if (Validate.checkEmailMatch(email)) {
+            session.setAttribute("error", "Trùng Email: " + email);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkPhoneRegex(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String phone = request.getParameter("phone");
+        if (!Validate.checkPhoneNumber(phone)) {
+            session.setAttribute("error", "Phone Failed!!!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkPhoneMatch(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String phone = request.getParameter("phone");
+        if (Validate.checkPhoneMatch(phone)) {
+            session.setAttribute("error", "Trùng Phone: " + phone);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkPhoneMatchSupplier(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String phone = request.getParameter("phone");
+        if (Validate.checkNumberMatchSupplier(phone)) {
+            session.setAttribute("error", "Trùng Phone: " + phone);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkCategoryMatch(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String username = request.getParameter("nameCategory");
+        if (Validate.checkCategory(username)) {
+            session.setAttribute("error", "Match category: " + username);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkSupplierMatch(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String username = request.getParameter("nameSupplier");
+        if (Validate.checkSupplier(username)) {
+            session.setAttribute("error", "Match name supplier: " + username);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkUserName(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String username = request.getParameter("username");
+        if (Validate.checkUsername(username)) {
+            session.setAttribute("error", "Trùng username: " + username);
+            return true;
+        }
+        return false;
+    }
+
+
 }

@@ -1,5 +1,10 @@
 package entity;
 
+import Utils.SaveLogin;
+import entityOrder.Order;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.persistence.*;
 
 @Entity
@@ -132,4 +137,5 @@ public class Orders {
     public void setOrderStatesByStatusState(OrderStates orderStatesByStatusState) {
         this.orderStatesByStatusState = orderStatesByStatusState;
     }
+
 }

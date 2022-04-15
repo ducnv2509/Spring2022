@@ -140,7 +140,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="text-center">
-                                                <img src="${pageContext.servletContext.contextPath}/views/images/are-you-sure-will-ferrel.gif"
+                                                <img src="${pageContext.servletContext.contextPath}/views/dashboardAdmin/component/are-you-sure-will-ferrel.gif"
                                                      alt="">
                                             </div>
 

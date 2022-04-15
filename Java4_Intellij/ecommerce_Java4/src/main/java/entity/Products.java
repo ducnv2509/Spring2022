@@ -1,11 +1,21 @@
 package entity;
 
+import Utils.SaveLogin;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Collection;
 
 @Entity
 public class Products {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -220,4 +230,22 @@ public class Products {
     public void setSharesById(Collection<Share> sharesById) {
         this.sharesById = sharesById;
     }
+
+
+    private static final Log log = LogFactory.getLog(Products.class);
+    @PostPersist
+    public void logNewUserAdded() {
+        log.info("Added product '" + nameProduct + "' with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostRemove
+    public void logUserRemoval() {
+        log.info("Deleted product: " + nameProduct + " with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostUpdate
+    public void logUserUpdate() {
+        log.info("Updated product: " + nameProduct + " with name: " + SaveLogin.user.getFullName());
+    }
+
 }

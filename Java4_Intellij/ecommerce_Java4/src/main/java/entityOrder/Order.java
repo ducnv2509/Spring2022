@@ -1,6 +1,14 @@
 package entityOrder;
 
+import Utils.SaveLogin;
 import entity.Products;
+import entity.Supplier;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import javax.persistence.PostPersist;
+import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
 
 public class Order extends Products {
     private int orderId;
@@ -83,5 +91,22 @@ public class Order extends Products {
                 ", quantity=" + quantity +
                 ", date='" + date + '\'' +
                 '}';
+    }
+
+    private static final Log log = LogFactory.getLog(Order.class);
+
+    @PostPersist
+    public void logNewUserAdded() {
+        log.info("Added order: '" + getNameProduct() + "' with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostRemove
+    public void logUserRemoval() {
+        log.info("Deleted order: " + getNameProduct() + " with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostUpdate
+    public void logUserUpdate() {
+        log.info("Updated order: " + getNameProduct() + " with name: " + SaveLogin.user.getFullName());
     }
 }

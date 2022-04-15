@@ -1,5 +1,9 @@
 package entity;
 
+import Utils.SaveLogin;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.persistence.*;
 
 @Entity
@@ -73,5 +77,21 @@ public class Supplier {
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
+    }
+    private static final Log log = LogFactory.getLog(Supplier.class);
+
+    @PostPersist
+    public void logNewUserAdded() {
+        log.info("Added supplier: '" + nameSupplier + "' with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostRemove
+    public void logUserRemoval() {
+        log.info("Deleted supplier: " + nameSupplier + " with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostUpdate
+    public void logUserUpdate() {
+        log.info("Updated supplier: " + nameSupplier + " with name: " + SaveLogin.user.getFullName());
     }
 }

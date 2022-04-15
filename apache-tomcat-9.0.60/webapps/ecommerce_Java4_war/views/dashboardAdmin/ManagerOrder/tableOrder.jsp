@@ -29,7 +29,7 @@
             <thead>
             <tr>
                 <th>ID_Order</th>
-                <th>ID</th>
+                <th>NameCustomer</th>
                 <th>ImageProduct</th>
                 <th>nameProduct</th>
                 <th>size</th>
@@ -53,7 +53,10 @@
                 <td><%= f.getO_id() %>
                     <%--                    <input type="hidden" value="<%= f.getO_id() %>" name="idD">--%>
                 </td>
-                <td><%= f.getIdP() %>
+                <td>
+                    <%=
+                    f.getNameCustomer()
+                    %>
                 </td>
                 <td>
                     <img src="<%= f.getImageProduct() %>" class="img-fluid" width="105px" alt="">
@@ -66,9 +69,9 @@
                 </td>
                 <td><%= f.getO_quantity() %>
                 </td>
-                <td><%= f.getPrice() %>
+                <td><%= f.getPrice() %> $
                 </td>
-                <td><%= f.getTotal() %>
+                <td><%= f.getTotal() %> $
                 </td>
                 <td>
                     <select name="statusState" class="form-select" aria-label="Default select example">
@@ -80,7 +83,9 @@
                 <td>
                     <button class="btn btn-warning"
                             formaction="DashboardAdminOrder/update?o_id=<%=f.getO_id()%>"
-                    ></button>
+                    >
+                        Set
+                    </button>
                 </td>
             </tr>
             <%

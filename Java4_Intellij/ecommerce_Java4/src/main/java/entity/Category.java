@@ -1,5 +1,9 @@
 package entity;
 
+import Utils.SaveLogin;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.persistence.*;
 
 @Entity
@@ -47,5 +51,22 @@ public class Category {
         int result = id;
         result = 31 * result + (nameCategory != null ? nameCategory.hashCode() : 0);
         return result;
+    }
+
+    private static final Log log = LogFactory.getLog(Category.class);
+
+    @PostPersist
+    public void logNewUserAdded() {
+        log.info("Added nameCategory: '" + nameCategory + "' with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostRemove
+    public void logUserRemoval() {
+        log.info("Deleted nameCategory: " + nameCategory + " with name: " + SaveLogin.user.getFullName());
+    }
+
+    @PostUpdate
+    public void logUserUpdate() {
+        log.info("Updated nameCategory: " + nameCategory + " with name: " + SaveLogin.user.getFullName());
     }
 }

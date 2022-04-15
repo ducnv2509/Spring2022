@@ -3,6 +3,8 @@ package DAO;
 import Utils.BaseService;
 import Utils.JpaUtils;
 import entity.Category;
+import lombok.extern.log4j.Log4j2;
+import org.apache.log4j.PropertyConfigurator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -11,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Properties;
 
 public class CategoryDAO extends DAO<Category, Integer> {
     @Override

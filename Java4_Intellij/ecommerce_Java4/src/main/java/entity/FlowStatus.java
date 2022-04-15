@@ -2,7 +2,7 @@ package entity;
 
 public class FlowStatus {
     private int o_id, idP, o_quantity, price, total, status;
-    private String imageProduct, nameProduct, size, color;
+    private String imageProduct, nameProduct, size, color, nameCustomer;
 
     public int getO_id() {
         return o_id;
@@ -23,6 +23,26 @@ public class FlowStatus {
         this.size = size;
         this.color = color;
         this.status = status;
+    }
+    public FlowStatus(int o_id, String nameCustomer, String imageProduct, String nameProduct, String size, String color, int o_quantity, int price, int total, int status) {
+        this.o_id = o_id;
+        this.nameCustomer = nameCustomer;
+        this.o_quantity = o_quantity;
+        this.price = price;
+        this.total = total;
+        this.imageProduct = imageProduct;
+        this.nameProduct = nameProduct;
+        this.size = size;
+        this.color = color;
+        this.status = status;
+    }
+
+    public String getNameCustomer() {
+        return nameCustomer;
+    }
+
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
 
     public int getStatus() {

@@ -26,10 +26,11 @@
     <link rel="apple-touch-icon" href="${pageContext.servletContext.contextPath}/include/assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon"
           href="${pageContext.servletContext.contextPath}/include/assets/img/favicon.ico">
-
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/include/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/include/assets/css/templatemo.css">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/include/assets/css/custom.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/views/dashboardAdmin/css/styles.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
@@ -196,126 +197,128 @@
             </div>
 
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                <div class="container">
-                    <div class="table-responsive">
-                        <table id="datatablesSimple" class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>ID_Order</th>
-                                <th>ID</th>
-                                <th>ImageProduct</th>
-                                <th>nameProduct</th>
-                                <th>size</th>
-                                <th>color</th>
-                                <th>quantity</th>
-                                <th>price</th>
-                                <th>total</th>
-                                <th>status</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <%
-                                if (!list.isEmpty()) {
-                                    for (FlowStatus f : list
-                                    ) {
-                            %>
-                            <tr>
-                                <td><%= f.getO_id() %>
-                                <td><%= f.getIdP() %>
-                                </td>
-                                <td>
-                                    <img src="<%= f.getImageProduct() %>" class="img-fluid" width="105px" alt="">
-                                </td>
-                                <td><%= f.getNameProduct() %>
-                                </td>
-                                <td><%= f.getSize() %>
-                                </td>
-                                <td><%= f.getColor() %>
-                                </td>
-                                <td><%= f.getO_quantity() %>
-                                </td>
-                                <td><%= f.getPrice() %>
-                                </td>
-                                <td><%= f.getTotal() %>
-                                </td>
-                                <td>Chờ xác nhận
-                                </td>
-                            </tr>
-                            <%
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="datatablesSimple1" class="table-striped table tab-content table-hover">
+                                <thead>
+                                <tr>
+                                    <th>ID_Order</th>
+                                    <th>ImageProduct</th>
+                                    <th>nameProduct</th>
+                                    <th>size</th>
+                                    <th>color</th>
+                                    <th>quantity</th>
+                                    <th>price</th>
+                                    <th>total</th>
+                                    <th>status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <%
+                                    if (!list.isEmpty()) {
+                                        for (FlowStatus f : list
+                                        ) {
+                                %>
+                                <tr>
+                                    <td><%= f.getO_id() %>
+                                    </td>
+                                    <td>
+                                        <img src="<%= f.getImageProduct() %>" class="img-fluid" width="105px" alt="">
+                                    </td>
+                                    <td><%= f.getNameProduct() %>
+                                    </td>
+                                    <td><%= f.getSize() %>
+                                    </td>
+                                    <td><%= f.getColor() %>
+                                    </td>
+                                    <td><%= f.getO_quantity() %>
+                                    </td>
+                                    <td><%= f.getPrice() %> $
+                                    </td>
+                                    <td><%= f.getTotal() %> $
+                                    </td>
+                                    <td>Chờ xác nhận
+                                    </td>
+                                </tr>
+                                <%
+                                        }
+                                    } else {
+                                        out.println("There is no proucts");
                                     }
-                                } else {
-                                    out.println("There is no proucts");
-                                }
-                            %>
-                            </tbody>
-                        </table>
+                                %>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
-
-
                 </div>
             </div>
-
             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>ID_Order</th>
-                        <th>ID</th>
-                        <th>ImageProduct</th>
-                        <th>nameProduct</th>
-                        <th>size</th>
-                        <th>color</th>
-                        <th>quantity</th>
-                        <th>price</th>
-                        <th>total</th>
-                        <th>status</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%
-                        if (!listH.isEmpty()) {
-                            for (FlowStatus f : listH
-                            ) {
-                    %>
-                    <tr>
-                        <td><%= f.getO_id() %>
-                        <td><%= f.getIdP() %>
-                        </td>
-                        <td>
-                            <img src="<%= f.getImageProduct() %>" class="img-fluid" width="105px" alt="">
-                        </td>
-                        <td><%= f.getNameProduct() %>
-                        </td>
-                        <td><%= f.getSize() %>
-                        </td>
-                        <td><%= f.getColor() %>
-                        </td>
-                        <td><%= f.getO_quantity() %>
-                        </td>
-                        <td><%= f.getPrice() %>
-                        </td>
-                        <td><%= f.getTotal() %>
-                        </td>
-                        <td>
-                            <%
-                                if (f.getStatus() == 2) {
-                                    out.print("Đã xác nhận");
-                                } else if (f.getStatus() == 3) {
-                                    out.print("Hoàn Tất");
-                                } else if (f.getStatus() == 4) {
-                                    out.print("Huỷ");
-                                }
-                            %>
-                        </td>
-                    </tr>
-                    <%
-                            }
-                        } else {
-                            out.println("There is no proucts");
-                        }
-                    %>
-                    </tbody>
-                </table>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="datatablesSimple">
+                                <thead>
+                                <tr>
+                                    <th>ID_Order</th>
+                                    <th>ImageProduct</th>
+                                    <th>nameProduct</th>
+                                    <th>size</th>
+                                    <th>color</th>
+                                    <th>quantity</th>
+                                    <th>price</th>
+                                    <th>total</th>
+                                    <th>status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <%
+                                    if (!listH.isEmpty()) {
+                                        for (FlowStatus f : listH
+                                        ) {
+                                %>
+                                <tr>
+                                    <td><%= f.getO_id() %>
+                                    </td>
+                                    <td>
+                                        <img src="<%= f.getImageProduct() %>" class="img-fluid" width="105px" alt="">
+                                    </td>
+                                    <td><%= f.getNameProduct() %>
+                                    </td>
+                                    <td><%= f.getSize() %>
+                                    </td>
+                                    <td><%= f.getColor() %>
+                                    </td>
+                                    <td><%= f.getO_quantity() %>
+                                    </td>
+                                    <td><%= f.getPrice() %> $
+                                    </td>
+                                    <td><%= f.getTotal() %> $
+                                    </td>
+                                    <td>
+                                        <%
+                                            if (f.getStatus() == 2) {
+                                                out.print("Đã xác nhận");
+                                            } else if (f.getStatus() == 3) {
+                                                out.print("Hoàn Tất");
+                                            } else if (f.getStatus() == 4) {
+                                                out.print("Huỷ");
+                                            }
+                                        %>
+                                    </td>
+                                </tr>
+                                <%
+                                        }
+                                    } else {
+                                        out.println("There is no proucts");
+                                    }
+                                %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -332,6 +335,15 @@
 <script src="${pageContext.servletContext.contextPath}/include/assets/js/bootstrap.bundle.min.js"></script>
 <script src="${pageContext.servletContext.contextPath}/include/assets/js/templatemo.js"></script>
 <script src="${pageContext.servletContext.contextPath}/include/assets/js/custom.js"></script>
+<%--    s--%>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+<%--    e--%>
+<script src="${pageContext.servletContext.contextPath}/views/dashboardAdmin/js/datatables-simple-demo.js"></script>
+<script src="${pageContext.servletContext.contextPath}/views/dashboardAdmin/js/table_DataORder.js"></script>
+<script src="${pageContext.servletContext.contextPath}/views/dashboardAdmin/js/scripts.js"></script>
+
 <!-- End Script -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -341,6 +353,8 @@
         crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+
+
     function loadMore() {
         var amount = document.getElementsByClassName("product").length;
         $.ajax({
