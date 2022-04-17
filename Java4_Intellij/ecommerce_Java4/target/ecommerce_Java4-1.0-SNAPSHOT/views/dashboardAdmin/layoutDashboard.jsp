@@ -20,7 +20,7 @@
     <link href="${pageContext.servletContext.contextPath}/views/dashboardAdmin/css/styles.css" rel="stylesheet"/>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <base href="/ecommerce_Java4_war/">
 </head>
 <body class="sb-nav-fixed">

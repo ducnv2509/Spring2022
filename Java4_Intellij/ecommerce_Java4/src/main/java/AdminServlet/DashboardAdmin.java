@@ -312,9 +312,9 @@ public class DashboardAdmin extends HttpServlet {
     }
 
     private void updateAccount(HttpServletRequest request, HttpServletResponse response) {
-        if (!validateAccount(request, response)) {
-            return;
-        }
+//        if (!validateAccount(request, response)) {
+//            return;
+//        }
         try {
             HttpSession session = request.getSession();
             Users usersSes = (Users) session.getAttribute("auth");

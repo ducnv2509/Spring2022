@@ -70,6 +70,11 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Chốt đơn
                 </a>
+
+                <%--                <a class="nav-link" href="/ecommerce_Java4_war/DashboardAdminOrder/history">--%>
+                <%--                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>--%>
+                <%--                    Lịch sử chốt đơn--%>
+                <%--                </a>--%>
             </div>
         </div>
         <div class="sb-sidenav-footer">

@@ -51,11 +51,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <base href="/ecommerce_Java4_war/">
-    <style>
-        .activeC {
-            color: red;
-        }
-    </style>
     <!--
 
     TemplateMo 559 Zay Shop
@@ -126,9 +121,34 @@
                                      src="${i.imageProduct}" width="256" height="256" alt="">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white"
-                                               href="/ecommerce_Java4_war/detailProduct?id=${i.id}"><i
-                                                class="far fa-heart"></i></a></li>
+                                        <c:if test="${empty like}">
+                                            <li><a class="btn btn-success text-white"
+                                                   href="/ecommerce_Java4_war/LikeProduct?id=${i.id}"><i
+                                                    class="far fa-heart"></i></a></li>
+                                        </c:if>
+                                        <c:forEach items="${like}" var="l">
+                                            <c:if test="${!empty l}">
+                                                <%
+                                                    System.out.println("OK");
+                                                %>
+<%--                                                <li><a class="btn btn-success text-white"--%>
+<%--                                                       href="/ecommerce_Java4_war/LikeProduct?id=${i.id}"><i--%>
+<%--                                                        class="far fa-eye"></i></a></li>--%>
+<%--                                                NULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL--%>
+                                            </c:if>
+<%--                                            <c:if test="${!empty l.productId != i.id}">--%>
+<%--                                                <li><a class="btn btn-success text-white"--%>
+<%--                                                       href="/ecommerce_Java4_war/LikeProduct?id=${i.id}"><i--%>
+<%--                                                        class="far fa-heart"></i></a></li>--%>
+<%--                                            </c:if>--%>
+<%--                                            <c:if test="${l.productId == i.id}">--%>
+<%--                                                <li><a class="btn btn-success text-white"--%>
+<%--                                                       href="/ecommerce_Java4_war/LikeProduct?id=${i.id}"><i--%>
+<%--                                                        class="far fa-eye"></i></a></li>--%>
+<%--                                                Đã thích--%>
+<%--                                            </c:if>--%>
+                                        </c:forEach>
+
                                         <li><a class="btn btn-success text-white mt-2"
                                                href="/ecommerce_Java4_war/detailProduct?id=${i.id}"><i
                                                 class="far fa-eye"></i></a></li>
@@ -163,6 +183,9 @@
                                 </ul>
                                 <p class="text-center mb-0">${i.price} $</p>
                             </div>
+                                <%--                            <c:if test="${ like.product_id == i.id}">--%>
+                                <%--                               --%>
+                                <%--                            </c:if>--%>
                         </div>
                     </div>
                 </c:forEach>

@@ -56,6 +56,8 @@ public class ProfileServlet extends HttpServlet {
         if (uri.contains("update")) {
             updateAccount(request, response);
             response.sendRedirect("/ecommerce_Java4_war/ProfileServlet");
+            HttpSession session = request.getSession();
+            session.setAttribute("message", "Update successfully !");
         }
 
     }
@@ -84,7 +86,6 @@ public class ProfileServlet extends HttpServlet {
             e.printStackTrace();
         }
         accountDAO.update(userInsert);
-        request.setAttribute("message", "update success !!!");
     }
 
 

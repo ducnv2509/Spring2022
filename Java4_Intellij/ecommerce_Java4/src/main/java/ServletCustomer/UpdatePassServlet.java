@@ -40,6 +40,8 @@ public class UpdatePassServlet extends HttpServlet {
         if (uri.contains("update")) {
             changePassword(request, response);
             response.sendRedirect("/ecommerce_Java4_war/ProfileServlet");
+            HttpSession session = request.getSession();
+            session.setAttribute("message", "Update Password successfully !");
         }
 
     }
@@ -69,7 +71,6 @@ public class UpdatePassServlet extends HttpServlet {
         userInsert.setPassword(hashed);
         accountDAO.update(userInsert);
 
-        request.setAttribute("message", "update success !!!");
     }
 
 }

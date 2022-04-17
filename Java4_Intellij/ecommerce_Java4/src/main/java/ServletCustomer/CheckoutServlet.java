@@ -21,7 +21,7 @@ public class CheckoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss aa");
             Date date = new Date();
             ArrayList<Cart> cart_list = (ArrayList<Cart>) request.getSession().getAttribute("cart-list");
             Users auth = (Users) request.getSession().getAttribute("auth");
@@ -39,8 +39,9 @@ public class CheckoutServlet extends HttpServlet {
                     if (!result) break;
                 }
                 cart_list.clear();
-//                System.out.println("OK ?");
-                response.sendRedirect("/ecommerce_Java4_war/ShowOrder");
+                response.sendRedirect("/ecommerce_Java4_war/ProfileServlet");
+                HttpSession session = request.getSession();
+                session.setAttribute("message", "Checkout successfully !");
             } else {
                 if (auth == null) {
                     response.sendRedirect("/ecommerce_Java4_war/LoginControl");

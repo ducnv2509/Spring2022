@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -56,7 +57,38 @@
 
 
 <!-- Start Content -->
+
+
+<div class="row">
+    <div class="col">
+        <c:if test="${not empty sessionScope.message}">
+            <script>
+                Swal.fire({
+                    icon: "success",
+                    title: "SuccessFully!",
+                    text: "${sessionScope.message}",
+                    showConfirmButton: false,
+                    closeOnClickOutside: false,
+                    allowOutsideClick: false,
+                    timer: 1600,
+                });
+            </script>
+            <c:remove var="message" scope="session"/>
+        </c:if>
+        <c:if test="${not empty sessionScope.error}">
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ERROR!',
+                    text: '${sessionScope.error}',
+                })
+            </script>
+            <c:remove var="error" scope="session"/>
+        </c:if>
+    </div>
+</div>
 <div class="container m-5 p-5">
+
     <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
@@ -211,6 +243,7 @@
                                     <th>quantity</th>
                                     <th>price</th>
                                     <th>total</th>
+                                    <th>Date</th>
                                     <th>status</th>
                                 </tr>
                                 </thead>
@@ -238,7 +271,19 @@
                                     </td>
                                     <td><%= f.getTotal() %> $
                                     </td>
-                                    <td>Chờ xác nhận
+                                    <td>
+                                        <%=
+                                        f.getOrder_Date()
+                                        %>
+                                    </td>
+                                    <td>
+                                        <%
+                                            if (f.getStatus() == 2) {
+                                                out.print("Chờ lấy hàng");
+                                            } else if (f.getStatus() == 1) {
+                                                out.print("Chờ xác nhận");
+                                            }
+                                        %>
                                     </td>
                                 </tr>
                                 <%
@@ -269,6 +314,7 @@
                                     <th>quantity</th>
                                     <th>price</th>
                                     <th>total</th>
+                                    <th>Date</th>
                                     <th>status</th>
                                 </tr>
                                 </thead>
@@ -297,10 +343,13 @@
                                     <td><%= f.getTotal() %> $
                                     </td>
                                     <td>
+                                        <%=
+                                        f.getOrder_Date()
+                                        %>
+                                    </td>
+                                    <td>
                                         <%
-                                            if (f.getStatus() == 2) {
-                                                out.print("Đã xác nhận");
-                                            } else if (f.getStatus() == 3) {
+                                            if (f.getStatus() == 3) {
                                                 out.print("Hoàn Tất");
                                             } else if (f.getStatus() == 4) {
                                                 out.print("Huỷ");
